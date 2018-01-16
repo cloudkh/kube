@@ -17,9 +17,10 @@
 
 1. 해당 예제에서는 Metaworks4 (Netfflix OSS)를 사용하므로 Metaworks4를 선택하면 아래와 같은 화면으로 넘어간다.
 ![image](https://user-images.githubusercontent.com/16382067/34980801-f44587e4-fae8-11e7-86c6-8727351f719b.png)
-  1. 해당 어플리케이션의 이름을 작성해준다.
-
-
+    1) 해당 어플리케이션의 이름을 작성해준다. 
+    2) 외부접속을 위한 도메인을 작성하여준다. (프로덕션을 작성하여주면, 스테이징과 개발주소는 자동으로 입력되어진다.)
+ex)
+![image](https://user-images.githubusercontent.com/16382067/34980956-670cc33c-fae9-11e7-9798-b56bf4257ee9.png)
 
 # 코드 다운로드 및 빌드
 
