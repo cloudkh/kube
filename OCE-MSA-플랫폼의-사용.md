@@ -16,6 +16,10 @@
 ![App](https://user-images.githubusercontent.com/16382067/34979768-ace15854-fae5-11e7-9d59-4be0fc2e061d.png)
 
 1. 해당 예제에서는 Metaworks4 (Netfflix OSS)를 사용하므로 Metaworks4를 선택하면 아래와 같은 화면으로 넘어간다.
+![image](https://user-images.githubusercontent.com/16382067/34980801-f44587e4-fae8-11e7-86c6-8727351f719b.png)
+1.1 해당 어플리케이션의 이름을 작성해준다.
+
+
 
 # 코드 다운로드 및 빌드
 
