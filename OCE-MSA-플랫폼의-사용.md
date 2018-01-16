@@ -36,6 +36,9 @@
 ![image](https://user-images.githubusercontent.com/16382067/34981934-63195210-faec-11e7-8321-067bb80e22cc.png)
 
 1. 위의 스크린샷에서 빨간색 부분을 클릭하면 git의 주소가 나오고 git으로 내려받을 수 있다.
+```
+ex) git clone http://gitlab.pas-mini.io/sanghoon/testapp.git
+```
 
 # IDE 접속
 
