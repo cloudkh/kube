@@ -52,8 +52,7 @@
     1. SOA Maturity Model 
 
 # 컨슈머 만들기 3 - 챗봇 시나리오
-1. 챗봇 시나리오
-1. 챗봇 프로세스 개요
+1. 챗봇 시나리오와 챗봇 프로세스 개요
 1. 프로세스 구현
     1. Message Start Event 의 설정
     1. Send Task 를 이용한 응답 설정
