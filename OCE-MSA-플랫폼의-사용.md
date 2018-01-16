@@ -32,6 +32,10 @@
 ![image](https://user-images.githubusercontent.com/16382067/34981441-d8b98bd6-faea-11e7-991f-135a8449df84.png)
 
 # 코드 다운로드 및 빌드
+1. 이전의 5번이미지에서 소스코드를 선택하면 해당 어플리케이션의 소스코드를 확인 할 수 있다.
+![image](https://user-images.githubusercontent.com/16382067/34981934-63195210-faec-11e7-8321-067bb80e22cc.png)
+
+1. 위의 스크린샷에서 빨간색 부분을 클릭하면 git의 주소가 나오고 git으로 내려받을 수 있다.
 
 # IDE 접속
 
