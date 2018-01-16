@@ -41,6 +41,7 @@ ex) git clone http://gitlab.pas-mini.io/sanghoon/testapp.git
 ```
 
 # IDE 접속
+1. IDE를 실행 후, Import Project -> git 다운받은 경로에서 pom.xml을 선택하여 IDE로 Import 할 수 있다.
 
 # 서비스 접속
 
