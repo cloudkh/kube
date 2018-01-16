@@ -6,11 +6,16 @@
 ![notes_180116_143420_4c3_1](https://user-images.githubusercontent.com/487999/34973363-9897bdea-faca-11e7-8f99-9d988bf870da.jpg)
 
 1. 실 구현 세부 그림
-
+![notes_180116_145341_97a_1](https://user-images.githubusercontent.com/487999/34973839-31c4bb9c-facd-11e7-8932-c5dd9c9d2749.jpg)
 
 1. 세부 마이크로 서비스 소개
     1. 도메인 서비스들
+        1. Customer Service
+        1. Order Service
+        1. Item Service
     1. 환경 서비스들
+        1. API Gateway (Zuul)
+        1. IAM
 1. 컨슈머
     1. 프론트엔드
     1. BPM
