@@ -36,9 +36,34 @@
 1. hateoas 통일 links
 
 # 컨슈머 만들기 2 - BPM 통한 orchestration
+1. BPM 서비스의 디플로이
+    1. Process Service
+    1. Definition Service
+1. BPM 서비스 접속
+    1. 통합 계정 사용시
+    1. 별도 계정 사용시
+1. 기본 기능 테스트
+    1. 프로세스 작성
+    1. 프로세스 실행
+    1. 프로세스 모니터링
+1. 서비스 통합 프로세스의 구현
+    1. 프로세스 개요
+    1. 풀과 서비스 태스크
+    1. SOA Maturity Model 
 
 # 컨슈머 만들기 3 - 챗봇 시나리오
-
+1. 챗봇 시나리오
+1. 챗봇 프로세스 개요
+1. 프로세스 구현
+    1. Message Start Event 의 설정
+    1. Send Task 를 이용한 응답 설정
+    1. 조건 분기 설정
+    1. 오류 발생시 Catch Error Event 설정
+1. 카카오톡과의 연동
+    1. 카카오 플러스 친구 등록
+    1. API 대응 설정
+    1. 테스트
+    
 # Production 과 무정지 운영
 1. canary
 1. 모니터링과 대응
