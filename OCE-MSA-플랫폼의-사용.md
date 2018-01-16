@@ -31,7 +31,6 @@
 1. 현재 빌드 및 배포중인 어플리케이션의 상태를 보여주며, 상태의 Running을 누르면 Gitlab으로 넘어가져서 좀 더 자세한 진행상황을 볼 수 있다.
 ![image](https://user-images.githubusercontent.com/16382067/34981441-d8b98bd6-faea-11e7-991f-135a8449df84.png)
 
-
 # 코드 다운로드 및 빌드
 
 # IDE 접속
