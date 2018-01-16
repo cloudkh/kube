@@ -9,9 +9,13 @@
 ![Mail](https://user-images.githubusercontent.com/16382067/34976111-54163ff8-fad8-11e7-8d6b-079b678a6719.png)
 
 # 애플리케이션 생성
-1. 로그인을 하면 아래와 같은 화면이 생성 된다.
+1. 로그인을 하면 아래와 같은 화면으로 넘어간다.
 ![Main](https://user-images.githubusercontent.com/16382067/34978941-3bdb8c4e-fae3-11e7-8c29-117a9d77dc20.png)
 
+1. 위 그림의 작성버튼을 클릭하면 아래와 같은 화면으로 넘어간다.
+![App](https://user-images.githubusercontent.com/16382067/34979768-ace15854-fae5-11e7-9d59-4be0fc2e061d.png)
+
+1. 해당 예제에서는 Metaworks4 (Netfflix OSS)를 사용하므로 Metaworks4를 선택하면 아래와 같은 화면으로 넘어간다.
 
 # 코드 다운로드 및 빌드
 
