@@ -78,6 +78,7 @@ httpie를 이용한 확인방법은 아래와 같다.
 httpie testapp-dev.pas-mini.io를 입력하면 된다.
 ```
 ![image](https://user-images.githubusercontent.com/16382067/35023129-a9d1288c-fb7c-11e7-9030-f9ec22a04592.png)
+
 위와 같은 메세지가 뜬다면 정상적으로 서비스가 실행 된 것이다.
 
 # 테스트
