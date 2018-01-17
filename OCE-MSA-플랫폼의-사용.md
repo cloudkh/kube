@@ -73,11 +73,12 @@ Httpie를 설치를 위해서는 Python이 필요하다. [Python 다운로드 �
 ```설치순서
 Python 다운로드 후 설치한다.
 설치 과정중 pip를 꼭 체크하여서 설치해야한다.
+```
 ![python-install](https://user-images.githubusercontent.com/16382067/35021672-3574cbb2-fb75-11e7-9bfe-7fce60fb03d6.png)
 ![python-install2](https://user-images.githubusercontent.com/16382067/35021680-3ffcca9e-fb75-11e7-86b1-822446a08d19.png)
 ![python-install3](https://user-images.githubusercontent.com/16382067/35021682-415d8e8c-fb75-11e7-8ecf-8261c47453ec.png)
 ![python-install4](https://user-images.githubusercontent.com/16382067/35021685-437aabb4-fb75-11e7-9e49-db541ab9eeb1.png)
-```
+
 
 # 테스트
 
