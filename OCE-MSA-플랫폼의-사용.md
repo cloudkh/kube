@@ -190,4 +190,4 @@ http testapp-dev.pas-mini.io/customers
 
 위와 같이 dev이외의 한개의 서비스가 생성되는것을 확인 할 수 있다.
 
-이후 내용은 상단의 어플리케이션을 첫 생성할때와 같다.
+이후 내용은 상단의 [어플리케이션을 첫 생성](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/OCE-MSA-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%98-%EC%82%AC%EC%9A%A9#%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EC%83%9D%EC%84%B1)할때와 같다.
