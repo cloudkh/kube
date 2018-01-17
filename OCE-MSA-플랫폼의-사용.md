@@ -163,8 +163,10 @@ http testapp-dev.pas-mini.io/customers
 이곳에서 라우트 버튼을 클릭하면 생성시에 입력했던 주소값들을 모두 확인 할 수 있다.
 ![image](https://user-images.githubusercontent.com/16382067/35026115-691bca8a-fb8c-11e7-9737-9df72d1316fc.png)
 
-이곳에서 프로덕션 외부 주소로 httpie를 보내보면 
-
+이곳에서 프로덕션 외부 주소로 httpie를 보내보면
+```
+http testapp.pas-mini.io
+```
 ![image](https://user-images.githubusercontent.com/16382067/35026150-9a08f708-fb8c-11e7-8261-3058a570befe.png)
 
 현재는 프로덕션이 실행되어있지 않기때문에 에러가 발생한다.
@@ -191,3 +193,11 @@ http testapp-dev.pas-mini.io/customers
 위와 같이 dev이외의 한개의 서비스가 생성되는것을 확인 할 수 있다.
 
 이후 내용은 상단의 [어플리케이션을 첫 생성](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/OCE-MSA-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%98-%EC%82%AC%EC%9A%A9#%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EC%83%9D%EC%84%B1)할때와 같다.
+
+production의 배포가 완료가 됐다면 다시 production 주소로 httpie를 이용하여 보내면
+```
+http testapp.pas-mini.io
+```
+![image](https://user-images.githubusercontent.com/16382067/35027729-a0f93c36-fb95-11e7-8f1b-a9087b6750ad.png)
+
+배포가 완료되어 정상적으로 작동되는 것을 확인 할 수 있다.
