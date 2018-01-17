@@ -154,3 +154,32 @@ http testapp-dev.pas-mini.io/customers
 이전과 다르게, "_embedded"에 데이터가 추가된 것을 확인 할 수 있다.
 
 # 프로덕션
+
+위의 내용은 모두 dev서버를 이용한 방법이므로 testapp-dev.pas-mini.io와 같이 -dev가 붙어있다.
+
+이것을 프로덕션 하기위해서 우선 생성한 앱의 대시보드를 들어가면 아래와 같은 화면으로 넘어간다.
+![image](https://user-images.githubusercontent.com/16382067/35026073-36bc222e-fb8c-11e7-913e-5bc3f83ae38f.png)
+
+이곳에서 라우트 버튼을 클릭하면 생성시에 입력했던 주소값들을 모두 확인 할 수 있다.
+![image](https://user-images.githubusercontent.com/16382067/35026115-691bca8a-fb8c-11e7-9737-9df72d1316fc.png)
+
+이곳에서 프로덕션 외부 주소로 httpie를 보내보면 
+
+![image](https://user-images.githubusercontent.com/16382067/35026150-9a08f708-fb8c-11e7-8261-3058a570befe.png)
+
+현재는 프로덕션이 실행되어있지 않기때문에 에러가 발생한다.
+
+라우트 목록을 종료 후, 대쉬보드에서 프로덕션 체크 박스를 체크해주면 아래와 같이 변하는데,
+![image](https://user-images.githubusercontent.com/16382067/35026555-202f68b0-fb8f-11e7-8982-15bf27f5078e.png)
+![image](https://user-images.githubusercontent.com/16382067/35026579-4df0bb28-fb8f-11e7-9dff-c8f155bc69ce.png)
+
+이곳에서 '태그 또는 브랜치에서'의 링크를 클릭하면 아래와 같은 화면이 나온다.
+
+![image](https://user-images.githubusercontent.com/16382067/35026634-8dd5daca-fb8f-11e7-9a8d-3a6de1a36cfa.png)
+이곳에서는 배포할 브런치 또는 태그를 선택해 주어야한다. 예제에서는 따로 커밋한게 없으므로, master를 선택하였다.
+
+선택 후 Continue를 진행하면 아래와 같은 화면까지 진행이 된다.
+![image](https://user-images.githubusercontent.com/16382067/35026671-c4110484-fb8f-11e7-919b-05c94f4e0b37.png)
+
+예제에서는 환경을 맞춰주기 위해서 stg 런타임 환경을 그대로 사용하기를 선택하였다. 
+그후 finish를 하면 잠시뒤 창이 닫히면서 프로덕션의 빌드 및 배포가 시작된다.
