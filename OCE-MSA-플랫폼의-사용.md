@@ -183,3 +183,11 @@ http testapp-dev.pas-mini.io/customers
 
 예제에서는 환경을 맞춰주기 위해서 stg 런타임 환경을 그대로 사용하기를 선택하였다. 
 그후 finish를 하면 잠시뒤 창이 닫히면서 프로덕션의 빌드 및 배포가 시작된다.
+
+왼쪽 메뉴의 빌드 및 배포를 클릭해보면
+
+![image](https://user-images.githubusercontent.com/16382067/35026734-1d9312a4-fb90-11e7-85b8-fd001c228679.png)
+
+위와 같이 dev이외의 한개의 서비스가 생성되는것을 확인 할 수 있다.
+
+이후 내용은 상단의 어플리케이션을 첫 생성할때와 같다.
