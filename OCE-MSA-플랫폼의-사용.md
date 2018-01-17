@@ -66,7 +66,9 @@ http://testapp-dev.pas-mini.io/
 ```
 이러한 페이지가 나오면 정상적으로 빌드가 되어 실행 된 것이다.
 
-또는 Httpie라는 것을 설치하여 확인할 수 있다.
+또는 Httpie를 이용하여 확인 할 수 있다.
+
+Httpie가 설치되어있지 않다면 [Httpie 설치 가이드](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/Httpie-%EC%84%A4%EC%B9%98)를 확인하여 설치한다.
 
 
 # 테스트
