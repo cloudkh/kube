@@ -86,9 +86,71 @@ httpie testapp-dev.pas-mini.io를 입력하면 된다.
 해당 문서에서는 테스트를 위하여 Httpie를 사용한다.
 Httpie가 설치되어있지 않다면 [Httpie 설치 가이드](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/Httpie-%EC%84%A4%EC%B9%98)를 확인하여 설치한다.
 
-1. 현재 실행중인 서비스를 확인해보면
+1. 현재 실행중인 서비스를 확인
 ![image](https://user-images.githubusercontent.com/16382067/35023129-a9d1288c-fb7c-11e7-9030-f9ec22a04592.png)
 
 현재 실행중인 서비스에는 customers라는 게 있다는 것을 확인할 수 있다.
+
+우선 customers를 확인해보려면
+
+```
+http testapp-dev.pas-mini.io/customers
+```
+위의 명령어를 실행하면된다. 명령어를 실행하고 나면 아래 화면이 출력된다.
+![image](https://user-images.githubusercontent.com/16382067/35025189-4a35c8c8-fb87-11e7-9114-a28376e29536.png)
+"_embedded"를 확인해 보면 현재 customers에는 아무것도 존재하지 않는다는 것을 확인 할 수 있다.
+
+2. 데이터 추가를 위해 customers에는 어떠한 속성값이 필요한지 확인
+```
+http testapp-dev.pas-mini.io/profile/customers
+```
+위 명령어를 입력하면 아래 화면이 출력된다.
+![image](https://user-images.githubusercontent.com/16382067/35025239-b24c3e24-fb87-11e7-9de4-acc77ca1df95.png)
+현재 customers에 필요한 속성값은 
+```
+"descriptors": [
+                    {
+                        "name": "firstName",
+                        "type": "SEMANTIC"
+                    },
+                    {
+                        "name": "lastName",
+                        "type": "SEMANTIC"
+                    }
+                ],
+```
+을 보면 firstName과 lastName 2가지가 필요하다는 것을 확인 할 수 있다.
+
+3. 데이터 추가
+```
+http testapp-dev.pas-mini.io/customers firstName="Kim" lastName="sanghoon"
+(http testapp-dev.pas-mini.io/{{추가할 주소}} {{인자 값}}
+```
+의 형태로 명령어를 보내면 아래와 같은 화면이 나온다.
+![image](https://user-images.githubusercontent.com/16382067/35025455-f9101c62-fb88-11e7-8a38-caedd4dbd88d.png)
+
+```
+{
+    "_links": {
+        "customer": {
+            "href": "http://testapp-dev.pas-mini.io/customers/3"
+        },
+        "self": {
+            "href": "http://testapp-dev.pas-mini.io/customers/3"
+        }
+    },
+    "firstName": "kim",
+    "lastName": "sanghoon"
+}
+```
+해당 결과를 보면 fisrtName에는 Kim, lastName에는 sanghoon이 들어간것을 확인 할 수 있다.
+
+다시 이전의 customers로 들어가보면
+```
+http testapp-dev.pas-mini.io/customers
+```
+![image](https://user-images.githubusercontent.com/16382067/35025758-a853ca38-fb8a-11e7-90ee-918b8e9b347f.png)
+
+이전과 다르게, "_embedded"에 데이터가 추가된 것을 확인 할 수 있다.
 
 # 프로덕션
