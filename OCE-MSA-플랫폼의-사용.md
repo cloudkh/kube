@@ -68,8 +68,10 @@ http://testapp-dev.pas-mini.io/
 
 또는 Httpie라는 것을 설치하여 확인할 수 있다.
 
+Httpie를 설치를 위해서는 Python이 필요하다. [Python 다운로드 페이지](https://www.python.org/downloads/) 
+
 ```설치순서
-[Python 다운로드 페이지](https://www.python.org/downloads/) 로 이동하여 Python 다운로드 후 설치한다.
+Python 다운로드 후 설치한다.
 설치 과정중 pip를 꼭 체크하여서 설치해야한다.
 ![python-install](https://user-images.githubusercontent.com/16382067/35021672-3574cbb2-fb75-11e7-9bfe-7fce60fb03d6.png)
 ![python-install2](https://user-images.githubusercontent.com/16382067/35021680-3ffcca9e-fb75-11e7-86b1-822446a08d19.png)
