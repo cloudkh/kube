@@ -83,4 +83,12 @@ httpie testapp-dev.pas-mini.io를 입력하면 된다.
 
 # 테스트
 
+해당 문서에서는 테스트를 위하여 Httpie를 사용한다.
+Httpie가 설치되어있지 않다면 [Httpie 설치 가이드](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/Httpie-%EC%84%A4%EC%B9%98)를 확인하여 설치한다.
+
+1. 현재 실행중인 서비스를 확인해보면
+![image](https://user-images.githubusercontent.com/16382067/35023129-a9d1288c-fb7c-11e7-9030-f9ec22a04592.png)
+
+현재 실행중인 서비스에는 customers라는 게 있다는 것을 확인할 수 있다.
+
 # 프로덕션
