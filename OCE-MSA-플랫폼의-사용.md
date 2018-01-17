@@ -40,10 +40,31 @@
 ex) git clone http://gitlab.pas-mini.io/sanghoon/testapp.git
 ```
 
+1. 빌드는 소스코드에 오류가 없다면 커밋시, 자동으로 반영이 된다.
+
 # IDE 접속
 1. IDE를 실행 후, Import Project -> git 다운받은 경로에서 pom.xml을 선택하여 IDE로 Import 할 수 있다.
 
 # 서비스 접속
+1. 서비스 접속방법은 웹브라우저에
+```
+http://testapp-dev.pas-mini.io/
+```
+를 입력하여 접속하면,
+```
+{
+  "_links" : {
+    "customers" : {
+      "href" : "http://testapp-dev.pas-mini.io/customers{?page,size,sort}",
+      "templated" : true
+    },
+    "profile" : {
+      "href" : "http://testapp-dev.pas-mini.io/profile"
+    }
+  }
+}
+```
+이러한 페이지가 나오면 정상적으로 빌드가 되어 실행 된 것이다.
 
 # 테스트
 
