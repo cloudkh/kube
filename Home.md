@@ -33,6 +33,8 @@
     1. **3rd-party**
        외부 비즈니스 파트너들이 도메인 서비스를 사용할 수 있도록 한다. 
 # [OCE MSA 플랫폼 사용](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/OCE-MSA-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%98-%EC%82%AC%EC%9A%A9)
+1. [관련 도구 설치](Httpie 설치)
+
 
 # 도메인 서비스의 구현 (장진영 작업)
 1. [주문/재고서비스](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/%EC%A3%BC%EB%AC%B8%EC%84%9C%EB%B9%84%EC%8A%A4%EC%9D%98-%EA%B5%AC%ED%98%84) 
@@ -42,6 +44,7 @@
 1. [마이크로 서비스의 분리](마이크로 서비스의 분리)
 1. [API 게이트웨이를 통한 Host 통합과 보안 처리]()
 1. [멀티테넌시 처리](멀티테넌시)
+
 
 
 # 컨슈머 만들기 1 - Web UI 만들기 (김상훈 작업)
