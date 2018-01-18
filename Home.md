@@ -33,7 +33,7 @@
     1. **3rd-party**
        외부 비즈니스 파트너들이 도메인 서비스를 사용할 수 있도록 한다. 
 # [OCE MSA 플랫폼 사용](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/OCE-MSA-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%98-%EC%82%AC%EC%9A%A9)
-[OCE MSA 플랫폼 사용](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/OCE-MSA-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%98-%EC%82%AC%EC%9A%A9)
+
 # 도메인 서비스의 구현 (장진영 작업)
 1. 주문서비스
 1. 재고서비스
