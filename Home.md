@@ -37,7 +37,7 @@
 # 도메인 서비스의 구현 (장진영 작업)
 1. 주문서비스
 1. 재고서비스
-1. 고객서비스
+1. [고객서비스](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/%EA%B3%A0%EA%B0%9D%EC%84%9C%EB%B9%84%EC%8A%A4%EC%9D%98-%EA%B5%AC%ED%98%84)
 
 # 컨슈머 만들기 1 - Web UI 만들기 (김상훈 작업)
 1. VueJS
