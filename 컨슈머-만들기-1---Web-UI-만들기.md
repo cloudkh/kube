@@ -282,23 +282,17 @@ Bottom Right Button Start -> End 까지는 우측 하단의 Dialog를 호출 하
 Table Start -> End 까지는 해당화면의 Table을 그려주는 역할을 한다.
 ```
 
-    1. script에 관한 설명
+<detail>
+<summary> AddDialog 설명 <summary>
 
 ```javascript
-    props: {},
-    data() {
-    return {
-      pushItems: {
-        item: '',
-        stock: '',
-        price: '',
-        point: '',
-        img: '',
-        itemName: '',
-      },
-      items: null
-    }
-  },
+          <md-input-container>
+            <label>제품번호</label>
+            <md-input type="number" placeholder="제품번호을 입력해 주세요" v-model="pushItems.item"></md-input>
+            <!-- 해당 input 값을 pushItems.item에 등록한다. -->
+          </md-input-container>
 ```
+<detail>
+
 # Zuul 로 진입점 통일 (장진영)
 # hateoas 통일 links (장진영)
