@@ -20,9 +20,10 @@ import OrderService from '@/components/OrderService'
 Vue.component('orderservice', OrderService);
 ```
 1. 하단의 export default new Router 부분을 보면,
+<details>
+<summary>수정 전</summary>
 
 ```javascript
-
 export default new Router({
 //  mode: 'history',
   routes: [
@@ -57,10 +58,12 @@ export default new Router({
   ]
 })
 ```
-
+</details>
 위와 같이 작성이 되어있다.
 
 우리가 사용할 내용은 우선, dashboard가 아닌, orderservice이므로
+<details>
+<summary>수정 전</summary>
 
 ```javascript
 export default new Router({
@@ -97,7 +100,7 @@ export default new Router({
   ]
 })
 ```
-
+</details>
 위와 같이 dashboard를 모두 orderservice로 바꾸어 준다.
 
 orderservice.vue를 작성한다.
