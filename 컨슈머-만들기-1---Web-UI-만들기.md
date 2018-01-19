@@ -56,8 +56,8 @@ export default new Router({
     }
   ]
 })
-</details>
 ```
+</details>
 위와 같이 작성이 되어있다.
 우리가 사용할 내용은 우선, dashboard가 아닌, orderservice이므로
 <details> 
