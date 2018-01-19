@@ -282,7 +282,8 @@ AddDialog Start -> End 까지는 제품 등록을 위한 Dialog 부분이다.
 Bottom Right Button Start -> End 까지는 우측 하단의 Dialog를 호출 하는 부분이다.
 Table Start -> End 까지는 해당화면의 Table을 그려주는 역할을 한다.
 ```
-    1. UI 설명
+
+1. UI 설명
 ```javascript
 
 ```
