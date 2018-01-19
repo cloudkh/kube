@@ -283,10 +283,12 @@ Bottom Right Button Start -> End 까지는 우측 하단의 Dialog를 호출 하
 Table Start -> End 까지는 해당화면의 Table을 그려주는 역할을 한다.
 ```
 
-1. UI 설명
+2. UI 설명
+    1.
 ```javascript
-
+   <md-input type="number" placeholder="제품번호을 입력해 주세요" v-model="pushItems.item"></md-input>
 ```
+해당 부분은 input값을 pushItems.item에 저장하는 부분이다.
 
 # Zuul 로 진입점 통일 (장진영)
 # hateoas 통일 links (장진영)
