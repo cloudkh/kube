@@ -52,8 +52,7 @@
 
 # 컨슈머 만들기 1 - Web UI 만들기 (김상훈 작업)
 1. [VueJS](https://github.com/TheOpenCloudEngine/micro-service-architecture-vuejs/wiki/Vue-JS-Basics)
-1. App 에 배포
-1. 로그인 처리
+1. [Web UI 만들기](Web-UI-만들기)
 1. 도메인 서비스 호출하기 (장진영)
 1. Zuul 로 진입점 통일 (장진영)
 1. hateoas 통일 links (장진영)
