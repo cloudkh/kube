@@ -8,7 +8,7 @@ Vuejs와 관련된 기초는 [이곳](https://github.com/TheOpenCloudEngine/micr
 ![image](https://user-images.githubusercontent.com/16382067/35032478-68651c04-fbaa-11e7-9854-c8ae93ebacde.png)
 
 # 주문서비스 Web UI 만들기
-주문서비스와, 주문서비스와 연동된 Web UI를 만들기 위해서는 Metaworks4 Application과, Vuejs Application을 모두 사용 하면 된다.
+1. 주문서비스와, 주문서비스와 연동된 Web UI를 만들기 위해서는 Metaworks4 Application과, Vuejs Application을 모두 사용 하면 된다.
 주문서비스는 [링크](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/%EC%A3%BC%EB%AC%B8%EC%84%9C%EB%B9%84%EC%8A%A4%EC%9D%98-%EA%B5%AC%ED%98%84)를 참조하여 제작하면 된다.
 
 # 도메인 서비스 호출하기 (장진영)
