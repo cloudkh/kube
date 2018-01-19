@@ -104,6 +104,174 @@ export default new Router({
 </details>
 위와 같이 dashboard를 모두 orderservice로 바꾸어 준다.
 
-# 도메인 서비스 호출하기 (장진영)
+orderservice.vue를 작성한다.
+<detail>
+  <summary>OrderService.Vue</summary>
+```
+<template>
+  <div>
+    <!-- AddDialog Start -->
+    <md-dialog md-open-from="#custom" md-close-to="#custom" ref="addDialog">
+      <md-dialog-title>제품 등록</md-dialog-title>
+
+      <md-dialog-content>
+        <form novalidate @submit.stop.prevent="submit">
+          <md-input-container>
+            <label>제품번호</label>
+            <md-input type="number" placeholder="제품번호을 입력해 주세요" v-model="pushItems.item"></md-input>
+          </md-input-container>
+
+          <md-input-container>
+            <label>제품명</label>
+            <md-input placeholder="제품명을 입력해 주세요" v-model="pushItems.itemName"></md-input>
+          </md-input-container>
+
+          <md-input-container>
+            <label>수량</label>
+            <md-input type="number" placeholder="수량을 입력해 주세요" v-model="pushItems.stock"></md-input>
+          </md-input-container>
+
+          <md-input-container>
+            <label>가격</label>
+            <md-input type="number" placeholder="가격을 입력해 주세요" v-model="pushItems.price"></md-input>
+          </md-input-container>
+
+          <md-input-container>
+            <label>포인트</label>
+            <md-input type="number" placeholder="포인트를 입력해 주세요" v-model="pushItems.point"></md-input>
+          </md-input-container>
+
+          <md-input-container>
+            <label>설명</label>
+            <md-input placeholder="이미지 주소를 입력해 주세요" v-model="pushItems.img"></md-input>
+          </md-input-container>
+        </form>
+      </md-dialog-content>
+
+      <md-dialog-actions>
+        <md-button class="md-primary" @click.native="saveData">Confirm</md-button>
+        <md-button class="md-primary" @click.native="closeDialog('dialog1')">Close</md-button>
+      </md-dialog-actions>
+    </md-dialog>
+    <!-- AddDialog End -->
+    <!-- Bottom Right Button Start -->
+    <md-button class="md-fab md-fab-bottom-right" @click.native="openDialog('addDialog')">
+      <md-icon>add</md-icon>
+    </md-button>
+    <!-- Bottom Right Button End -->
+    <!-- Table Start -->
+    <md-table>
+      <md-table-header>
+        <md-table-row>
+          <md-table-head>제품명</md-table-head>
+          <md-table-head>재고</md-table-head>
+          <md-table-head>가격</md-table-head>
+          <md-table-head>포인트</md-table-head>
+          <md-table-head>이미지 경로</md-table-head>
+        </md-table-row>
+      </md-table-header>
+
+      <md-table-body>
+        <md-table-row v-for="item in items">
+          <md-table-cell> {{item.itemName }}</md-table-cell>
+          <md-table-cell> {{item.stock }} </md-table-cell>
+          <md-table-cell> {{item.price }}</md-table-cell>
+          <md-table-cell> {{item.point }}</md-table-cell>
+          <md-table-cell> {{item.img }} </md-table-cell>
+        </md-table-row>
+      </md-table-body>
+    </md-table>
+    <!-- Table End -->
+  </div>
+</template>
+<script>
+  export default {
+    props: {},
+    data() {
+    return {
+      pushItems: {
+        item: '',
+        stock: '',
+        price: '',
+        point: '',
+        img: '',
+        itemName: '',
+      },
+      items: null
+    }
+  },
+  created: function () {
+
+  },
+  mounted() {
+    var me = this;
+
+    me.loadData();
+  },
+  watch: {
+
+    'pushItems.item': function () {
+      this.$emit('input', this.pushItems.item)
+    },
+    'pushItems.stock': function () {
+      this.$emit('input', this.pushItems.stock)
+    },
+    'items.price': function () {
+      this.$emit('input', this.pushItems.price)
+    },
+    'pushItems.point': function () {
+      this.$emit('input', this.pushItems.point)
+    },
+    'items.img': function () {
+      this.$emit('input', this.pushItems.img)
+    },
+    'pushItems.itemName': function () {
+      this.$emit('input', this.pushItems.itemName)
+    },
+  },
+  methods: {
+    saveData: function () {
+      var access_token = localStorage["access_token"];
+      var item = [];
+      var backend = hybind('http://e-shop-api-dev.pas-mini.io/order-service/', {headers:{'access_token': access_token}});
+      var pushItems = this.pushItems;
+      backend.$bind('items', item);
+      item.$create(pushItems);
+      this.loadData();
+      this.$refs["dialog1"].close();
+    },
+    loadData: function () {
+      var access_token = localStorage["access_token"];
+      var items = [];
+      var backend = hybind('http://e-shop-api-dev.pas-mini.io/order-service/', {headers:{'access_token': access_token}});
+      var pushItems = this.pushItems;
+      var me = this;
+      backend.$bind('items', items);
+      items.$load().then(function(items){
+        me.items = items;
+      });
+
+    },
+    openDialog(ref) {
+      this.$refs[ref].open();
+    },
+    closeDialog(ref) {
+      this.$refs[ref].close();
+    },
+    onOpen() {
+      console.log('Opened');
+    },
+    onClose(type) {
+      console.log('Closed', type);
+    }
+  }
+  }
+</script>
+
+<style scoped lang="scss" rel="stylesheet/scss">
+
+</style>
+```
+</details>
 # Zuul 로 진입점 통일 (장진영)
 # hateoas 통일 links (장진영)
