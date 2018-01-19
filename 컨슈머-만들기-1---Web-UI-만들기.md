@@ -62,9 +62,6 @@ export default new Router({
 
 우리가 사용할 내용은 우선, dashboard가 아닌, orderservice이므로
 
-<details> 
-  <summary> index.js Router 수정 후 </summary>
-
 ```javascript
 export default new Router({
 //  mode: 'history',
@@ -100,13 +97,12 @@ export default new Router({
   ]
 })
 ```
-</details>
+
 위와 같이 dashboard를 모두 orderservice로 바꾸어 준다.
 
 orderservice.vue를 작성한다.
-<detail>
-  <summary>OrderService.Vue</summary>
-```javascript
+
+``` javascript
 <template>
   <div>
     <!-- AddDialog Start -->
@@ -271,6 +267,5 @@ orderservice.vue를 작성한다.
 
 </style>
 ```
-</details>
 # Zuul 로 진입점 통일 (장진영)
 # hateoas 통일 links (장진영)
