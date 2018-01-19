@@ -281,10 +281,14 @@ AddDialog Start -> End 까지는 제품 등록을 위한 Dialog 부분이다.
 Bottom Right Button Start -> End 까지는 우측 하단의 Dialog를 호출 하는 부분이다.
 Table Start -> End 까지는 해당화면의 Table을 그려주는 역할을 한다.
 ```
+
     1. AddDialog에 있는 md-input 설명
+
     ```javascript
+
         <md-input type="number" placeholder="제품번호을 입력해 주세요" v-model="pushItems.item"></md-input>
     ```
+
 이것은
 
       <md-dialog-actions>
