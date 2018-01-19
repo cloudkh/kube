@@ -53,9 +53,7 @@
 # 컨슈머 만들기 1 - Web UI 만들기 (김상훈 작업)
 1. [VueJS](https://github.com/TheOpenCloudEngine/micro-service-architecture-vuejs/wiki/Vue-JS-Basics)
 1. [Web UI 만들기](Web-UI-만들기)
-1. 도메인 서비스 호출하기 (장진영)
-1. Zuul 로 진입점 통일 (장진영)
-1. hateoas 통일 links (장진영)
+1. [IAM 연동](IAM-연동)
 
 # 컨슈머 만들기 2 - BPM 통한 orchestration 
 1. BPM 서비스의 디플로이
