@@ -103,7 +103,7 @@ export default new Router({
 </details>
 위와 같이 dashboard를 모두 orderservice로 바꾸어 준다.
 
-orderservice.vue를 작성한다.
+1. orderservice.vue를 작성한다.
 <details>
 <summary> OrderService.vue </summary>
 
@@ -274,5 +274,31 @@ orderservice.vue를 작성한다.
 ```
 </details>
 
+1. 소스코드에 대한 설명
+    1. template에 관한 설명
+```
+AddDialog Start -> End 까지는 제품 등록을 위한 Dialog 부분이다.
+Bottom Right Button Start -> End 까지는 우측 하단의 Dialog를 호출 하는 부분이다.
+Table Start -> End 까지는 해당화면의 Table을 그려주는 역할을 한다.
+```
+
+    1. script에 관한 설명
+
+```javascript
+    props: {},
+    data() {
+    return {
+      pushItems: {
+        item: '',
+        stock: '',
+        price: '',
+        point: '',
+        img: '',
+        itemName: '',
+      },
+      items: null
+    }
+  },
+```
 # Zuul 로 진입점 통일 (장진영)
 # hateoas 통일 links (장진영)
