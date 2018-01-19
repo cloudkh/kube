@@ -274,34 +274,128 @@ export default new Router({
 ```
 </details>
 
-1. 소스코드에 대한 설명
-    1. template에 관한 설명
+1. Shops.vue를 작성한다.
+
+<details>
+<summary> Shops.vue </summary>
+
+```javascript
+<template>
+  <div>
+
+    <!-- Table Start -->
+    <div v-for="item in items" style="min-width: 300px; max-width: 300px; min-height: 400px; max-height: 450px; margin: 10px; float: left;">
+      <itemcards :item="item"></itemcards>
+    </div>
+
+    <!-- Table End -->
+  </div>
+</template>
+<script>
+  export default {
+    props: {},
+    data() {
+    return {
+      pushItems: {
+        item: '',
+        stock: '',
+        price: '',
+        point: '',
+        img: '',
+        itemName: '',
+      },
+      items: null
+    }
+  },
+  created: function () {
+
+  },
+  mounted() {
+    var me = this;
+
+    me.loadData();
+  },
+  watch: {
+
+  },
+  methods: {
+    loadData: function () {
+      var access_token = localStorage["access_token"];
+      var items = [];
+      var backend = hybind('http://e-shop-api-dev.pas-mini.io/order-service/', {headers:{'access_token': access_token}});
+      var pushItems = this.pushItems;
+      var me = this;
+      backend.$bind('items', items);
+      items.$load().then(function(items){
+        me.items = items;
+      });
+    },
+  }
+  }
+</script>
+
+<style scoped lang="scss" rel="stylesheet/scss">
+
+</style>
 
 ```
-AddDialog Start -> End 까지는 제품 등록을 위한 Dialog 부분이다.
-Bottom Right Button Start -> End 까지는 우측 하단의 Dialog를 호출 하는 부분이다.
-Table Start -> End 까지는 해당화면의 Table을 그려주는 역할을 한다.
-```
+</details>
 
-2. UI 설명
-    1.
+3. ItemCards.Vue를 작성한다
+
+<details>
+<summary> Shops.vue </summary>
+
 ```javascript
-   <md-input type="number" placeholder="제품번호을 입력해 주세요" v-model="pushItems.item"></md-input>
+<template>
+  <div>
+    <md-card>
+      <md-card-media>
+        <img :src="item.img" style="min-height: 200px; min-width: 300px;">
+      </md-card-media>
+
+      <md-card-header>
+        <div class="md-title">{{item.itemName}}</div>
+        <div class="md-subhead">가격: {{item.price}}</div>
+      </md-card-header>
+      <md-card-content>
+        재고: {{item.stock}}
+        포인트 : {{item.point}}
+      </md-card-content>
+    </md-card>
+  </div>
+</template>
+<script>
+  export default {
+    props: {
+      item: Array
+    },
+    data() {
+    return {
+
+    }
+  },
+  created: function () {
+
+  },
+  mounted(){
+  },
+  watch: {
+
+  },
+  methods: {
+
+  }
+  }
+</script>
+
+<style scoped lang="scss" rel="stylesheet/scss">
+
+</style>
+
 ```
-해당 부분은 input값을 pushItems.item에 저장하는 부분이다.
-    2. 
-```javascript
-      <md-table-body>
-        <md-table-row v-for="item in items">
-          <md-table-cell> {{item.itemName }}</md-table-cell>
-          <md-table-cell> {{item.stock }} </md-table-cell>
-          <md-table-cell> {{item.price }}</md-table-cell>
-          <md-table-cell> {{item.point }}</md-table-cell>
-          <md-table-cell> {{item.img }} </md-table-cell>
-        </md-table-row>
-      </md-table-body>
-```
-해당 부분은 items의 갯수만큼 table-row를 생성시켜주는 부분이다.
+</details>
+
 
 # 자체 IAM 연동하기
 
