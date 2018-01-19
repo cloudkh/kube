@@ -11,6 +11,23 @@ Vuejs와 관련된 기초는 [이곳](https://github.com/TheOpenCloudEngine/micr
 1. 주문서비스와, 주문서비스와 연동된 Web UI를 만들기 위해서는 Metaworks4 Application과, Vuejs Application을 모두 사용 하면 된다.
 주문서비스는 [링크](주문서비스의-구현)를 참조하여 제작하면 된다.
 
+1. VueJS를 시작하면 구조는 아래와같다.
+```
+
+----.idea
+----build
+----config
+----lib
+----node_modules
++---src
+|   +---components
+|   \---router
+----static
+----template
+----test
+```
+
+
 # 도메인 서비스 호출하기 (장진영)
 # Zuul 로 진입점 통일 (장진영)
 # hateoas 통일 links (장진영)
