@@ -289,6 +289,19 @@ Table Start -> End 까지는 해당화면의 Table을 그려주는 역할을 한
    <md-input type="number" placeholder="제품번호을 입력해 주세요" v-model="pushItems.item"></md-input>
 ```
 해당 부분은 input값을 pushItems.item에 저장하는 부분이다.
+    2. 
+```javascript
+      <md-table-body>
+        <md-table-row v-for="item in items">
+          <md-table-cell> {{item.itemName }}</md-table-cell>
+          <md-table-cell> {{item.stock }} </md-table-cell>
+          <md-table-cell> {{item.price }}</md-table-cell>
+          <md-table-cell> {{item.point }}</md-table-cell>
+          <md-table-cell> {{item.img }} </md-table-cell>
+        </md-table-row>
+      </md-table-body>
+```
+해당 부분은 items의 갯수만큼 table-row를 생성시켜주는 부분이다.
 
 # 자체 IAM 연동하기
 
