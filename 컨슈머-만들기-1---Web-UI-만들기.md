@@ -22,7 +22,7 @@ Vue.component('orderservice', OrderService);
 1. 하단의 export default new Router 부분을 보면,
 <details> 
   <summary> index.js Router 수정 전 </summary>
-```export default new Router
+```javascript
 export default new Router({
 //  mode: 'history',
   routes: [
@@ -66,7 +66,7 @@ export default new Router({
 <details> 
   <summary> index.js Router 수정 후 </summary>
 
-```export default new Router
+```javascript
 export default new Router({
 //  mode: 'history',
   routes: [
@@ -107,7 +107,7 @@ export default new Router({
 orderservice.vue를 작성한다.
 <detail>
   <summary>OrderService.Vue</summary>
-```Vue
+```javascript
 <template>
   <div>
     <!-- AddDialog Start -->
