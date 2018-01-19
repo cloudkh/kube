@@ -102,7 +102,7 @@ export default new Router({
 ```
 </details>
 위와 같이 dashboard를 모두 orderservice로 바꾸어 준다.
-
+ 
 1. orderservice.vue를 작성한다.
 <details>
 <summary> OrderService.vue </summary>
@@ -273,8 +273,7 @@ export default new Router({
 </style>
 ```
 </details>
-
-
+ 
 2. Shops.vue를 작성한다.
 <details>
 <summary> Shops.vue </summary>
