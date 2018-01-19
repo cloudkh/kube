@@ -274,6 +274,7 @@ export default new Router({
 ```
 </details>
 
+
 1. Shops.vue를 작성한다.
 
 <details>
@@ -341,7 +342,8 @@ export default new Router({
 ```
 </details>
 
-3. ItemCards.Vue를 작성한다
+
+1. ItemCards.Vue를 작성한다
 
 <details>
 <summary> Shops.vue </summary>
