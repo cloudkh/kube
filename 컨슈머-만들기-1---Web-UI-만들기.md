@@ -20,8 +20,7 @@ import OrderService from '@/components/OrderService'
 Vue.component('orderservice', OrderService);
 ```
 1. 하단의 export default new Router 부분을 보면,
-<details> 
-  <summary> index.js Router 수정 전 </summary>
+
 ```javascript
 
 export default new Router({
@@ -58,7 +57,6 @@ export default new Router({
   ]
 })
 ```
-</details>
 
 위와 같이 작성이 되어있다.
 
