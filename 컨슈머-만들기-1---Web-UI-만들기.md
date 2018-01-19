@@ -23,6 +23,7 @@ Vue.component('orderservice', OrderService);
 <details> 
   <summary> index.js Router 수정 전 </summary>
 ```javascript
+
 export default new Router({
 //  mode: 'history',
   routes: [
