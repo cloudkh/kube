@@ -20,13 +20,15 @@ import OrderService from '@/components/OrderService'
 Vue.component('orderservice', OrderService);
 ```
 1. 하단의 export default new Router 부분을 보면,
-export default new Router```
+<details> 
+  <summary> index.js Router 수정 전 </summary>
+```export default new Router
 export default new Router({
 //  mode: 'history',
   routes: [
     {
       path: '/',
-      redirect: '/dashboard',
+      redirect: '/orderservice',
       name: 'home',
       component: Home,
       props: {iam: iam},
@@ -35,12 +37,12 @@ export default new Router({
       },
       children: [
         {
-          path: 'dashboard',
-          name: 'dashboard',
-          component: Dashboard,
+          path: 'orderservice',
+          name: 'orderservice',
+          component: orderservice,
           beforeEnter: RouterGuard.requireUser,
           meta: {
-            breadcrumb: '대시보드'
+            breadcrumb: 'orderservice'
           },
         }
       ]
@@ -54,9 +56,51 @@ export default new Router({
     }
   ]
 })
-
+</details>
 ```
 위와 같이 작성이 되어있다.
+우리가 사용할 내용은 우선, dashboard가 아닌, orderservice이므로
+<details> 
+  <summary> index.js Router 수정 후 </summary>
+
+```export default new Router
+export default new Router({
+//  mode: 'history',
+  routes: [
+    {
+      path: '/',
+      redirect: '/orderservice',
+      name: 'home',
+      component: Home,
+      props: {iam: iam},
+      meta: {
+        breadcrumb: '홈'
+      },
+      children: [
+        {
+          path: 'orderservice',
+          name: 'orderservice',
+          component: orderservice,
+          beforeEnter: RouterGuard.requireUser,
+          meta: {
+            breadcrumb: 'orderservice'
+          },
+        }
+      ]
+    },
+    {
+      path: '/auth/:command',
+      name: 'login',
+      component: Login,
+      props: {iam: iam},
+      beforeEnter: RouterGuard.requireGuest
+    }
+  ]
+})
+```
+</details>
+위와 같이 dashboard를 모두 orderservice로 바꾸어 준다.
+
 # 도메인 서비스 호출하기 (장진영)
 # Zuul 로 진입점 통일 (장진영)
 # hateoas 통일 links (장진영)
