@@ -104,6 +104,8 @@ export default new Router({
 위와 같이 dashboard를 모두 orderservice로 바꾸어 준다.
 
 orderservice.vue를 작성한다.
+<details>
+<summary> OrderService.vue </summary>
 
 ``` javascript
 <template>
@@ -270,5 +272,7 @@ orderservice.vue를 작성한다.
 
 </style>
 ```
+</details>
+
 # Zuul 로 진입점 통일 (장진영)
 # hateoas 통일 links (장진영)
