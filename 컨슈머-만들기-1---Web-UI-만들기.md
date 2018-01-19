@@ -107,7 +107,7 @@ export default new Router({
 orderservice.vue를 작성한다.
 <detail>
   <summary>OrderService.Vue</summary>
-```
+```Vue
 <template>
   <div>
     <!-- AddDialog Start -->
