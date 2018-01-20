@@ -7,7 +7,7 @@
 
 1. 실 구현 세부 그림
 ![notes_180116_145341_97a_1](https://user-images.githubusercontent.com/487999/34973839-31c4bb9c-facd-11e7-8932-c5dd9c9d2749.jpg)
-1. [구현 방안](구현-방안)
+1. [마이크로 서비스 구현 전략](구현-전략)
 
 # OCE MSA 플랫폼 사용
 1. [ID 등록 및 기본 기능 둘러보기](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/OCE-MSA-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%98-%EC%82%AC%EC%9A%A9)
