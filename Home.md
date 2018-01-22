@@ -7,7 +7,8 @@
 ![App](https://user-images.githubusercontent.com/16382067/35211738-0f4d4f16-ff9b-11e7-9c0a-dfb2d31ff22b.png)
 
 1. 실 구현 세부 그림
-![notes_180116_145341_97a_1](https://user-images.githubusercontent.com/487999/34973839-31c4bb9c-facd-11e7-8932-c5dd9c9d2749.jpg)
+![image](https://user-images.githubusercontent.com/16382067/35212506-bbb590ea-ff9d-11e7-820c-97778117692f.png)
+
 1. [마이크로 서비스 구현 전략](구현-전략)
 
 # OCE MSA 플랫폼 사용
