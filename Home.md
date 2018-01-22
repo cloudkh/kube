@@ -5,6 +5,8 @@
 # 예제 애플리케이션 소개
 ![notes_180116_143420_4c3_1](https://user-images.githubusercontent.com/487999/34973363-9897bdea-faca-11e7-8f99-9d988bf870da.jpg)
 
+![image](https://user-images.githubusercontent.com/16382067/35211509-0e9338d4-ff9a-11e7-835e-c208030400e6.png)
+
 1. 실 구현 세부 그림
 ![notes_180116_145341_97a_1](https://user-images.githubusercontent.com/487999/34973839-31c4bb9c-facd-11e7-8932-c5dd9c9d2749.jpg)
 1. [마이크로 서비스 구현 전략](구현-전략)
