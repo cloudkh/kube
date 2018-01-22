@@ -4,7 +4,7 @@
 
 # 예제 애플리케이션 소개
 
-![image](https://user-images.githubusercontent.com/16382067/35211509-0e9338d4-ff9a-11e7-835e-c208030400e6.png)
+![App](https://user-images.githubusercontent.com/16382067/35211738-0f4d4f16-ff9b-11e7-9c0a-dfb2d31ff22b.png)
 
 1. 실 구현 세부 그림
 ![notes_180116_145341_97a_1](https://user-images.githubusercontent.com/487999/34973839-31c4bb9c-facd-11e7-8932-c5dd9c9d2749.jpg)
