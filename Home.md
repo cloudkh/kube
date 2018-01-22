@@ -27,7 +27,7 @@
 
 
 
-# 컨슈머 만들기 1 - Web UI 만들기 (김상훈 작업)
+# 컨슈머 만들기 1 - Web UI 만들기
 1. [VueJS](https://github.com/TheOpenCloudEngine/micro-service-architecture-vuejs/wiki/Vue-JS-Basics)
 1. [Web UI 만들기](Web-UI-만들기)
 1. [IAM 연동](IAM-연동)
@@ -50,7 +50,7 @@
 
 # 컨슈머 만들기 3 - 챗봇 시나리오 (김상훈 작업)
 1. [챗봇 시나리오](챗봇-시나리오)
-1. [카카오톡과 연동](카카오톡과 연동)
+1. [카카오톡과 연동](카카오톡과-연동)
     
 # Production 과 무정지 운영 (박승필 작업)
 1. canary 디플로이
