@@ -3,7 +3,6 @@
 1. https://www.slideshare.net/pongsor/micro-service-architecture-84941530
 
 # 예제 애플리케이션 소개
-![notes_180116_143420_4c3_1](https://user-images.githubusercontent.com/487999/34973363-9897bdea-faca-11e7-8f99-9d988bf870da.jpg)
 
 ![image](https://user-images.githubusercontent.com/16382067/35211509-0e9338d4-ff9a-11e7-835e-c208030400e6.png)
 
