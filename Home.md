@@ -7,7 +7,7 @@
 ![App](https://user-images.githubusercontent.com/16382067/35211738-0f4d4f16-ff9b-11e7-9c0a-dfb2d31ff22b.png)
 
 1. 실 구현 세부 그림
-![image](https://user-images.githubusercontent.com/16382067/35212595-02f250ba-ff9e-11e7-91f7-7855eaa0999d.png)
+![image](https://user-images.githubusercontent.com/16382067/35252243-de646b7c-0022-11e8-95e5-8b92f159a44e.png)
 
 1. [마이크로 서비스 구현 전략](구현-전략)
 
