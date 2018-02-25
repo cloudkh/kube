@@ -2,6 +2,12 @@
 # MSA 개요
 1. https://www.slideshare.net/pongsor/micro-service-architecture-84941530
 
+# Open Cloud Engine 개발자 레퍼런스
+1. [OCE API GW](API-GW)
+1. [OCE IAM](OCE-IAM)
+1. [미터링 / 빌링](https://github.com/TheOpenCloudEngine/uEngine-bill)
+1. [OCE BPM](https://github.com/TheOpenCloudEngine/uEngine5-base)
+
 # 예제 애플리케이션 소개
 
 ![App](https://user-images.githubusercontent.com/16382067/35211738-0f4d4f16-ff9b-11e7-9c0a-dfb2d31ff22b.png)
@@ -71,8 +77,3 @@
     1. Circuit Breaker / Fallback
 1. 미터링 / 빌링
 
-# Open Cloud Engine 개발자 레퍼런스
-1. [OCE API GW](API-GW)
-1. [OCE IAM](OCE-IAM)
-1. [미터링 / 빌링](https://github.com/TheOpenCloudEngine/uEngine-bill)
-1. [OCE BPM](https://github.com/TheOpenCloudEngine/uEngine5-base)
