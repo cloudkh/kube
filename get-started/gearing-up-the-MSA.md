@@ -74,8 +74,7 @@ public class SpringBootSampleApplication {
 main Class이다. 
 > **TIP: @SpringBootApplication **  
 > 어노테이션으로 스프링부트 어플리케이션이라는 의미이다.  
-> 요즘에는 이런식으로 java class안에서 descriptive (기술적인), declarative(선언적) 방식이 유행하고있다.  
-- 예전에는 xml 에서 선언하였다.
+> 요즘에는 이런식으로 java class안에서 descriptive (기술적인), declarative(선언적) 방식이 유행하고있다. - 예전에는 xml 에서 선언하였다.
 
 #### `pom.xml`
 
@@ -98,6 +97,8 @@ main Class이다.
 parent 에서 스프링 부트가 가지고 있는 기본적인 속성들을 가져온다.  
 최초 프로젝트 생성시 설정하였던 H2, JAP등이 있는것을 확인 할 수 있다.
 
+***
+
 이제 Person 이라는 Entity 클레스를 생성하여 보자
 #### `src/Person.java`
 
@@ -114,8 +115,24 @@ public class Person {
 ```
 
 id는 바뀌면 안되는 값이기 때문에 id를 제외한 나머지 변수에 get, set 메서드를 만들어 준다.
-> @Entity : 엔티티 클래스임을 지정하며 테이블과 매핑된다
-> @Id 만 사용하면 기본 키를 애플리케이션에서 직접 할당 하는 전략이고
+> @Entity : 엔티티 클래스임을 지정하며 테이블과 매핑된다  
+> @Id 만 사용하면 기본 키를 애플리케이션에서 직접 할당 하는 전략이고  
 > @GeneratedValue 와 같이 사용하게 되면 자동 생성 전략이다.
 
 
+***
+REST 서비스를 열기 위하여 서비스 유형중에 Repository 라는 Interface를 생성하여 준다.  
+이것은 DDD(Domain Driven Design) 에서 하나의 패턴중 하나인데,  
+어떤 entity를 access하는 crud를 담고 있는 기본 기능을 가지는 서비스의 유형을 Repository 이름을 붙여서 사용한다.  
+
+#### `src/PersonRepository.java`
+
+```java
+public interface PersonRepository extends PagingAndSortingRepository<Person, Long> {
+}
+
+```
+
+> PagingAndSortingRepository 는 페이징 기능을 담고 있는 Repository이다  
+> 레파지토리의 새로운 유형을 만들고 싶을때는 해당 Repository를 extends해서 새롭게 만들 수 있다.  
+> interface 의 구현체는 없지만 PersonRepository 이런식으로 네이밍 규칙으로 파일 생성시 스프링 부트가 runtime에 실제 워킹하는 sql문을 생성하고 쿼리를 날리는 것을 generate 해준다 
