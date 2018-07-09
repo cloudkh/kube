@@ -24,6 +24,10 @@ Artifact 에 입력한 프로젝트 명으로 zip파일이 다운로드 됩니�
 여기서 mvnw 파일은 maven wrapper 로 메이븐이 아예 없는 사람이 있기때문에 메이븐 설치까지 해주는 파일입니다.
 해당 프로젝트로 폴더를 이동하여
 
-mvn spring-boot:run
+`mvn spring-boot:run`
 
-을 하게되면 
+을 하게되면 메이븐으로 부터 libary 를 다운 받은 후 기본 포트 8080으로 스프링 부트 어플리케이션이 구동되게 된다.
+자신이 8080포트를 사용중이고, 다른 포트로 구동을 시키고 싶다면 아래와 같이 시작하면 된다.
+
+`mvn spring-boot:run -Dserver.port=8081`
+
