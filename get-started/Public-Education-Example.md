@@ -69,12 +69,12 @@ $http localhost:8080
 Sample project 구동하기
 -------
 
-## 과정등록
+## 과정(course)등록
 ```
-// 과정등록
+# 과정등록
 $ http localhost:8080/courses title="software modeling lecture" duration=5 maxEnrollment=5 minEnrollment=1
-// 모든 정보시스템은 점차 데이터가 채워지면서 프로세스가 흘러간다.  
-// 데이터를 초반에 넣지 않았더라도, PATCH를 통해 점차 데이터를 넣어준다.  
+# 모든 정보시스템은 점차 데이터가 채워지면서 프로세스가 흘러간다.  
+# 데이터를 초반에 넣지 않았더라도, PATCH를 통해 점차 데이터를 넣어준다.  
 $ http PATCH "http://localhost:8080/courses/1" description="MSA 교욱과정입니다"
 
 {
@@ -99,10 +99,42 @@ $ http PATCH "http://localhost:8080/courses/1" description="MSA 교욱과정입�
 }
 ```
 
-## Clazz등록
+## 강의(clazz) 등록
 ```
 # 클래스 1 등록 - 에러 발생
-http localhost:8080/clazzes course="http://localhost:8080/courses" id="1"
+$ http localhost:8080/clazzes course="http://localhost:8080/courses" id="1"
+# 클래스 1 등록 - 정상 작동  
 # "http://localhost:8080/courses/1" 이것이 문자열처럼 넘어가지만 HATEOAS에서는 문자열이 아니고, 리소스를 지칭하는 의미를 가진다
-http localhost:8080/clazzes course="http://localhost:8080/courses/1"
+$ http localhost:8080/clazzes course="http://localhost:8080/courses/1"
+
+{
+    "_links": {
+        "clazz": {
+            "href": "http://localhost:8080/clazzes/2"
+        },
+        "clazzDays": {
+            "href": "http://localhost:8080/clazzes/2/clazzDays"
+        },
+        "course": {
+            "href": "http://localhost:8080/clazzes/2/course"
+        },
+        "instructor": {
+            "href": "http://localhost:8080/clazzes/2/instructor"
+        },
+        "self": {
+            "href": "http://localhost:8080/clazzes/2"
+        }
+    },
+    "evaluationRate": 0,
+    "states": null
+}
 ```
+이 강의의 유일한 키는 2번이고, 2번 강의의 과정은 
+```http "http://localhost:8080/clazzes/2/course"```
+을 호출하여 확인 할 수 있다.  
+http://localhost:8080/courses/1 과 같은 결과를 나타내는 것이 확인 가능하다.
+
+> 이 두개의 API는 URL링크로 relation이 묶여 있다.  
+> API 수준에서는 분리가 되어있기때문에, 나중에 서비스를 분리하더라도, API는 변화가 없기때문에 frontend에서 수정없이 사용이 가능하다.  
+
+
