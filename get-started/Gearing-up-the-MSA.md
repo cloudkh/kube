@@ -4,7 +4,7 @@
 http://start.spring.io/
 사이트에 들어가서 스프링 부트의 기본 프로젝트 템플릿을 생성한다.
 
-Group과 Artifact를 입력하여 준다. 하이픈과 소문자를 사용하여 생성하는 것이 좋다.
+Group과 Artifact를 입력한다. 하이픈과 소문자를 사용하여 생성하는 것이 좋다.
 Dependencies 에 
 * JPA	- DB ORM
 * Rest Repository - 기본 Hateoas
