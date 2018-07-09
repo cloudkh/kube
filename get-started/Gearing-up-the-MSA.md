@@ -10,7 +10,7 @@ Dependencies 에
 * Rest Repository - 기본 Hateoas
 * H2	- 기본 내장 DB
 
-를 입력하고, Generate Project를 클릭하여 준다.
+를 입력하고, Generate Project를 클릭하여 프로젝트를 생성한다.
 
 ![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/1_1.png)
 
