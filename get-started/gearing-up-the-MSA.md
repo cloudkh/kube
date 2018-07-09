@@ -48,3 +48,15 @@ $ http localhost:8080
     }
 }
 ```
+http localhost:8080 를 치게되면 위에 처럼 profile 정보가 나오게되는데
+web으로 치면 메인 페이지로 접근을 한 것이다.
+얼굴이 없다 뿐이지, 데이터만 들어가 있다.
+
+디자인 요소만 빼과, data 만 남긴것이 rest api 이다.
+
+위의 메세지는 profile이라는 subpage가 있다는 뜻이다.
+이제 http://localhost:8080/profile 를 들어가 보자.
+같은 내용이 나오는 것을 확인 할 수 있다.
+
+파일 상세 설명
+-------
