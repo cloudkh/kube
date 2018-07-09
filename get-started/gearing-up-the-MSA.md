@@ -72,9 +72,10 @@ public class SpringBootSampleApplication {
 ```
 
 main Class이다. 
-> **TIP: @SpringBootApplication **
-> 어노테이션으로 스프링부트 어플리케이션이라는 의미이다.
-> 요즘에는 이런식으로 java class안에서 descriptive (기술적인), declarative(선언적) 방식이 유행하고있다. - 예전에는 xml 에서 선언하였다.
+> **TIP: @SpringBootApplication **  
+> 어노테이션으로 스프링부트 어플리케이션이라는 의미이다.  
+> 요즘에는 이런식으로 java class안에서 descriptive (기술적인), declarative(선언적) 방식이 유행하고있다.  
+> - 예전에는 xml 에서 선언하였다.
 
 #### `pom.xml`
 
