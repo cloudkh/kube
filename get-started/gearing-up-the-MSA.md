@@ -16,6 +16,7 @@ Dependencies 에
 
 Artifact 에 입력한 프로젝트 명으로 zip파일이 다운로드 됩니다.
 
+
 기본 프로젝트 구조
 --------
 ![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/1_2.png)
@@ -54,9 +55,44 @@ web으로 치면 메인 페이지로 접근을 한 것이다.
 
 디자인 요소만 빼과, data 만 남긴것이 rest api 이다.
 
-위의 메세지는 profile이라는 subpage가 있다는 뜻이다.
-이제 http://localhost:8080/profile 를 들어가 보자.
-같은 내용이 나오는 것을 확인 할 수 있다.
+위의 메세지는 profile이라는 sub page가 있다는 뜻이다.
+
 
 파일 상세 설명
 -------
+#### `src/SpringBootSampleApplication.java`
+
+```java
+@SpringBootApplication
+public class SpringBootSampleApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(SpringBootSampleApplication.class, args);
+	}
+}
+```
+
+main Class이다. 
+> **TIP: @SpringBootApplication **
+> 어노테이션으로 스프링부트 어플리케이션이라는 의미이다.
+> 요즘에는 이런식으로 java class안에서 descriptive (기술적인), declarative(선언적) 방식이 유행하고있다. - 예전에는 xml 에서 선언하였다.
+
+#### `pom.xml`
+
+```xml
+<parent>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-parent</artifactId>
+	<version>2.0.3.RELEASE</version>
+	<relativePath/> <!-- lookup parent from repository -->
+</parent>
+
+<dependencies>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-jpa</artifactId>
+	</dependency>
+   ....
+</dependencies>
+```
+parent 에서 스프링 부트가 가지고 있는 기본적인 속성들을 가져온다.  
+최초 프로젝트 생성시 설정하였던 H2, JAP등이 있는것을 확인 할 수 있다.
