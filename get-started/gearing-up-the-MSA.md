@@ -75,7 +75,7 @@ main Class이다.
 > **TIP: @SpringBootApplication **  
 > 어노테이션으로 스프링부트 어플리케이션이라는 의미이다.  
 > 요즘에는 이런식으로 java class안에서 descriptive (기술적인), declarative(선언적) 방식이 유행하고있다.  
-> - 예전에는 xml 에서 선언하였다.
+- 예전에는 xml 에서 선언하였다.
 
 #### `pom.xml`
 
@@ -97,3 +97,25 @@ main Class이다.
 ```
 parent 에서 스프링 부트가 가지고 있는 기본적인 속성들을 가져온다.  
 최초 프로젝트 생성시 설정하였던 H2, JAP등이 있는것을 확인 할 수 있다.
+
+이제 Person 이라는 Entity 클레스를 생성하여 보자
+#### `src/Person.java`
+
+```java
+@Entity
+public class Person {
+    @Id
+    @GeneratedValue
+    Long id;
+    String name;
+    int age;
+    String address;
+}
+```
+
+id는 바뀌면 안되는 값이기 때문에 id를 제외한 나머지 변수에 get, set 메서드를 만들어 준다.
+> @Entity : 엔티티 클래스임을 지정하며 테이블과 매핑된다
+> @Id 만 사용하면 기본 키를 애플리케이션에서 직접 할당 하는 전략이고
+> @GeneratedValue 와 같이 사용하게 되면 자동 생성 전략이다.
+
+
