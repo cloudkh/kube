@@ -1,7 +1,7 @@
 
 # MSA 개요
 1. https://www.slideshare.net/pongsor/micro-service-architecture-84941530
-* [[Get started|Getting started]]
+* [[Get started|Get started]]
 
 # Open Cloud Engine 개발자 레퍼런스
 1. [OCE API GW](API-GW)
