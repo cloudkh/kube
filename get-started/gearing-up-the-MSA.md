@@ -31,3 +31,20 @@ Artifact 에 입력한 프로젝트 명으로 zip파일이 다운로드 됩니�
 
 `mvn spring-boot:run -Dserver.port=8081`
 
+해당 서비스 확인하기
+--------
+
+콘솔창을 하나 더 연 후에, 해당 경로로 이동을 하여 httpie 로 확인을 해볼수 있다.
+([Httpie-설치](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/Httpie-설치))
+
+```
+$ http localhost:8080
+
+{
+    "_links": {
+        "profile": {
+            "href": "http://localhost:8080/profile"
+        }
+    }
+}
+```
