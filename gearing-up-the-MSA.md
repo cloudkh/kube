@@ -1,5 +1,6 @@
 기본적인 Micro Service를 Springboot로 시작하는 방법 입니다.
-===========
+--------
+
 http://start.spring.io/
 사이트에 들어가서 스프링 부트의 기본 프로젝트 템플릿을 생성합니다.
 
