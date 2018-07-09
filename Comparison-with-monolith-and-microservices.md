@@ -1,1 +1,0 @@
-Comparison with monolith and microservices
