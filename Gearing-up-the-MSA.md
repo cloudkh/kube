@@ -212,4 +212,4 @@ $ http "http://localhost:8080/persons/1" page==1 size==5 sort=="name"
 $ http "http://localhost:8080/persons/1" page==1 size==5 sort=="name,asc"
 ```
 
-### 이렇게 사용하는 것을 HATEOAS(https://spring.io/understanding/HATEOAS)의 스타일이다.
+### 이렇게 사용하는 것을 ([HATEOAS](https://spring.io/understanding/HATEOAS))의 스타일이다.
