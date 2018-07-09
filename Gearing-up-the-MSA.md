@@ -136,3 +136,23 @@ public interface PersonRepository extends PagingAndSortingRepository<Person, Lon
 > PagingAndSortingRepository 는 페이징 기능을 담고 있는 Repository이다  
 > 레파지토리의 새로운 유형을 만들고 싶을때는 해당 Repository를 extends해서 새롭게 만들 수 있다.  
 > interface 의 구현체는 없지만 PersonRepository 이런식으로 네이밍 규칙으로 파일 생성시 스프링 부트가 runtime에 실제 워킹하는 sql문을 생성하고 쿼리를 날리는 것을 generate 해준다 
+
+
+***
+이제 프로젝트를 다시 run을 한 후에 콘솔창에서 아래와 같이 profile을 조회하여 보자
+```
+$ http http://localhost:8080/profile
+
+{
+    "_links": {
+        "persons": {
+            "href": "http://localhost:8080/profile/persons"
+        },
+        "self": {
+            "href": "http://localhost:8080/profile"
+        }
+    }
+}
+```
+Person이라는 클래스와 PersonRepository를 생성하였더니  
+http://localhost:8080/profile/persons 이라는 link가 생긴 것을 확인 할 수 있다.
