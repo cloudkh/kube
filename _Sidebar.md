@@ -1,5 +1,5 @@
 * [[home]]
-* [[Getting started]]
+* [[Get started]]
 ----
 1. [[Gearing up the MSA]]
 2. [[Public Education Example]]
