@@ -63,18 +63,18 @@ $http localhost:8080
 * Course	교육 코스
 * Customer 수강생
 * Enrollment 수강생의 수강상태
-* Instructor 교육 강사
+* Instructor 교육 강사  
 위와같은 클레스 들이 있고, 해당 클래스들을 Repository로 묶어서 구성된 프로젝트이다.
 
 Sample project 구동하기
 -------
 
-## 과정(course)등록
+### 과정(course)등록
 ```
-# 과정등록
+## 과정등록
 $ http localhost:8080/courses title="software modeling lecture" duration=5 maxEnrollment=5 minEnrollment=1
-# 모든 정보시스템은 점차 데이터가 채워지면서 프로세스가 흘러간다.  
-# 데이터를 초반에 넣지 않았더라도, PATCH를 통해 점차 데이터를 넣어준다.  
+## 모든 정보시스템은 점차 데이터가 채워지면서 프로세스가 흘러간다.  
+## 데이터를 초반에 넣지 않았더라도, PATCH를 통해 점차 데이터를 넣어준다.  
 $ http PATCH "http://localhost:8080/courses/1" description="MSA 교욱과정입니다"
 
 {
@@ -99,12 +99,12 @@ $ http PATCH "http://localhost:8080/courses/1" description="MSA 교욱과정입�
 }
 ```
 
-## 강의(clazz) 등록
+### 강의(clazz) 등록
 ```
-# 클래스 1 등록 - 에러 발생
+## 클래스 1 등록 - 에러 발생
 $ http localhost:8080/clazzes course="http://localhost:8080/courses" id="1"
-# 클래스 1 등록 - 정상 작동  
-# "http://localhost:8080/courses/1" 이것이 문자열처럼 넘어가지만 HATEOAS에서는 문자열이 아니고, 리소스를 지칭하는 의미를 가진다
+## 클래스 1 등록 - 정상 작동  
+## "http://localhost:8080/courses/1" 이것이 문자열처럼 넘어가지만 HATEOAS에서는 문자열이 아니고, 리소스를 지칭하는 의미를 가진다
 $ http localhost:8080/clazzes course="http://localhost:8080/courses/1"
 
 {
