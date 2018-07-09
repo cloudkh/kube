@@ -141,18 +141,75 @@ public interface PersonRepository extends PagingAndSortingRepository<Person, Lon
 ***
 이제 프로젝트를 다시 run을 한 후에 콘솔창에서 아래와 같이 profile을 조회하여 보자
 ```
-$ http http://localhost:8080/profile
+$ http http://localhost:8080/
 
 {
     "_links": {
         "persons": {
-            "href": "http://localhost:8080/profile/persons"
+            "href": "http://localhost:8080/persons{?page,size,sort}",
+            "templated": true
         },
-        "self": {
+        "profile": {
             "href": "http://localhost:8080/profile"
         }
     }
 }
 ```
 Person이라는 클래스와 PersonRepository를 생성하였더니  
-http://localhost:8080/profile/persons 이라는 link가 생긴 것을 확인 할 수 있다.
+http://localhost:8080/profile/persons{?page,size,sort} 이라는 link가 생긴 것을 확인 할 수 있다.
+
+```
+$ http http://localhost:8080/persons page==1
+```
+
+으로 데이터를 조회하였을때 나오는 값이 없는것을 확인 가능하다.
+조회시 쿼리스트링은 == 가 두게를 써야 한다.
+
+***
+이제 POST를 사용하여 데이터를 넣어보자
+
+```
+$ http POST http://localhost:8080/persons name="uengine1" address="uengine 1번째"
+
+{
+    "_links": {
+        "person": {
+            "href": "http://localhost:8080/persons/1"
+        },
+        "self": {
+            "href": "http://localhost:8080/persons/1"
+        }
+    },
+    "address": "uengine 1번째",
+    "age": 0,
+    "name": "uengine1"
+}
+```
+
+***
+넣어진 데이터를 변경 할적에는 PATCH를 쓰면 된다
+```
+$ http PATCH "http://localhost:8080/persons/1" age=10
+{
+    "_links": {
+        "person": {
+            "href": "http://localhost:8080/persons/1"
+        },
+        "self": {
+            "href": "http://localhost:8080/persons/1"
+        }
+    },
+    "address": "uengine 1번째",
+    "age": 10,
+    "name": "uengine1"
+}
+```
+
+데이터를 많이 넣은 후 page와 sort 도 변경이 가능하다.
+```
+$ http "http://localhost:8080/persons/1" page==1 size==5
+$ http "http://localhost:8080/persons/1" page==1 size==5 sort=="name"
+$ http "http://localhost:8080/persons/1" page==1 size==5 sort=="name,asc"
+```
+
+### 이렇게 사용하는 것을 HATEOAS(https://spring.io/understanding/HATEOAS)의 스타일이다.
