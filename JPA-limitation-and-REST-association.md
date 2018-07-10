@@ -1,0 +1,1 @@
+JPA limitation and REST association
