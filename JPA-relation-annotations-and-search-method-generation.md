@@ -1,1 +1,0 @@
-JPA relation annotations and search method generation

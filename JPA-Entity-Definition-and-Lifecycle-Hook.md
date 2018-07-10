@@ -1,1 +1,0 @@
-JPA Entity Definition and Lifecycle Hook
