@@ -1,8 +1,8 @@
 Comparison with monolith and microservices
 ------
 
-#### 이번 페이지는 monolith 로 구성되어있던 [Public Education Example](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/Public-Education-Example) 페이지를 microservices 로 변환을 하는 작업을 통하여 monolith와 microservices를 비교한다.  
-#### [[Public Education Example]] 에서는 monolith 구조로 하나의 프로젝트에서 각 서비스 간의 통신을 URL링크로 relation하는 모습을 보여주었는데, microservices 구조에서는 서비스 별로 프로젝트를 나눌 것이다. 그리고, 동일 URL로 relation하는 모습을 보여주기 위하여 API GateWay와 Resistry Service가 필요하다.
+이번 페이지는 monolith 로 구성되어있던 [Public Education Example](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/Public-Education-Example) 페이지를 microservices 로 변환을 하는 작업을 통하여 monolith와 microservices를 비교한다.  
+[[Public Education Example]] 에서는 monolith 구조로 하나의 프로젝트에서 각 서비스 간의 통신을 URL링크로 relation하는 모습을 보여주었는데, microservices 구조에서는 서비스 별로 프로젝트를 나눌 것이다. 그리고, 동일 URL로 relation하는 모습을 보여주기 위하여 API GateWay와 Resistry Service가 필요하다.
 
 https://github.com/uengine-oss 으로 들어가서  
 https://github.com/uengine-oss/msa-tutorial-class-management-msa 를 git clone 한다
@@ -19,7 +19,8 @@ $ cd msa-tutorial-class-management-msa
 * 2개의 general services  
 로 구성이 되어있다
 
-shared-model이 필요한 이유는 서로 다른 서비스에서 공통으로 쓰이는 객체가 있을 수 있기에 해당 객체를 공통으로 관리하여 주기 위한 class들의 모음이다. 예를 들면, customer가 clazz의 정보를 가져오고 싶을때 customer 서비스에서 clazz의 정보를 내부에 구현을 해놓을수도 있지만, 공용으로 관리하여 객체 모형이 바뀌는 것을 방지 할 수 있다.
+shared-model이 필요한 이유는 서로 다른 서비스에서 공통으로 쓰이는 객체가 있을 수 있기에 해당 객체를 공통으로 관리하여 주기 위하여 필요하다.  
+예를 들면, customer가 clazz의 정보를 가져오고 싶을때 customer 서비스에서 clazz의 정보를 내부에 구현을 해놓을수도 있지만, 공용으로 관리하여 객체 모형이 바뀌는 것을 방지 할 수 있다.
 
 해당 프로젝트를 build하여 정상적으로 돌아가는지 확인 해 본다.
 
@@ -49,8 +50,8 @@ trouble shooting을 하기 위하여 남겨 놓았다.
     <packaging>pom</packaging>
 ```
 
-이제 하위 module들에서는 최상위 프로젝트의 child라는 개념으로 각자의 pom파일에서 <parent>를 작성하여 주어야 한다.  
-이렇게 <parent>를 적어 주어야지 최상위 프로젝트에서 mvn clean package 같은 명령으로 한꺼번에 build를 할 수 있다.
+이제 하위 module들에서는 최상위 프로젝트의 child라는 개념으로 각자의 pom파일에서 `<parent>`를 작성하여 주어야 한다.  
+이렇게 `<parent>`를 적어 주어야지 최상위 프로젝트에서 mvn clean package 같은 명령으로 한꺼번에 build를 할 수 있다.
 ```xml
 <parent>
     <groupId>org.uengine</groupId>
@@ -59,8 +60,8 @@ trouble shooting을 하기 위하여 남겨 놓았다.
 </parent>
 ```
 
-그런데 여기서 최상위 pom 파일의 <groupId>org.uengine.hello-class</groupId> 와  
-하위 pom 파일의 <groupId>org.uengine</groupId> 가 다르기 때문에 정상적으로 build가 안되는 문제점이 발생한다.  
+그런데 여기서 최상위 pom 파일의 `<groupId>org.uengine.hello-class</groupId>` 와  
+하위 pom 파일의 `<groupId>org.uengine</groupId>` 가 다르기 때문에 정상적으로 build가 안되는 문제점이 발생한다.  
 
 이제 모든 프로젝트의 pom파일을 열어서 groupId 를 마추어 주는 작업을 해준다.
 ```xml
@@ -77,3 +78,5 @@ customer 프로젝트의 pom파일을 열어서 아래와 같은 dependency를 �
 </dependency>
 ```
 
+프로젝트 구동하기
+------
