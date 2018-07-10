@@ -82,5 +82,66 @@ server:
 프로젝트 구동하기 2
 ------
 이제 [[Public Education Example]] 의 Sample project 구동하기 와 같은 작업을 해 볼 것이다.  
-차이점은 이전에는 모두 같은 url은 localhost:8080 으로 호출을 하였다면, 이번에는 서로 다른 port로 호출을 할 것이다
+차이점은 이전에는 모두 같은 url인 localhost:8080 으로 호출을 하였다면, 이번에는 서로 다른 port로 호출을 할 것이다
+
+console창을 열어서 각 서비스의 profile을 확인한다.
+```
+$ http http://localhost:8081/
+$ http http://localhost:8082/
+```
+
+
+### 과정(course)등록
+```
+## 과정등록
+$ http localhost:8082/courses title="software modeling lecture" duration=5 maxEnrollment=5 minEnrollment=1 
+$ http PATCH "http://localhost:8082/courses/1" description="MSA 교욱과정입니다"
+
+{
+    "_links": {
+        "course": {
+            "href": "http://localhost:8082/courses/1"
+        },
+        "self": {
+            "href": "http://localhost:8082/courses/1"
+        }
+    },
+    "clazzes": [],
+    "courseId": 1,
+    "description": "MSA 교욱과정입니다",
+    "duration": 5,
+    "maxEnrollment": 5,
+    "minEnrollment": 1,
+    "title": "software modeling lecture",
+    "unitPrice": null
+}
+```
+
+### 강의(clazz) 등록
+```
+## 클래스 1 등록 
+## "http://localhost:8082/courses/1" 이것이 문자열처럼 넘어가지만 HATEOAS에서는 문자열이 아니고, 리소스를 지칭하는 의미를 가진다
+$ http localhost:8081/clazzes course="http://localhost:8082/courses/1"
+
+{
+    "_links": {
+        "clazz": {
+            "href": "http://localhost:8081/clazzes/1"
+        },
+        "clazzDays": {
+            "href": "http://localhost:8081/clazzes/1/clazzDays"
+        },
+        "course": {
+            "href": "http://localhost:8081/courses/1"
+        },
+        "instructor": {
+            "href": "http://localhost:8081/instructors/"
+        },
+        "self": {
+            "href": "http://localhost:8081/clazzes/1"
+        }
+    },
+...
+```
+
 
