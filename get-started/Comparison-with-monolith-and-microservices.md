@@ -41,46 +41,19 @@ $ mvn clean package
 
 ```
 위와 같이 Customer 프로젝트를 build를 하는 시점에 에러가 발생한다.  
-해당 코드를 모두 고쳐놓을 수 있지만, Shared Model같이 공용 jar를 사용하고, sub module로 프로젝트를 구성하는게 익숙치 않은 사용자를 위하여
-trouble shooting을 하기 위하여 남겨 놓았다.
+이는 Customer 서비스 안에서 Clazz를 사용하는데, 해당 클레스를 찾지 못한다는 에러이다.  
+이 에러를 해결하고자 Customer 서비스의 defendency에 shared-model 을 추가하여 주자.
 
-위의 프로젝트 구조에서 최상위 프로젝트는 다음과 같은 groupId와 artifactId를 가진다.
-```xml
-    <groupId>org.uengine.hello-class</groupId>
-    <artifactId>hello-class</artifactId>
-    <version>MSA-version</version>
-    <packaging>pom</packaging>
-```
-
-이제 하위 module들에서는 최상위 프로젝트의 child라는 개념으로 각자의 pom파일에서 `<parent>`를 작성하여 주어야 한다.  
-이렇게 `<parent>`를 적어 주어야지 최상위 프로젝트에서 mvn clean package 같은 명령으로 한꺼번에 build를 할 수 있다.
-```xml
-<parent>
-    <groupId>org.uengine</groupId>
-    <artifactId>uengine-five</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-</parent>
-```
-
-그런데 여기서 최상위 pom 파일의 `<groupId>org.uengine.hello-class</groupId>` 와  
-하위 pom 파일의 `<groupId>org.uengine</groupId>` 가 다르기 때문에 정상적으로 build가 안되는 문제점이 발생한다.  
-
-이제 모든 프로젝트의 pom파일을 열어서 groupId 를 마추어 주는 작업을 해준다.
-```xml
-<groupId>org.uengine</groupId>
-```
-
-그리고 두번째 문제점으로, customer 프로젝트에서 shared-model 의 dependency 를 가지고 있지 않았다.  
-customer 프로젝트의 pom파일을 열어서 아래와 같은 dependency를 추가하여 준다.
-```xml
-<dependency>
-      <groupId>org.uengine</groupId>
-      <artifactId>shared-model</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-</dependency>
-```
 
 프로젝트 구동하기
 ------
+### registry service 구동
+예제 프로젝트 들은 spring-boot 위에서 기동을 한다. 그리고 microservice 를 사용하기 위하여 microservice를 잘 구현해 놓은  
+spring-cloud libary를 사용하였다.  
+그 중에 registry service 는 spring-cloud libary의 eureka를 사용하였고, 해당 서비스는 많은 수의 서비스들간의 앤드포인트를 찾고, 서비스의 상태를 어딘가에 등록하는 기능을 한다.
+registry service를 구동하기 위하여 `mvn spring-boot:run`을 실행하고, brower의 `http://localhost:8761/` 로 접근하여 확인한다.
 
+![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/3_2.png)
+아직 올라온 instance가 없는 것을 확인 할 수 있다.
 
+### clazz, course service 구동
