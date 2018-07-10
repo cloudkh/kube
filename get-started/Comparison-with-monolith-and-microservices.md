@@ -45,7 +45,7 @@ $ mvn clean package
 이 에러를 해결하고자 Customer 서비스의 defendency에 shared-model 을 추가하여 주자.
 
 
-프로젝트 구동하기
+프로젝트 구동하기 1
 ------
 ### registry service 구동
 예제 프로젝트 들은 spring-boot 위에서 기동을 한다. 그리고 microservice 를 사용하기 위하여 microservice를 잘 구현해 놓은  
@@ -62,7 +62,7 @@ registry service를 구동하기 위하여 `mvn spring-boot:run`을 실행하고
 현재는 모두 8080 으로 setting 되어있다.
 ![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/3_3.png)
 
-각 프로젝트의 application.yml파일을 열어서 local.port 부분을 서로 다른 포트로 설정한다.  
+각 프로젝트의 application.yml파일을 열어서 server.port 부분을 서로 다른 포트로 설정한다.  
 > mvn spring-boot:run -Dserver.port=8081 으로 구동해도 된다.
 ```yml
 spring:
@@ -74,4 +74,13 @@ server:
 ```
 * clazz 8081
 * course 8082 
+
+이제 brower의 `http://localhost:8761/` 로 접근하여 두개의 서비스가 구동 된 것을 확인 한다.
+
+![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/3_4.png)
+
+프로젝트 구동하기 2
+------
+이제 [[Public Education Example]] 의 Sample project 구동하기 와 같은 작업을 해 볼 것이다.  
+차이점은 이전에는 모두 같은 url은 localhost:8080 으로 호출을 하였다면, 이번에는 서로 다른 port로 호출을 할 것이다
 
