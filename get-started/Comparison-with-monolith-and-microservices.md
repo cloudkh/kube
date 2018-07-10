@@ -144,4 +144,21 @@ $ http localhost:8081/clazzes course="http://localhost:8082/courses/1"
 ...
 ```
 
+### proxy service 구동
+위와 같이 서로 다른 port로 구동하여 데이터를 넣고 빼는 것이 가능하지만, 실제 운영을 하거나, 호출이 많아 질 경우에는 url과 port가 엉킬수가 있다.  
+이때 필요한 것이 zuul proxy이다. URL을 하나인 것처럼 묶어 주는 역할을 한다.  보통 API Gateway라고도 불리운다.
+8080 으로 띄운 후, `localhost:8082/courses` , `localhost:8081/clazzes` 로 호출한 URL을 `localhost:8080/clazzes` 으로 호출 하여 보겠다.  
 
+proxy service 프로젝트로 이동하여 `mvn spring-boot:run` 으로 실행 하고,  
+brower의 `http://localhost:8761/` 로 접근하여 'ZUUL-ROUTER' 서비스가 실행 된 것을 확인한다.  
+
+
+```
+## 과정등록
+$ http localhost:8080/courses title="software modeling lecture2" duration=3 maxEnrollment=5 minEnrollment=1
+$ http PATCH "http://localhost:8080/courses/2" description="MSA2교욱과정입니다"
+
+## 클래스 2 등록 
+$ http localhost:8080/clazzes course="http://localhost:8080/courses/2"
+
+```
