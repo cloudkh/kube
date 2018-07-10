@@ -57,3 +57,21 @@ registry service를 구동하기 위하여 `mvn spring-boot:run`을 실행하고
 아직 올라온 instance가 없는 것을 확인 할 수 있다.
 
 ### clazz, course service 구동
+이제 두개의 microservice 를 구동 시킬 것이다. 역시나 프로젝트 구동은 `mvn spring-boot:run` 을 실행 할 테지만  
+서로 다른 port로 구동을 시켜서 각 서비스간의 URL relation을 확인 할 것이다.  
+현재는 모두 8080 으로 setting 되어있다.
+![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/3_3.png)
+
+각 프로젝트의 application.yml파일을 열어서 local.port 부분을 서로 다른 포트로 설정한다.  
+> mvn spring-boot:run -Dserver.port=8081 으로 구동해도 된다.
+```yml
+spring:
+  profiles: local
+
+server:
+  port: 8081
+  servletPath: /
+```
+* clazz 8081
+* course 8082 
+
