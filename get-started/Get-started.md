@@ -6,8 +6,8 @@ Getting started
 3. [[Comparison with monolith and microservices]]
 ------
 4. [[JPA Entity Definition and Lifecycle Hook]]
-5. [[JPA relation annotations and search method generation]]
-6. [[JPA limitation and REST association]]
+4. [[JPA relation annotations and search method generation]]
+4. [[JPA limitation and REST association]]
 ----
 7. [[Spring MVC 기반 RPC]]
 7. [[Spring HATEOAS API]]
