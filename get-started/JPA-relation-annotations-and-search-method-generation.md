@@ -95,7 +95,20 @@ http localhost:8080/courses title="MSA실습" duration=5 maxEnrollment=5 minEnro
 http localhost:8080/courses title="MSA이론" duration=5 maxEnrollment=5 minEnrollment=10
 http localhost:8080/courses title="MSA강의" duration=5 maxEnrollment=5 minEnrollment=10
 ```
+그 후 http localhost:8080/courses 라는 root로 조회를 하면 search라는 것이 새롭게 생겼다.  
 HATEOAS 에서는 
 ```
-
+http localhost:8080/courses
+ "_links": {
+        "profile": {
+            "href": "http://localhost:8080/profile/courses"
+        },
+        **"search": {**
+            **"href": "http://localhost:8080/courses/search"**
+        **},**
+        "self": {
+            "href": "http://localhost:8080/courses{?page,size,sort}",
+            "templated": true
+        }
+    },
 ```
