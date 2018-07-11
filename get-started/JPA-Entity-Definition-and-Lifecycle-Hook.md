@@ -81,6 +81,11 @@ public interface CourseRepository extends PagingAndSortingRepository<Course, Lon
 }
 ```
 
+> PagingAndSortingRepository 는 페이징 기능을 담고 있는 Repository이다  
+> 레파지토리의 새로운 유형을 만들고 싶을때는 해당 Repository를 extends해서 새롭게 만들 수 있다.  
+> interface 의 구현체는 없지만 Repository 생성시 스프링 부트가 runtime에 실제 워킹하는 sql문을 생성하고 쿼리를 날리는 것을 generate 해준다 
+
+
 logic Test
 ------
 이제 테스트를 통하여 Lifecycle이 정상 작동하는지 확인해 봅니다.  
