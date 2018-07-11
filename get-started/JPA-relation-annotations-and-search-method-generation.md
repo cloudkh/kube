@@ -42,5 +42,5 @@ Course.java 에서 `(mappedBy = "course")` 의 의미는
 > JoinColumn은 컬럼의 명칭을 주는 거고, mappedBy는 java class의 필드명
 > mappedBy는 생략 할 수도 있지만 framework에 따라서 인식을 못하는 경우도 생기니  
 > 명시적으로 선언을 해주는 것을 추천한다.
-> spring-boot가 Hibernate를 기본으로 사용하고 있기에, 여기서는 Hibernate기준으로 설명한다.
+> spring-boot가 Hibernate를 기본으로 사용하고 있기에, 여기서는 Hibernate를 기준으로 설명한다.
 
