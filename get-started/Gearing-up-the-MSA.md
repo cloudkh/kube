@@ -135,7 +135,7 @@ public interface PersonRepository extends PagingAndSortingRepository<Person, Lon
 
 > PagingAndSortingRepository 는 페이징 기능을 담고 있는 Repository이다  
 > 레파지토리의 새로운 유형을 만들고 싶을때는 해당 Repository를 extends해서 새롭게 만들 수 있다.  
-> interface 의 구현체는 없지만 PersonRepository 이런식으로 네이밍 규칙으로 파일 생성시 스프링 부트가 runtime에 실제 워킹하는 sql문을 생성하고 쿼리를 날리는 것을 generate 해준다 
+> interface 의 구현체는 없지만 Repository 생성시 스프링 부트가 runtime에 실제 워킹하는 sql문을 생성하고 쿼리를 날리는 것을 generate 해준다 
 
 
 ***
