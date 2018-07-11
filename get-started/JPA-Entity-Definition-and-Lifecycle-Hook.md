@@ -34,7 +34,7 @@ java 에서 getter, setter 는 경계값을 설정하여 주는 역할이다.
 member 변수들은 private 값 으로 주고 getter, setter 로 public 을 주어서 어느곳에서 변경되었는지를 파악할수 있다.  
 이렇게 설정을 해야 방어적인 프로그래밍을 할 수 있다.  
 
-`@GeneratedValue` 는 아이디에 시스템에서 생성되는 일련번호를 부여하기 위하여 사용합니다. 
+`@GeneratedValue` 는 아이디에 시스템에서 생성되는 일련번호를 부여하기 위하여 사용한다.
 
 ### @PrePersist, @PreUpdate
 ```java
