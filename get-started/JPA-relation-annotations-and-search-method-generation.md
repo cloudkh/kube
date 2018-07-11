@@ -44,3 +44,26 @@ Course.java 에서 `(mappedBy = "course")` 의 의미는
 > 명시적으로 선언을 해주는 것을 추천한다.
 > spring-boot가 Hibernate를 기본으로 사용하고 있기에, 여기서는 Hibernate를 기준으로 설명한다.
 
+### @ManyToMany
+ManyToOne 과 OneToMany를 살펴 보았다.  
+다대다 관계에서는 중간에 Table이 하나가 필요하다.  
+[ManyToMay예제](https://vladmihalcea.com/the-best-way-to-use-the-manytomany-annotation-with-jpa-and-hibernate/) 여기서 자세한 예제를 살펴 보시길 바란다.  
+잠시 설명을 드리면 Post와 Tag를 묶기 위하여 Post_tag테이블을 생성하였고,  
+두 테이블의 관계를 JoinTable 과 mappedBy로 설정을 하였다. 
+#### Post.java
+```java
+    @ManyToMany(cascade = { 
+        CascadeType.PERSIST, 
+        CascadeType.MERGE
+    })
+    @JoinTable(name = "post_tag",
+        joinColumns = @JoinColumn(name = "post_id"),
+        inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private List<Tag> tags = new ArrayList<>();
+```
+#### Tag.java
+```java
+    @ManyToMany(mappedBy = "tags")
+    private List<Post> posts = new ArrayList<>();
+```
