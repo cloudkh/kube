@@ -67,3 +67,35 @@ ManyToOne 과 OneToMany를 살펴 보았다.
     @ManyToMany(mappedBy = "tags")
     private List<Post> posts = new ArrayList<>();
 ```
+
+### 검색 조회조건 (Filltering)
+데이터를 조회할적에 특정 조건으로 검색을 하는것은 당연한 요구사항이다.  
+아래 설명할 방법은 JPA 방식은 아니고 Spring-data에서 쓰는 방식이다.  
+Spring-data-jpa는 이 검색 조건을 naming 규칙에 의하여 사용하는 방식과 query형식으로 사용가능한 jpql방식을 사용하여 
+일반적인 패턴과 복잡한 쿼리를 모두 지원한다.  
+우선 아래 예제에서는 네이밍 규칙에 의한 일반적인 패턴을 조회하는 방법을 설명한다. 
+
+#### CourseRepository.java
+```java
+public interface CourseRepository extends PagingAndSortingRepository<Course, Long> {
+    // 1번 방법
+    List<Course> findByTitle(@Param("title") String title);
+    // 2번 방법
+    List<Course> findByTitleContaining(@Param("title") String title);
+}
+```
+이름에서 알 수 있듯이 1번 방법은 Title을 검색하지만, Title이 완전히 같을때 사용하는 방식이고,  
+2번 방법은 Title중 일부 단어가 포함 되어있는 것을 조회할때 사용하는 방식이다.  
+2번 방법이 1번 방법을 포함하고 있으니 2번 방법을 사용하면 되겠다.  
+
+이제 어떻게 사용하는지 살펴 보겠다.  
+우선 sample 데이터를 insert한다.
+```
+http localhost:8080/courses title="MSA실습" duration=5 maxEnrollment=5 minEnrollment=10
+http localhost:8080/courses title="MSA이론" duration=5 maxEnrollment=5 minEnrollment=10
+http localhost:8080/courses title="MSA강의" duration=5 maxEnrollment=5 minEnrollment=10
+```
+HATEOAS 에서는 
+```
+
+```
