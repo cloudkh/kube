@@ -25,8 +25,7 @@ microservice로 전환시 각자의 서비스는 서로 다른 DB 를 가질수 
 
 HATEOAS API를 직접 쓰는 방식은 각 상황별로 매번 구현을 해야 하기 때문에 매우 어렵다.  
 이에 objectpartners라는 디자인 패턴을 연구하는 회사에서 HATEOAS annotation 을 직접 만들어서 쓰는 패턴을 만들었고, 
-해당 패턴을 적용하여 ResourceProcessor이라는 컴포넌트를 등록하면 RestAssociation으로 등록된 annotation 을 찾아서  
-HATEOAS API 로 변경을 할 수 있는 `@RestAssociation` 을 구현해 놓았다.  
+해당 패턴을 적용하여 metaworks4에서  `@RestAssociation` 을 구현해 놓았다.  
 > 참고  
 > https://github.com/uengine-oss/metaworks4/blob/master/src/main/java/org/metaworks/springboot/configuration/Metaworks4WebConfig.java
 > https://objectpartners.com/2016/02/18/mapping-jpa-entities-to-external-rest-resources-in-spring-data-rest/
