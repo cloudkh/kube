@@ -34,13 +34,15 @@ java 에서 getter, setter 는 경계값을 설정하여 주는 역할이다.
 member 변수들은 private 값 으로 주고 getter, setter 로 public 을 주어서 어느곳에서 변경되었는지를 파악할수 있다.  
 이렇게 설정을 해야 방어적인 프로그래밍을 할 수 있다.  
 
+`@GeneratedValue` 는 아이디에 시스템에서 생성되는 일련번호를 부여하기 위하여 사용합니다. 
+
 ### @PrePersist, @PreUpdate
 ```java
     @PrePersist
     @PreUpdate
     public void validation(){
         if( minEnrollment < 10 ){
-            new IllegalArgumentException("수강생은 10명 이상이어 합니다.");
+            throw new IllegalArgumentException("수강생은 10명 이상이어 합니다.");
         }
     }
 ```
@@ -64,4 +66,43 @@ JPA framework 와 REST 는 BCI(Byte Code Instrumentation) 라는 강력한 libar
 2번 방법처럼 kafka같은 message를 알려주고, 거기에 알아서 반응해 라고 만드는 방법이 훨씬 좋다.  
 왜냐하면 microservice의 갯수가 많기 때문이다.  
 이러한 Anotation을 통하여 Event에 반응 할수 있는 JPA가 있기에 전체 아키택쳐가 simple해 지는것을 알 수 있다.  
-microservice들이 background에서 돌고 있지만, 모두 연결 될 수 있구나라는 것을 알 수 있다.  
+microservice들이 background에서 돌고 있지만, 모두 연결 될 수 있다 라는 것을 알 수 있다. 
+ 
+여기까지 하고, 해당 console로 들어가서 httpie로 `http localhost:8080` 을 호출해 보자.  
+방금 만들었던 Course가 나오지 않는것을 확인 할 수 있는데,  
+이는 Entity만 만들었고, Repository를 만들지 않아서 Rest를 아직 사용 할 수 없는 것이다.  
+
+### src/CourseRepository.java
+이제 Reopsitory라는 Interface를 만들 차례이다. Interface는 구현체를 채워 달라고 하는 요청이다.  
+네이밍 규칙은 꼭 지킬 필요가 없지만, 코딩시 Entity와 같은 package에 파일을 생성하고,  
+Entity뒤에 Repository라는 명명을 하여 생성하는 것을 추천한다.  
+```
+public interface CourseRepository extends PagingAndSortingRepository<Course, Long> {
+}
+```
+
+logic Test
+------
+이제 테스트를 통하여 Lifecycle이 정상 작동하는지 확인해 봅니다.  
+콘솔창을 연 후에 `mvn spring-boot:run` 으로 어플리케이션을 run 합니다. 
+```
+## Course가 Rest로 등록되었는지 확인
+$ http localhost:8080
+{
+    "_links": {
+        "courses": {
+            "href": "http://localhost:8080/courses{?page,size,sort}",
+            "templated": true
+        },
+        "profile": {
+            "href": "http://localhost:8080/profile"
+        }
+    }
+}
+## 정상적으로 데이터가 들어감
+$ http localhost:8080/courses title="software modeling lecture" duration=5 maxEnrollment=5 minEnrollment=10
+## @PrePersist 에 의하여 throw new IllegalArgumentException("수강생은 10명 이상이어 합니다."); 발생
+$ http localhost:8080/courses title="software modeling lecture" duration=5 maxEnrollment=5 minEnrollment=1
+## @PostPersist 에 의하여  greeting() 메서드 실행됨
+$ http PATCH localhost:8080/courses/1 description="설명"
+```
