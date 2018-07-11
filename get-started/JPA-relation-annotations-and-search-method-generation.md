@@ -23,7 +23,7 @@ Clazz 입장에서 보면 Course 는 ManyToOne 이다. Clazz는 여러개 인데
 반대로 Course 입장에서 보면 다음과 같이 설정 할 수 있다.
 ### Course.java
 ```java
-    @OneToMany
+    @OneToMany(mappedBy = "course")
     List<Clazz> clazzList;
 ```
 
@@ -34,3 +34,12 @@ FK를 명시 해줘야 한다.  자동으로 생성을 해 줄수도 있지만, 
 DB에서는 `class`가 예약어가 아니기 때문에  
 `@Table(name="CLASS")` 로 명명하여 class라는 테이블을 생성 할 수 있다.  
 > DB용어(테이블명, 컬럼명등)는 대문자로 쓰는것이 코딩 규칙이다. 
+
+
+Course.java 에서 `(mappedBy = "course")` 의 의미는  
+**Clazz의 course 라고 하는 java field가 나를 ID로 물고 있다** 라는 것을 의미한다. 
+
+> JoinColumn은 컬럼의 명칭을 주는 거고, mappedBy는 java class의 필드명
+> mappedBy는 생략 할 수도 있지만 framework에 따라서 인식을 못하는 경우도 생기니  
+> 명시적으로 선언을 해주는 것을 추천한다.
+
