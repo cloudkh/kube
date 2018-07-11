@@ -62,11 +62,11 @@ JPA framework 와 REST 는 BCI(Byte Code Instrumentation) 라는 강력한 libar
     }
 ```
 `@PostPersist` 어노테이션은 성공적으로 등록이 되면 그 후 일을 하겠다는 의미이다.  
-1번 방법처럼 바로 비지니스 로직을 작성 할 수 있지만, 직접 여기에서 해당 microservice를 찾아서 호출하는 것 보다  
+1번 방법처럼 바로 비지니스 로직을 작성 할 수 있지만, 직접 여기에서 해당 microservice를 찾아서 호출하는 것 보다, 
 2번 방법처럼 kafka같은 message를 알려주고, 거기에 알아서 반응해 라고 만드는 방법이 훨씬 좋다.  
 왜냐하면 microservice의 갯수가 많기 때문이다.  
-이러한 Anotation을 통하여 Event에 반응 할수 있는 JPA가 있기에 전체 아키택쳐가 simple해 지는것을 알 수 있다.  
-microservice들이 background에서 돌고 있지만, 모두 연결 될 수 있다 라는 것을 알 수 있다. 
+이러한 Anotation을 통하여 Event에 반응 할수 있는 JPA가 있기에 전체 아키택쳐가 simple 해지고,  
+이것은 'microservice들이 background에서 돌고 있지만, 모두 연결 될 수 있다' 라는 것을 의미한다.
  
 여기까지 하고, 해당 console로 들어가서 httpie로 `http localhost:8080` 을 호출해 보자.  
 방금 만들었던 Course가 나오지 않는것을 확인 할 수 있는데,  
