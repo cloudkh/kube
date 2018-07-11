@@ -45,9 +45,23 @@ member 변수들은 private 값 으로 주고 getter, setter 로 public 을 주�
     }
 ```
 `@PrePersist` 어노테이션은 insert 되기 전에 해당 로직을 실행 하라는 의미이다.    
-JPA framework 와 REST 는 BCI(Byte Code Instrumentation) 라는 강력한 libary를 사용하여 getter, setter 를 경유하지 않고  
-데이터를 주고 받는다. 한마디로 getter에 비지니스 로직을 넣어봤자 인식이 안된다는 뜻이다.  
+JPA framework 와 REST 는 BCI(Byte Code Instrumentation) 라는 강력한 libary를 사용하여 getter, setter 를 경유하지 않고 데이터를 주고 받는다. 한마디로 getter에 비지니스 로직을 넣어봤자 인식이 안된다는 뜻이다.  
 `@PreUpdate` 는 값이 변경될때마다 체크를 하여 해당 로직을 실행 하라는 의미이다.  
 `@PreRemove` 는 값이 지워질때 체크를 한다.  
-이런식으로 lifeCycle을 모두 체크할 수 있다. 
+이런식으로 Lifecycle을 모두 체크할 수 있다. 
 
+### @PostPersist
+```
+    @PostPersist
+    public void greeting(){
+        // 광고이메일 발송 --> 1번 방법
+        // 과정 등록에 대한 이벤트 publish --> 2번 방법
+        System.out.println("과정이 등록됨 " + this.getTitle());
+    }
+```
+`@PostPersist` 어노테이션은 성공적으로 등록이 되면 그 후 일을 하겠다는 의미이다.  
+1번 방법처럼 바로 비지니스 로직을 작성 할 수 있지만, 직접 여기에서 해당 microservice를 찾아서 호출하는 것 보다  
+2번 방법처럼 kafka같은 message를 알려주고, 거기에 알아서 반응해 라고 만드는 방법이 훨씬 좋다.  
+왜냐하면 microservice의 갯수가 많기 때문이다.  
+이러한 Anotation을 통하여 Event에 반응 할수 있는 JPA가 있기에 전체 아키택쳐가 simple해 지는것을 알 수 있다.  
+microservice들이 background에서 돌고 있지만, 모두 연결 될 수 있구나라는 것을 알 수 있다.  
