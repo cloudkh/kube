@@ -68,7 +68,7 @@ public class SharedCalendarServiceImpl implements SharedCalendarService {
     @Autowired
     ScheduleRepository scheduleRepository;
     @Override
-    public ResourceSupport> getSchedules(Long instructorId, String date) {
+    public ResourceSupport getSchedules(Long instructorId, String date) {
         List<Schedule> schedules = scheduleRepository.findByInstructorIdAndDate(instructorId, date);
         return new ScheduleResource(schedules);
     }
