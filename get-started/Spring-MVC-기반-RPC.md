@@ -62,7 +62,7 @@ RMI(Remote Method Invocation)와 RPC(Remote procedure call) 메커니즘의 디�
 이 변수를 자체 DB(ScheduleRepository)에서 findByInstructorIdAndDate로 조회하여 돌려준다.  
 
 #### SharedCalendarServiceImpl.java
-```
+```java
 @Component
 public class SharedCalendarServiceImpl implements SharedCalendarService {
     @Autowired
