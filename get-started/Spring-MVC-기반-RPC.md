@@ -17,6 +17,25 @@ public interface SharedCalendarService {
     @RequestMapping(method = RequestMethod.GET, path="/calendar/{instructorId}/{date}")
     ResourceSupport getSchedules(
             @PathVariable("instructorId") Long instructorId, 
-            @DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable("date") Date date);
+            @PathVariable("date") String date);
+            // @DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable("date") Date date);
 }
 ```
+`@RequestMapping` 을 통해 http request와 메소드를 연결할 수 있다.  
+어노테이션 선언 후 method = GET/POST/DELETE 로 요청 형태를 지정할 수 있고,  
+path = /(uri 주소)를 통해 이 서비스를 사용할 수 있는 상대 주소를 정의할 수 있다.  
+정리를 하자면, 이 서비스는 Shared Calender 이라는 이름이며, instructorId(강사 번호)를 먼저 받고 날짜를 입력을 하면, 
+그 해당 강사의 해당 날짜에 대한 결과를(스케쥴을) 리턴해주는 서비스가 이다.  
+
+날짜를 입력할때 Date 등의 다른 객체로 정보 요청을 할 수 있지만 String(문자열) 형태로 받는 이유는,  
+해당 요청을 할 경우 밑바닥에서는 Http호출과 비호출을 위한 Json 파싱과 네트워킹 작업이 이루어지는데  
+이 때 주고 받는 Class 타입이 복잡해지게 되면 객체를 네트워크에 태우기 위한 Serialization 과 Deserializtion 과정에서
+깨지는 경우가 발생 할 수도 있기 때문에 예제에서는 단순한 객체를 사용하였다.   
+> 기타 객체를 사용해도 해결 방법이 있기에 사용하셔도 문제는 없다.  
+
+여기서 리턴 타입이 `ResourceSupport`이라고 되어있는데,  
+`ResourceSupport`라고 하는 것은 HATEOAS API에서 사용하는 객체중에 하나이며,  
+어떤 데이터를 온전히 통으로 다 가지고 있는 것이 아니라,  
+유일한 식별자/주소(링크) 형태로 자신을 표현하는 정보를 Resource라고 부르며,
+그것을 추상적으로 정의할 수 있는 클레스가 `ResourceSupport`이다  
+HATEOAS 에 대한 설명은 다음시간에 하도록 한다.  
