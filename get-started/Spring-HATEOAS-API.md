@@ -34,6 +34,5 @@ public class SharedCalendarServiceImpl implements SharedCalendarService {
 `Resources<Resource>` 는 Resource 를 List형태로 사용하고 싶을때 사용한다.  
 * Resource : 유일한 식별자/주소(링크) 형태로 자신을 표현
 * Resources : Resource 의 Collection 형태
-* ResourceSupport : Resource 를 추상적으로 정의
-> public class Resource<T> extends ResourceSupport
+* ResourceSupport : Resource 를 추상적으로 정의 (Resource<T> extends ResourceSupport)
 
