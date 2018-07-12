@@ -12,7 +12,6 @@ public class SharedCalendarServiceImpl implements SharedCalendarService {
     ScheduleRepository scheduleRepository;
 
     @Override
-    @RequestMapping(method = RequestMethod.GET, path="/calendar/{instructorId}/{date}")
     public Resources<Resource> getSchedules(@PathVariable("instructorId") Long instructorId, @PathVariable("date") String date) {
         Date realDate = convertToDate(date);
         List<Schedule> schedules = scheduleRepository.findByInstructorId(instructorId);
@@ -73,7 +72,7 @@ for(Schedule schedule : schedules) {
     if(DateUtils.isSameDay(schedule.getDate(), realDate))
          // list.add(new Resource<Schedule>(schedule));
          Resource<Schedule> resource = new Resource<Schedule>(schedule);
-         resource.add(new Link("http://localhost:8085/" + instructorId + "/" + date, "_self"));
+         resource.add(new Link("http://localhost:8085/calendar/" + instructorId + "/" + date, "_self"));
          list.add(resource);
 }
 ```
@@ -88,7 +87,7 @@ $ http localhost:8085/calendar/1/2018-3-14
             {
                 "_links": {
                     "_self": {
-                        "href": "http://localhost:8085/1/2018-03-14"
+                        "href": "http://localhost:8085/calendar/1/2018-03-14"
                     }
                 },
                 "date": 1520985600000,
@@ -106,7 +105,19 @@ _links정보가 생긴 것을 확인 할 수 있다.
 저렇게 uri 정보를 바로 입력하면 안된다.  
 ``` java
 resource.add(linkTo(methodOn(SharedCalendarService.class).getSchedules(instructorId,date)).withSelfRel());
-// resource.add(new Link("http://localhost:8085/" + instructorId + "/" + date, "_self"));
+// resource.add(new Link("http://localhost:8085/calendar/" + instructorId + "/" + date, "_self"));
 ```
-해석을 하자면 resource에 link를 add하는데 내 자신의 JAX-RS 정보를 호출할수 있는 URL을 생성하여 self로 연결을 하였다.  
+해석을 하자면 resource에 link를 add하는데 내 자신의 JAX-RS 정보를 호출할수 있는 URL을 생성하여 self로 연결을 하였다. 
 이전 new Link 와 다른점은 RequestMapping의 path정보같은 spec이 변경되어도, 내부 구현은 변경없이 사용 가능하다.  
+
+```java
+    @RequestMapping(method = RequestMethod.GET, path="/calendar/{instructorId}/{date}/delay")
+    public Resources<Resource> delaySchedules(
+            @PathVariable("instructorId") Long instructorId, @PathVariable("date") String date,
+            @RequestParam("delayDays") int days
+    ) {
+        Resources<Resource> schedules = getSchedules(instructorId, date);
+        // TODO day 증가
+        return schedules;
+    }
+```
