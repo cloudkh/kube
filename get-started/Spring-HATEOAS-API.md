@@ -41,4 +41,27 @@ Resources를 사용해야지 일반 HATEOAS API처럼 _embedded에 담겨진다.
 > _embedded는  HAL(Hypertext Application Language) format으로서 
 > front-end에서 Hateoas 수준으로 정보가 담겨있다고 인지하여 사용하게 된다.  
 
-
+여기까지하고, 실제 _embedded 방식으로 return을 하는지 확인을 해본다.  
+```
+$ git clone https://github.com/uengine-oss/msa-tutorial-class-management-msa.git
+$ cd msa-tutorial-class-management-msa/calendar
+## port=8085 서버시작
+$ mvn spring-boot:run -Dserver.port=8085
+## 강사 추가
+$ http localhost:8085/schedules instructorId=1 date="2018-3-14"
+## getSchedules 메서드 remote call
+$ http localhost:8085/calendar/1/2018-3-14
+{
+    "_embedded": {
+        "schedules": [
+            {
+                "date": 1520985600000,
+                "id": 1,
+                "instructorId": 1,
+                "title": null
+            }
+        ]
+    }
+}
+```
+서버 시작시 error가 발생할 수 있지만, eureka를 안띄운 부분이니깐 현재 예제에서는 무시해도 상관없다.  
