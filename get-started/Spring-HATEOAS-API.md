@@ -32,3 +32,6 @@ public class SharedCalendarServiceImpl implements SharedCalendarService {
 우선 눈에 띄는 차이점은 `ResourceSupport` 로 return 을 안하고,  
 조금 더 detail 하게 `Resources<Resource>` 로 return을 시키는 부분이다.  
 `Resources<Resource>` 는 Resource 를 List형태로 사용하고 싶을때 사용한다.  
+* Resource : 유일한 식별자/주소(링크) 형태로 자신을 표현
+* Resources : Resource 의 List형태
+* ResourceSupport : Resource를 추상적으로 정의
