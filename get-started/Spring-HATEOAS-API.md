@@ -72,6 +72,41 @@ Link 정보를 주기 위하여 위의 코드를 수정해야 한다.
 for(Schedule schedule : schedules) {
     if(DateUtils.isSameDay(schedule.getDate(), realDate))
          // list.add(new Resource<Schedule>(schedule));
-         list.add(new Link( "http://localhost:8085/" + instructorId + "/" + date , "_self"));
+         Resource<Schedule> resource = new Resource<Schedule>(schedule);
+         resource.add(new Link("http://localhost:8085/" + instructorId + "/" + date, "_self"));
+         list.add(resource);
 }
 ```
+
+```
+$ http localhost:8085/schedules instructorId=1 date="2018-3-14"
+## getSchedules 메서드 remote call
+$ http localhost:8085/calendar/1/2018-3-14
+{
+    "_embedded": {
+        "schedules": [
+            {
+                "_links": {
+                    "_self": {
+                        "href": "http://localhost:8085/1/2018-03-14"
+                    }
+                },
+                "date": 1520985600000,
+                "id": 1,
+                "instructorId": 1,
+                "title": null
+            }
+        ]
+    }
+}
+```
+
+_links정보가 생긴 것을 확인 할 수 있다.  
+이것은 self이기 때문에 간단하게 하였고, 실제로 microservice를 엮는 작업을 하려면  
+저렇게 uri 정보를 바로 입력하면 안된다.  
+``` java
+resource.add(linkTo(methodOn(SharedCalendarService.class).getSchedules(instructorId,date)).withSelfRel());
+// resource.add(new Link("http://localhost:8085/" + instructorId + "/" + date, "_self"));
+```
+해석을 하자면 resource에 link를 add하는데 내 자신의 JAX-RS 정보를 호출할수 있는 URL을 생성하여 self로 연결을 하였다.  
+이전 new Link 와 다른점은 RequestMapping의 path정보같은 spec이 변경되어도, 내부 구현은 변경없이 사용 가능하다.  
