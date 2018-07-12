@@ -57,3 +57,32 @@ RMI(Remote Method Invocation)와 RPC(Remote procedure call) 메커니즘의 디�
 이것이 interface로 정의한 이유이다.  
 이렇게 Interface를 먼저 정의 해야만 Server-sided와 컨슈머(API사용자)간 합의가 된다.
 
+### Create a Service Implementation
+이제 실제구현체는 Server-sided provider(API 제공자) 쪽에 있다.  
+해당 구현체를 보면, uri를 통해 2개의 변수를 받는다. (강사의 id와 조회 날짜)  
+이 변수를 자체 DB(ScheduleRepository)에서 findByInstructorIdAndDate로 조회하여 돌려준다.  
+
+#### SharedCalendarServiceImpl.java
+```
+@Component
+public class SharedCalendarServiceImpl implements SharedCalendarService {
+    @Autowired
+    ScheduleRepository scheduleRepository;
+    @Override
+    public ResourceSupport> getSchedules(Long instructorId, String date) {
+        List<Schedule> schedules = scheduleRepository.findByInstructorIdAndDate(instructorId, date);
+        return new ScheduleResource(schedules);
+    }
+}
+```
+여기는 직접 DB를 통해서  조회를 하지만, 나중에 다른 Calender 서비스로 바꾸게 될 경우,  
+이 implementation 객체만 변경을 하게 되면, 이 서비스를 사용하는 컨슈머들은 한번에 변경되는 효과를 얻을 수 있다.  
+이러한 형식은 기존의 JAVA 클래스라고 보면 된다.  
+다만 마이크로 서비스는 항상 런타임에 있다는 차이가 있을 뿐이다.  
+
+> 담기는 구조나 소프트웨어의 dependency와 implementation에 대한 looslycoupled설계등은 
+> MSA 개념에서 튀어나온 것을 아니라 기존에 갖고 있던 객체지향 OAD에서 가지고 있던 사상이다.
+
+결론적으로  Calender Service 는 Repository에서 조회해온 데이터를  
+`ScheduleResource`라는 `ResourceSupport`를 상속 받는 객체를 통해  
+링크 구조가 아닌 객체를 직접 HATEOAS 수준으로 변환하여 전달한다.  
