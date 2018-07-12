@@ -110,8 +110,11 @@ resource.add(linkTo(methodOn(SharedCalendarService.class).getSchedules(instructo
 해석을 하자면 resource에 link를 add하는데 내 자신의 JAX-RS 정보를 호출할수 있는 URL을 생성하여 self로 연결을 하였다. 
 이전 new Link 와 다른점은 RequestMapping의 path정보같은 spec이 변경되어도, 내부 구현은 변경없이 사용 가능하다.  
 
+
+이제 self 정보가 아닌, 연계되는 request 정보가 있을경우에는 아래와 같이 설정이 가능하다.  
+우선 스케쥴을 delay시키는 메서드를 하나 만든다.  
 ```java
-    @RequestMapping(method = RequestMethod.GET, path="/calendar/{instructorId}/{date}/delay")
+    @RequestMapping(method = RequestMethod.PUT, path="/calendar/{instructorId}/{date}/delay")
     public Resources<Resource> delaySchedules(
             @PathVariable("instructorId") Long instructorId, @PathVariable("date") String date,
             @RequestParam("delayDays") int days
@@ -121,3 +124,36 @@ resource.add(linkTo(methodOn(SharedCalendarService.class).getSchedules(instructo
         return schedules;
     }
 ```
+
+그리고 resource에 link를 self가 아닌 relation정보를 아래와 같이 추가하여 준다.  
+```
+resource.add(linkTo(methodOn(SharedCalendarServiceImpl.class).delaySchedules(instructorId,date,0)).withRel("delay"));
+```
+
+#### test
+```
+$ http localhost:8085/schedules instructorId=1 date="2018-3-14"
+## getSchedules 메서드 remote call
+$ http localhost:8085/calendar/1/2018-3-14
+{
+    "_embedded": {
+        "schedules": [
+            {
+                "_links": {
+                    "delay": {
+                        "href": "http://localhost:8085/calendar/1/2018-03-14/delay?delayDays=0"
+                    },
+                    "self": {
+                        "href": "http://localhost:8085/calendar/1/2018-03-14"
+                    }
+                },
+                "date": 1520985600000,
+                "id": 1,
+                "instructorId": 1,
+                "title": null
+            }
+        ]
+    }
+}
+```
+delay라는 link가 생성된 것을 확인 할 수 있다.
