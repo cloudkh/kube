@@ -49,12 +49,12 @@ HATEOAS 에 대한 자세한 설명은 다음시간에 하도록 한다.
 > 구현된 결과물을 이 interface를 통해서 결과를 받을 수 있다.  
 
 RMI(Remote Method Invocation)와 RPC(Remote procedure call) 메커니즘의 디자인 패턴은 proxy 패턴이다.  
-컨슈머 입장에서는 똑같은 인터페이스를 내 로컬 객체처럼 그냥 호출해서 쓰지만,  
-이 객체가 리턴하는 것은 Remote 호출 후 서버에서 무언가 만들어진 결과를 네트워크를 타고서  
+consumer(API사용자) 입장에서는 똑같은 인터페이스를 내 로컬 객체처럼 그냥 호출해서 쓰지만,  
+이 객체가 리턴하는 것은 Remote 호출 후 서버에서 만들어진 결과를 네트워크를 타고서  
 내 로컬 객체처럼 뱉어주는 대리자 역할만 해주는 것이 이 인터페이스의 역할이다.  
 그리고 이 인터페이스를 우리가 proxy 객체 혹은 Stub 이라고 부른다.  
 이것이 interface로 정의한 이유이다.  
-이렇게 Interface를 먼저 정의 해야만 Server-sided와 컨슈머(API사용자)간 합의가 된다.
+이렇게 Interface를 먼저 정의 해야만 Server-sided와 consumer간 합의가 된다.
 
 ### Create a Service Implementation
 이제 실제구현체는 Server-sided provider(API 제공자) 쪽에 있다.  
@@ -79,7 +79,7 @@ public class SharedCalendarServiceImpl implements SharedCalendarService {
 이러한 형식은 기존의 JAVA 클래스라고 보면 된다.  
 다만 마이크로 서비스는 항상 런타임에 있다는 차이가 있을 뿐이다.  
 
-> 담기는 구조나 소프트웨어의 dependency와 implementation에 대한 looslycoupled설계등은 
+> 담기는 구조나 소프트웨어의 dependency와 implementation에 대한 loosely coupled설계등은 
 > MSA 개념에서 튀어나온 것을 아니라 기존에 갖고 있던 객체지향 OAD에서 가지고 있던 사상이다.
 
 결론적으로  Calender Service 는 Repository에서 조회해온 데이터를  
