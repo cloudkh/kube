@@ -65,3 +65,13 @@ $ http localhost:8085/calendar/1/2018-3-14
 }
 ```
 서버 시작시 error가 발생할 수 있지만, eureka를 안띄운 부분이니깐 현재 예제에서는 무시해도 상관없다.  
+_embedded 형태로 데이터는 나오지만, 다른 서비스에서 get이나 delete를 하기 위한 "_links" 정보가 없다.  
+Link 정보를 주기 위하여 위의 코드를 수정해야 한다.  
+
+```java
+for(Schedule schedule : schedules) {
+    if(DateUtils.isSameDay(schedule.getDate(), realDate))
+         // list.add(new Resource<Schedule>(schedule));
+         list.add(new Link( "http://localhost:8085/" + instructorId + "/" + date , "_self"));
+}
+```
