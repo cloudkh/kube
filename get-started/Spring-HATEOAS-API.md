@@ -31,8 +31,14 @@ public class SharedCalendarServiceImpl implements SharedCalendarService {
 
 우선 눈에 띄는 차이점은 `ResourceSupport` 로 return 을 안하고 조금 더 detail 하게,  
 ArrayList로 만들어진 Resource 객체를 Resouces<Resource> 로 변환을 하여 return을 시킨다.  
-> Resources<Resource> 는 Resource 를 List형태로 사용하고 싶을때 사용한다.  
 * Resource : 유일한 식별자/주소(링크) 형태로 자신을 표현
 * Resources : Resource 의 Collection 형태
 * ResourceSupport : Resource 를 추상적으로 정의 (Resource<T> extends ResourceSupport)
+
+Resources를 사용해야지 일반 HATEOAS API처럼 _embedded에 담겨진다.  
+> Resources를 이용하여 _embedded 형태로 리턴하지 않을 경우,  
+> 객체가 Json형태로 넘어오거나, 다른 정보 없이 링크만 리턴할 수 있다.  
+> _embedded는  HAL(Hypertext Application Language) format으로서  
+> front-end에서 Hateoas 수준으로 정보가 담겨있다고 인지하여 사용하게 된다.  
+
 
