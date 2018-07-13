@@ -122,7 +122,20 @@ zuul:
       stripPrefix: false
 ```
 설정 파일을 살펴보면 zuul.routes 을 하기위하여 courses 라고 하는 path로 들어올적에  
-eureka에 등록되어있는 course 라는 서비스를 찾아서 routing을 하라는 의미이다.  
+eureka에 등록되어있는 course 라는 서비스를 찾아서 redirect 해달라는 의미이다.  
 stripPrefix 는 routing 하기 전에 경로에서 접두어를 제거할지 여부를 나타내는 플래그다.  
+그러나 zuul은 이와같은 routes 설정이 없어도 기본적으로 routing이 가능하다.  
+url의 첫번째 path는 serviceId로 인식을 하는것이 zuul의 기본 설정이다.  
+zuul.routes 설정을 하면 아래와 같이 두벌의 path가 만들어 지는 것이다.  
+```
+http localhost:8080/course/courses  
+http localhost:8080/courses 
+```
 
+그러나 zuul은 front-end 에서 접근을 하는 서비스 이기때문에, zuul.routes를 설정 안하고,  
+`localhost:8080/course/courses` 이와 같이 쓴다면 기존의 monolith 에서 사용하던  
+path와 완전이 달라지게 된다. 그래서 일일이 써주는게 좋은 방법이다.  
 
+> http://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html
+위의 url로 접근하면 netflix에서 zuul을 어떻게 사용하는지 나온다.  
+인증, Stress Testing, Canary Testing(A/B test 처럼 기존버전과 새버전의 호출하는 api가 똑같이 반응하는지 테스트) 등이 있다.  
