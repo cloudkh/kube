@@ -12,4 +12,9 @@
 7. [[Running Micro Services and Integration with Feign Client]]
 7. [[Setting Zuul Proxy]]
 ----
+11. [[ Eureka and Zuul]]
+11. [[ Implementing Zuul Filter]]
+11. [[ Dockerizing Services]]
+11. [[ Workload Distribution with Docker Swarm]]
+------
 [[← Back to homepage|Home]]
