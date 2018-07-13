@@ -1,6 +1,10 @@
 Eureka and Zuul 설명
 ------
-이번 시간은 Registry Service와 Proxy Service를 설정하는 방법에 대하여 기술하고자 한다.  
+이번 시간은 Registry Service와 Proxy Service를 설정하는 방법에 대하여 기술하고자 한다. 
+
+### 참고
+`Registry` -> 많은 수의 서비스들간의 앤드포인트를 찾고, 서비스의 상태를 어딘가에 등록하는 기능.  
+`Proxy` -> 클라이언트가 자신을 통해서 다른 네트워크 서비스에 간접적으로 접속할 수 있게 해주는 기능.  
 `Eureka` 는 netflix OSS에서 개발한 Registry Service libary 이다.  
 `Zuul` 은 netflix OSS에서 개발한 Proxy Service libary 이다.  
 위의 libary를 사용하여 손쉽게 Registry server와 Proxy server를 구성하는 방법을 설명한다.  
@@ -33,4 +37,26 @@ source code level에서 컨트롤이 가능하다는 장점이 있다.
 기본적으로 spring-boot Application 의 커스터 마이징 레벨은 첫번째로 propertie 파일이다.  
 여기 예제에서는 application.yml 파일을 썼는데, propertie 와 yml 파일 모두 우선으로 읽어들인다.  
 최근 cloud computing 쪽은 yml 파일을 많이 사용중이다.  
-yml 파일은 사람이 읽고 쓰기 좋은 형식으로 (json처럼) key and value 방식으로 depth를 줘서
+yml 파일은 사람이 읽고 쓰기 좋은 형식으로 (json처럼) key and value 방식으로 
+depth를 주어서 property를 관리하기가 편하다.
+
+#### application.yml
+```yml
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enableSelfPreservation: false
+```
+위의 server, port 부분을 propertie 파일로 변경한다면  
+`server.port=8761` 이런식으로 변경이 가능하다.  
+
+마이크로 서비스는 Registry가 항상 있어야 한다.  
