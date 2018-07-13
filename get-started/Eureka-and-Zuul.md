@@ -78,3 +78,11 @@ eureka.client.healthcheck.enabled : 유레카 서버의 상태를 계속 살펴�
 > 참고  
 > https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html
 
+Registry Server를 설정할때 가장 중요한 점은 cluster 로 구성을 해야한다.  
+그 이유는 Registry Server가 죽으면 마이크로 서비스가 연결이 아예 안되기 때문이다.  
+eureka 로 cluster 를 하기 가장 쉬운 방법은 eureka server를 여러대 띄운 후,  
+각 마이크로 서비스의 eureka 설정에서 아래와 같이 주소를 여러개 나열하는 방법이다.  
+`defaultZone: http://127.0.0.1:8761/eureka/,http://127.0.0.1:8762/eureka/`
+
+### Zuul
+
