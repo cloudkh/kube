@@ -5,8 +5,8 @@ Eureka and Zuul 설명
 ### 참고
 `Registry` -> 많은 수의 서비스들간의 앤드포인트를 찾고, 서비스의 상태를 어딘가에 등록하는 기능.  
 `Proxy` -> 클라이언트가 자신을 통해서 다른 네트워크 서비스에 간접적으로 접속할 수 있게 해주는 기능.  
-`Eureka` 는 netflix OSS에서 개발한 Registry Service libary 이다.  
-`Zuul` 은 netflix OSS에서 개발한 Proxy Service libary 이다.  
+`Eureka` -> netflix OSS에서 개발한 Registry Service libary.  
+`Zuul` -> netflix OSS에서 개발한 Proxy Service libary.  
 위의 libary를 사용하여 손쉽게 Registry server와 Proxy server를 구성하는 방법을 설명한다.  
 
 > spring cloud 는 spring boot + library 로 구성된 프로젝트들의 모음  
@@ -59,4 +59,22 @@ eureka:
 위의 server, port 부분을 propertie 파일로 변경한다면  
 `server.port=8761` 이런식으로 변경이 가능하다.  
 
-마이크로 서비스는 Registry가 항상 있어야 한다.  
+마이크로 서비스는 Registry 가 항상 있어야 한다.  
+그리고 Registry를 인식하기 위하여 Registry 주소는 각 서비스에서 가지고 있어야 한다.  
+아래는 다른 마이크로 서비스에서 Registry 주소를 설정한 예제이다.  
+```yml
+eureka:
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+```
+설정의 여러 옵션이 있지만 최소한의 옵션만 설정 하였고, 각 설정값을 설명하자면  
+eureka.client.enabled : true / false -> 유레카 클라이언트를 등록/해제 하겠다.  
+eureka.client.defaultZone : 유레카 서버 주소  
+eureka.client.healthcheck.enabled : 유레카 서버의 상태를 계속 살펴보겠다.  
+> 참고  
+> https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html
+
