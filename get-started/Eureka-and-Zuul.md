@@ -136,6 +136,6 @@ http localhost:8080/courses
 `localhost:8080/course/courses` 이와 같이 쓴다면 기존의 monolith 에서 사용하던  
 path와 완전이 달라지게 된다. 그래서 일일이 써주는게 좋은 방법이다.  
 
-> http://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html
-위의 url로 접근하면 netflix에서 zuul을 어떻게 사용하는지 나온다.  
-인증, Stress Testing, Canary Testing(A/B test 처럼 기존버전과 새버전의 호출하는 api가 똑같이 반응하는지 테스트) 등이 있다.  
+> http://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html  
+> 위의 url로 접근하면 netflix에서 zuul을 어떻게 사용하는지 나온다.  
+> 인증, Stress Testing, Canary Testing(A/B test 처럼 기존버전과 새버전의 호출하는 api가 똑같이 반응하는지 테스트) 등이 있다.  
