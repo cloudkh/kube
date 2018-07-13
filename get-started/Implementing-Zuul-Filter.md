@@ -29,11 +29,38 @@ public class IAMFilter extends ZuulFilter {
     public Object run() {
        RuleService ruleService = ApplicationContextRegistry.getApplicationContext().getBean(RuleService.class);
        // do something
+       //라우터 스코프
+       Map<String, String> iamScopes = null;
+       if (routeValueMap.containsKey("iam-scopes")) {
+           iamScopes = (Map<String, String>) routeValueMap.get("iam-scopes");
+       }
+       // do something
     }
 ```
 구현 내용은 제외 하였지만 ZuulFilter를 extends 하였고,  
 lifeCycle 의 filterType을 "pre", filter의 Order 를 줄수 있고, filter가 동작하는 부분이 run 이다.  
+이와 같이 filter를 사용하여 아래와 같은 설정에 대한 처리가 가능하다.  
+```yml
+zuul:
+    routes:
+        courses:
+          path: /courses/**
+          serviceId: course
+          stripPrefix: false
+          # 일반 게스트 유저에 대해서는 (GET) 허용, catalog-order scope 을 가진 유저인 경우 PUT, PATCH, POST, DELETE 허용
+          iam-scopes:
+            - guest/GET
+            - catalog-order/PUT-PATCH-POST-DELETE
+```
 
+우선 yml 파일의 zuul 을 가져오게 하려면 아래와 같이 ConfigurationProperties 를 사용하면 된다.  
 
-RuleService 는 yml 파일이나 cloud-config 같은 설정정보를 얻어오는 서비스이다.  
-filter를 만들적에 code에 직접 집어 넣을수도 있겠지만 설정파일에서 
+#### RuleService.java
+```java
+@Service
+@ConfigurationProperties(prefix = "zuul")
+public class RuleService {
+  private Map<String, Map> routes;
+  ...
+}
+```
