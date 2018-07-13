@@ -39,7 +39,9 @@ public class IAMFilter extends ZuulFilter {
 ```
 구현 내용은 제외 하였지만 ZuulFilter를 extends 하였고,  
 lifeCycle 의 filterType을 "pre", filter의 Order 를 줄수 있고, filter가 동작하는 부분이 run 이다.  
-이와 같이 filter를 사용하여 아래와 같은 설정에 대한 처리가 가능하다.  
+
+아래는 filter 를 사용하여 custom scope를 만드는 예제이다.  
+#### application.yml
 ```yml
 zuul:
     routes:
@@ -54,7 +56,6 @@ zuul:
 ```
 
 우선 yml 파일의 zuul 을 가져오게 하려면 아래와 같이 ConfigurationProperties 를 사용하면 된다.  
-
 #### RuleService.java
 ```java
 @Service
@@ -62,5 +63,19 @@ zuul:
 public class RuleService {
   private Map<String, Map> routes;
   ...
+}
+```
+
+이런식으로 설정파일에서 property값을 받아와서 ZuulFilter의 run 부분에서 구현을 하면 된다.  
+이제 이렇게 구현한 filter를 사용하려면 아래처럼 @Bean 으로 등록을 해주면 된다.  
+
+#### Application.java
+```java
+public class Application {
+  ...
+  @Bean
+  public IAMFilter iamFilter(){
+      return new IAMFilter();
+  }
 }
 ```
