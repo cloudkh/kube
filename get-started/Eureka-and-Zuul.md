@@ -15,7 +15,7 @@ Eureka and Zuul 설명
 
 ### Eureka
 먼저 다운로드된 소스코드의 registry-service 를 살펴보자.  
-https://github.com/uengine-oss/msa-tutorial-class-management-msa/tree/master/registry-service  
+> https://github.com/uengine-oss/msa-tutorial-class-management-msa/tree/master/registry-service   
 파일의 구조는 간단하다.  
 `RegistryServiceApplication` 과 `application.yml` 두개이다.  
 
@@ -30,7 +30,7 @@ public class RegistryServiceApplication {
 }
 ```
 * @SpringBootApplication : 일반적인 스프링 부트 어플리케이션과 같다.  
-* @EnableEurekaServer : 이 서비스가 Registry server 를 만드는 Annotation이다.  
+* @EnableEurekaServer : 이 서비스가 Registry server 라고 설정해주는 Annotation 이다.  
 이렇게 설정을 한 경우 추후 Registry server에 특정한 기능을 추가 하고 싶을때,  
 source code level에서 컨트롤이 가능하다는 장점이 있다.  
 
@@ -85,4 +85,44 @@ eureka 로 cluster 를 하기 가장 쉬운 방법은 eureka server를 여러대
 `defaultZone: http://127.0.0.1:8761/eureka/,http://127.0.0.1:8762/eureka/`
 
 ### Zuul
+다운로드된 소스코드의 proxy-service 를 살펴보자.  
+> https://github.com/uengine-oss/msa-tutorial-class-management-msa/tree/master/proxy-service    
+eureka와 마찬가지로 파일의 구조는 간단하다.  
+`GatewayApplication` 과 `application.yml` 두개이다.  
+
+#### GatewayApplication.java
+```java
+@EnableZuulProxy
+@EnableDiscoveryClient
+@EnableEurekaClient
+@SpringBootApplication
+public class GatewayApplication {
+  public static void main(String[] args) {
+    SpringApplication.run(GatewayApplication.class, args);
+  }
+}
+```
+* @SpringBootApplication : 일반적인 스프링 부트 어플리케이션과 같다.  
+* @EnableZuulProxy : 이 서비스는 Proxy server 라고 설정해주는 Annotation 이다.  
+* @EnableEurekaClient : 이 서비스는 Registry client 라고 설정해주는 Annotation 이다.    
+
+`@EnableDiscoveryClient` 는 `@EnableEurekaClient`가 있다면 사용할 필요가 없다.  
+`@EnableDiscoveryClient` 를 사용하여 Eureka에 client로 등록한 것이 `@EnableEurekaClient`다.  
+ 
+#### application.yml
+```yml
+zuul:
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+  addProxyHeaders: true
+
+  routes:
+    courses:
+      path: /courses/**
+      serviceId: course
+      stripPrefix: false
+```
+설정 파일을 살펴보면 zuul.routes 을 하기위하여 courses 라고 하는 path로 들어올적에  
+eureka에 등록되어있는 course 라는 서비스를 찾아서 routing을 하라는 의미이다.  
+stripPrefix 는 routing 하기 전에 경로에서 접두어를 제거할지 여부를 나타내는 플래그다.  
+
 
