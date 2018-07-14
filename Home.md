@@ -2,8 +2,8 @@
 # MSA 개요
 1. https://www.slideshare.net/pongsor/micro-service-architecture-84941530
 
-# Get started
-1. [[Get started|Get started]]
+# Spring Cloud 기본
+1. [[Spring Cloud 기본|Spring-Boot-와--Spring-Cloud-기본]]
 
 # Open Cloud Engine 개발자 레퍼런스
 1. [OCE API GW](API-GW)
