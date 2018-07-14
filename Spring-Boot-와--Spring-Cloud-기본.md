@@ -1,4 +1,4 @@
-Getting started
+Spring Boot 와 Spring Cloud 기본
 ===============
 
 1. [[Gearing up the MSA]]
