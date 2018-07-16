@@ -1,9 +1,4 @@
 * [[home]]
-* [[Get started]]
-----
-1. [[Gearing up the MSA]]
-2. [[Public Education Example]]
-3. [[Comparison with monolith and microservices]]
+* [[Spring-Boot-와--Spring-Cloud-기본]]
 
 ----
-[[← Back to homepage|Home]]
