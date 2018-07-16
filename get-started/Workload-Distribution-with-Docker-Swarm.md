@@ -93,6 +93,10 @@ Creating service getstartedlab_registry
 Creating service getstartedlab_class-api
 Creating service getstartedlab_course-api
 ```
+-c 옵션은 change 명령으로, docker-compose.yml 이 변경되어도 변경된 파일을 읽어서 update한다.  
+replicas: 3 으로 변경하여 scale up 을 할적에 사용한다.  
+제일 뒤에 getstartedlab 은 stack의 이름을 주었다.  
+stack 삭제시에는 `sudo docker stack rm getstartedlab` 을 하면 된다.  
 하나씩 가상의 network 를 하나씩 만들어 주고, 서비스를 하나씩 docker run을 실행 시켜준다.  
 
 ```
@@ -117,3 +121,5 @@ $ docker container ls
 ## 조금뒤에 서비스가 다시 살아나는것 확인
 $ docker container ls
 ```
+
+여기까지가 기본적인 Workload Distribution Engine의 동작 구조이다.   
