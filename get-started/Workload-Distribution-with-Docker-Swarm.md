@@ -28,7 +28,7 @@ services:
       - /tmp:/tmp
     ports:
       - "8089:8080"
-    depends_on:
+    depends_on: # registry 가 뜬 후에 image를 실행한다.
       - registry
   proxy:
     image: api-gateway:latest
@@ -48,4 +48,21 @@ services:
         condition: on-failure
     ports:
       - "8761:8761"
+```
+파일 설명을 하자면 registry 와 proxy , class-api, course-api를 띄운다.  
+이전 page에서 class-api 를 dockerize하였으니 나머지 서비스들도 모두 dockerize 해준다.  
+```
+$ cd course/
+$ sudo docker build . -t course-service
+$ cd ..
+$ cd proxy-service/
+$ sudo docker build . -t api-gateway
+$ cd ..
+$ cd registry-service/
+$ sudo docker build . -t uengine-registry-server
+$ sudo docker images
+uengine-registry-server   latest              315b6ac665a9        9 seconds ago       185MB
+api-gateway               latest              5045d31821f4        33 seconds ago      184MB
+course-service            latest              404c3bd9dae8        57 seconds ago      264MB
+clazz-service             latest              bd09f73f2ee1        2 hours ago         264MB
 ```
