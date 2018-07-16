@@ -53,10 +53,51 @@ target에 두개의 jar파일이 생성이 되었다.
 -exec.jar 파일이 실행용 jar파일이고, 그냥 jar파일은 libary용 jar파일이다.  
 실행용 jar 파일은 그냥 생성이 되는것이 아닌데, 여기서는 따로 처리를 해줘서 생성이 된 것이다.  
 clazz/pom.xml 을 보게되면 uengine-five 라는 parent에서 상속을 받았다.  
+#### clazz/pom.xml
 ```xml
     <parent>
         <groupId>org.uengine</groupId>
         <artifactId>uengine-five</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+```
+#### /uengine-five/pom.xml
+```xml
+<build>
+   <plugins>
+      <plugin>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-maven-plugin</artifactId>
+         <configuration>
+            <addResources>true</addResources>
+         </configuration>
+         <executions>
+            <execution>
+               <goals>
+                  <goal>repackage</goal>
+               </goals>
+               <configuration>
+                  <classifier>exec</classifier>
+               </configuration>
+            </execution>
+         </executions>
+      </plugin>
+      <plugin>
+         <groupId>com.spotify</groupId>
+         <artifactId>docker-maven-plugin</artifactId>
+         <version>1.0.0</version>
+         <configuration>
+            <imageName>${project.artifactId}</imageName>
+            <dockerDirectory>.</dockerDirectory>
+            <resources>
+               <resource>
+                  <targetPath>/</targetPath>
+                  <directory>${project.build.directory}</directory>
+                  <include>${project.build.finalName}.jar</include>
+               </resource>
+            </resources>
+         </configuration>
+      </plugin>
+   </plugins>
+</build>
 ```
