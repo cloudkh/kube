@@ -24,3 +24,17 @@ workload distribution engine
 유리벽처럼 금방금방 만들었다가, 사라지는 존재이다. 물리적인 형태는 CPU안의 하나의 Process이다.  
 이것들을 잘 managing할 수 있는 것이 Docker Engine이고, Docker에서 자체적인 워크로드 분산 엔진을  
 만든것이 docker Swarm 이다. Kubernates 와 경쟁을 하다가 밀린 후 현재는 교육용 목적으로 많이 쓰인다.  
+
+docker 설치
+------
+여기서는 linux centos7.2 기준으로 설치를 하도록 한다.  
+```
+$ curl -fsSL https://get.docker.com/ | sudo sh
+$ docker version
+```
+![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/clazz-execJar.png)
+
+```
+$ curl -fsSL https://get.docker.com/ | sudo sh
+$ docker version
+```
