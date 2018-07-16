@@ -1,7 +1,7 @@
 Spring Boot 와 Spring Cloud 기본
 ===============
 
-microservice
+Micro Service
 ------
 1. [[Gearing up the MSA]]
 1. [[Public Education Example]]
