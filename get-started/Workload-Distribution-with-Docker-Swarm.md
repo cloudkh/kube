@@ -93,3 +93,16 @@ Creating service getstartedlab_registry
 Creating service getstartedlab_class-api
 Creating service getstartedlab_course-api
 ```
+하나씩 가상의 network 를 하나씩 만들어 주고, 서비스를 하나씩 docker run을 실행 시켜준다.  
+
+```
+$ sudo docker service ls
+ID                  NAME                       MODE                REPLICAS            IMAGE                            PORTS
+r942gyy8dto2        getstartedlab_class-api    replicated          2/2                 clazz-service:latest             *:8088->8080/tcp
+tpya4amt0nrq        getstartedlab_course-api   replicated          2/2                 course-service:latest            *:8089->8080/tcp
+70408gcri6m9        getstartedlab_proxy        replicated          1/1                 api-gateway:latest               *:8080->8080/tcp
+qtrs2bj6jz46        getstartedlab_registry     replicated          1/1                 uengine-registry-server:latest   *:8761->8761/tcp
+
+$ sudo docker container ls
+```
+REPLICAS 로 설정한 서비스들이 각자 갯수만큼 떠있어서 `docker container ls` 를 하였을때 총 6개의 container가 돌아가고 있는것을 확인 할 수 있다.  
