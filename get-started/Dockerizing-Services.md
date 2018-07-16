@@ -25,16 +25,38 @@ workload distribution engine
 이것들을 잘 managing할 수 있는 것이 Docker Engine이고, Docker에서 자체적인 워크로드 분산 엔진을  
 만든것이 docker Swarm 이다. Kubernates 와 경쟁을 하다가 밀린 후 현재는 교육용 목적으로 많이 쓰인다.  
 
-docker 설치
-------
+#### docker 설치
 여기서는 linux centos7.2 기준으로 설치를 하도록 한다.  
 ```
 $ curl -fsSL https://get.docker.com/ | sudo sh
 $ docker version
 ```
+
+Dockerizing Services
+------ 
+Dockerize를 한다는 것은 기존에 유지하고 있던 service를 docker 기반으로 바꾼다는 것을 의미한다.  
+작은 의미에서는 단순히 docker image 를 만드는 것이고 큰 의미는 docker 를 활용해서 cluster 를 꾸미고 여기에 기존의 서비스를 빌드/배포할 체계를 만드는 것이다.
+
+Dockerize를 시험해 보기 위하여 기존에 받았던 MSA프로젝트를 활용한다.  
+```
+$ git clone https://github.com/uengine-oss/msa-tutorial-class-management-msa.git
+$ cd msa-tutorial-class-management-msa
+$ cd clazz
+$ mvn package -B
+```
 ![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/clazz-execJar.png)
 
-```
-$ curl -fsSL https://get.docker.com/ | sudo sh
-$ docker version
+> `mvn package` 는 파일을 compile하고 JAR같은 배포 가능한 형식으로 패키지를 하라는 명령이다.  
+> '-B' 옵션은 비-대화형 모드로 mvn 실행 중 대화형 입력 모드가 나오면 기본값으로 처리하라는 의미이다.  
+
+target에 두개의 jar파일이 생성이 되었다.  
+-exec.jar 파일이 실행용 jar파일이고, 그냥 jar파일은 libary용 jar파일이다.  
+실행용 jar 파일은 그냥 생성이 되는것이 아닌데, 여기서는 따로 처리를 해줘서 생성이 된 것이다.  
+clazz/pom.xml 을 보게되면 uengine-five 라는 parent에서 상속을 받았다.  
+```xml
+    <parent>
+        <groupId>org.uengine</groupId>
+        <artifactId>uengine-five</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 ```
