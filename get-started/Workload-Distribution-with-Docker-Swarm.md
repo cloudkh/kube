@@ -122,4 +122,12 @@ $ docker container ls
 $ docker container ls
 ```
 
+#### 서비스 동작 확인
+```
+$ http 192.168.0.17:8089/courses
+$ http 192.168.0.17:8080/courses
+```
+> `http 192.168.0.17:8080/courses` 를 하게 되면 ZuulException 이 발생하게 되는데  
+> 현재 예제에서는 local 기준으로 eureka 를 붙여놔서 생기는 Error 이다.  
+
 여기까지가 기본적인 Workload Distribution Engine의 동작 구조이다.   
