@@ -9,7 +9,7 @@ services:
   class-api:
     image: clazz-service:latest
     deploy:
-      replicas: 2
+      replicas: 2  # 작업자(인스턴스)는 2개를 항상 유지한다
       restart_policy:
         condition: on-failure
     volumes:
@@ -27,7 +27,7 @@ services:
     volumes:
       - /tmp:/tmp
     ports:
-      - "8088:8080"
+      - "8089:8080"
     depends_on:
       - registry
   proxy:
