@@ -106,3 +106,14 @@ qtrs2bj6jz46        getstartedlab_registry     replicated          1/1          
 $ sudo docker container ls
 ```
 REPLICAS 로 설정한 서비스들이 각자 갯수만큼 떠있어서 `docker container ls` 를 하였을때 총 6개의 container가 돌아가고 있는것을 확인 할 수 있다.  
+restart_policy 옵션에 의하여 class-api 의 한개의 서비스를 kill 하여도 서비스가 다시 살아나는것을 확인할수 있다.  
+
+#### Self-Healing
+```
+$ docker ps
+$ docker kill r942gyy8dto2
+## 바로 실행하여 서비스가 kill 된것 확인
+$ docker container ls
+## 조금뒤에 서비스가 다시 살아나는것 확인
+$ docker container ls
+```
