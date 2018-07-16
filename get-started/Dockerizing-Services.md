@@ -143,3 +143,9 @@ Successfully built bd09f73f2ee1
 Successfully tagged clazz-service:latest
 ```
 해석하자면 현재 폴더 (.) 에서 -t(태그) 를 주어서 docker build를 하라는 의미이다.  
+`docker images` 를 하여 방금 만든 image를 확인 할 수 있다.  
+```
+$ sudo docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+clazz-service       latest              bd09f73f2ee1        4 minutes ago       264MB
+```
