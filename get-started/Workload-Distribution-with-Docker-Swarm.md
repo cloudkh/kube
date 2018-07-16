@@ -10,7 +10,7 @@ services:
     image: clazz-service:latest
     deploy:
       replicas: 2  # 작업자(인스턴스)는 2개를 항상 유지한다
-      restart_policy:
+      restart_policy: # health check
         condition: on-failure
     volumes:
       - /tmp:/tmp
@@ -65,4 +65,31 @@ uengine-registry-server   latest              315b6ac665a9        9 seconds ago 
 api-gateway               latest              5045d31821f4        33 seconds ago      184MB
 course-service            latest              404c3bd9dae8        57 seconds ago      264MB
 clazz-service             latest              bd09f73f2ee1        2 hours ago         264MB
+```
+
+https://github.com/uengine-oss/msa-tutorial-class-management-msa 프로젝트를 보시면  
+최상위 parent 프로젝트에서 modules 로 child들을 묶어 놓고, docker-compose.yml 을 생성하였고,  
+각자의 module 에 Dockerfile을 생성 하여 구성하였다.
+```
+$ ls
+README.md  clazz   customer            pom.xml        registry-service  sme
+calendar   course  docker-compose.yml  proxy-service  shared-model
+```
+
+#### 시작전에 docker swam을 실행하여야 한다.  
+```
+$ docker swarm init
+docker swarm join --token SWMTKN-1-4mclslij7bs1n52zolzv4uqc68756bkrv5gwnmg4qg3lmk9bth-dnd0uczlrlr8dj7et1lzrbzbs 192.168.0.17:2377
+```
+`docker swarm init` 을 하게 되면 join 문구가 나오는데 init을 한 서버가 master가 되고, join을 통하여  
+여러대의 서버를 worker 로 묶은 후 cluster로 구성을 할 수 있다.   
+
+#### 이제 deploy 를 한다.  
+```
+$ sudo docker stack deploy -c docker-compose.yml getstartedlab
+Creating network getstartedlab_default
+Creating service getstartedlab_proxy
+Creating service getstartedlab_registry
+Creating service getstartedlab_class-api
+Creating service getstartedlab_course-api
 ```
