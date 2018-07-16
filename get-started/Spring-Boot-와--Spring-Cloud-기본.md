@@ -21,24 +21,23 @@ Spring HATEOAS API
 
 Eureka and Zuul
 ------
-10. [[Setting Zuul Proxy]]
 10. [[ Eureka and Zuul]]
 10. [[ Implementing Zuul Filter]]
 
 Docker
 -----
-13. [[ Dockerizing Services]]
-13. [[ Workload Distribution with Docker Swarm]]
+12. [[ Dockerizing Services]]
+12. [[ Workload Distribution with Docker Swarm]]
 
 VueJS
 ------
-15. [[Service Mashup with User Interfaces]]
-15. [[Implementing Course Management Front]]
-15. [[Detail UI implementation]]
-15. [[Hybind for composing User Interfaces]]
-15. [[Incorporating Components and managing components]]
+14. [[Service Mashup with User Interfaces]]
+14. [[Implementing Course Management Front]]
+14. [[Detail UI implementation]]
+14. [[Hybind for composing User Interfaces]]
+14. [[Incorporating Components and managing components]]
 
 Kafka
 ------
-20. [[Inter-microservices invocation and event pub sub with Kafka]]
-20. [[Setting Kafka and Spring Cloud Kafka Client and Orchestration with BPMN]]
+19. [[Inter-microservices invocation and event pub sub with Kafka]]
+19. [[Setting Kafka and Spring Cloud Kafka Client and Orchestration with BPMN]]
