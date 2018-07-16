@@ -149,3 +149,9 @@ $ sudo docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 clazz-service       latest              bd09f73f2ee1        4 minutes ago       264MB
 ```
+
+이제 만들어진 docker를 실행 시킬 차례이다.  
+```
+$ sudo docker run clazz-service -P 8080:8081
+```
+> -P 옵션은 호스트와 컨테이너의 포트를 연결(포워딩)  
