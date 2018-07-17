@@ -40,6 +40,7 @@ public interface SharedCalendarService {
 이제 이렇게 FeignClient로 선언한 서비스를 다른 마이크로서비스에서 호출하여 보겠다.  
 보통 REST 방식으로 다른 서비스를 API형식으로 call을 하여 return data로 작업하는 것이  
 익숙 할수도 있지만, FeignClient 만의 장점도 있다는 것을 아래 코드를 통하여 알 수 있다.  
+> https://github.com/uengine-oss/msa-tutorial-class-management-msa/blob/master/clazz/src/main/java/hello/Clazz.java  
 #### clazz/Clazz.java
 ```java
 @Entity
@@ -62,3 +63,5 @@ public class Clazz{
 ```
 `SharedCalendarService sharedCalendarService = 
                 Application.applicationContext.getBean(SharedCalendarService.class);` 과 같은 방식으로  
+다른 서버에 작동하고 있는 마이크로 서비스를 가져와서,  
+`sharedCalendarService.getSchedules` 를 local 객체처럼 사용한 것을 볼 수 있다.   
