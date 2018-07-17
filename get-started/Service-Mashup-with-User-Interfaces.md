@@ -30,7 +30,15 @@ Model-View-ViewModel 패턴.
 Excel 처럼 모델이 바뀌면 화면도 바뀐다는 개념  
 
 #### 3. W3C Web Component Standard - Domain HTML Tags
-
+기존에는 web page 를 하나 구성할적에 빨간색 박스 처럼 구성을 하였다.  
+ABC의 구성요소가 있을적에 하나의 page 에서 해당 기능들을 묶어서 사용을 하였는데,  
+소규모 화면이라면 각자 기능들의 name space 를 회피하여 구성이 가능하지만,  
+서비스가 커지고 코드량이 늘어나면 name space 정하고, 구성하는데 충돌이 생길 수 있다.  
+이것을 해결하고자 객체 지향 언어처럼 하나의 프로그램이지만 그 안에서 여러개의 프로그램으로 
+관심사를 분리 할수있는 `class` 라고하는 interface 가 웹에도 나오게 되었다.  
+이것의 표준이 W3C Web Component 라고 하고, 아래의 그림의 파란색 박스처럼 구성된다.  
+ 
+![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/w3cwebcomponents.png)
 
 MVVM 은 도메인에서 정의한 Tags 를 하나의 HTML Tags 처럼 정의하여 사용한다.  
 이전 MSA 의 예제에서 사용하였던 course 나 instructor 등의 도메인 객체들을  
