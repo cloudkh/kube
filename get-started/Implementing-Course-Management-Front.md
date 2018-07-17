@@ -1,9 +1,10 @@
 이번시간은 VueJS 를 사용하여 MSA 예제에서 사용하였던 Course 서비스를 UI 로 구성한다.  
-시작전에 VueJS 를 어떻게 사용하는지 읽어보시길 바란다.  
+
+시작전에 VueJS 사용법을 간단히 학습한다.  
 
 VueJS Basics
 ------
-* 선행 학습 : [VueJS Basics#very-very-first-example](https://github.com/TheOpenCloudEngine/micro-service-architecture-vuejs/wiki/Vue-JS-Basics#very-very-first-example)  
+* 기본 학습 : [VueJS Basics#very-very-first-example](https://github.com/TheOpenCloudEngine/micro-service-architecture-vuejs/wiki/Vue-JS-Basics#very-very-first-example)  
 
 VueJS 는 java 의 class 라고 생각하면 된다.  
 class 는 member field 와 operation 로 구성이 되는데, VueJS 는 여기에 face 가 추가되었다.  
@@ -25,5 +26,6 @@ Component 의 개념은 남이 만들어 놓은 것을 언급만으로 사용할
 `<md-avatar>` , `<md-speed-dial>` 같은 custom tag 를 사용하여 언급만 하여 사용하였다.  
 이것이 의미하는 바는 마이크로서비스를 만드는 팀은 사용하려는 tag 만 만들어서 관리를 하고,  
 합쳐서 UI를 만드는 팀은 tag 를 사용하여 일관된 UI 구성을 할 수있는 장점이 있다.  
+여기 예제에서는 vuematerial 를 사용하였지만 계속 더 좋은 component 들이 나오고 있다.  
 > 참고 vuematerial site : https://vuematerial.io/getting-started  
 > 참고 component 자세한 설명 : http://www.metaworks4.io/  
