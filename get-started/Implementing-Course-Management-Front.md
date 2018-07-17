@@ -3,7 +3,7 @@
 
 VueJS Basics
 ------
-* 선행학습 : [VueJS Basics#very-very-first-example](https://github.com/TheOpenCloudEngine/micro-service-architecture-vuejs/wiki/Vue-JS-Basics#very-very-first-example)  
+* 선행 학습 : [VueJS Basics#very-very-first-example](https://github.com/TheOpenCloudEngine/micro-service-architecture-vuejs/wiki/Vue-JS-Basics#very-very-first-example)  
 
 VueJS 는 java 의 class 라고 생각하면 된다.  
 class 는 member field 와 operation 로 구성이 되는데, VueJS 는 여기에 face 가 추가되었다.  
@@ -23,3 +23,6 @@ Component 의 개념은 남이 만들어 놓은 것을 언급만으로 사용할
 ```
 아래 이미지는 sample code를 바로 html 로 만들어서 구성한 것이다.  
 ![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/IncorporatingComponents.png)
+
+https://vuematerial.io/getting-started
+http://www.metaworks4.io/
