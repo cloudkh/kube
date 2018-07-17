@@ -6,6 +6,6 @@ Service Mashup(Service Composition) 은 여러가지 서비스를 하나로 묶�
 최근에는 UI말고도 chatbot(대화형) 으로도 많이 Service Composition 을 하고 있다.   
 
 예전 방식같이 서비스를 바로 UI로 만들어 내는 상황(jsp, cs program등)에서는 UI로만 나타낼수 있었기 때문에
-서비스를 BPM에 묶는다던지, chatbot 에 사용하는 활용성이 떨어졌었다. 
+서비스를 BPM에 묶는다던지, chatbot 에 사용하는 활용성이 떨어졌었다.  
 그러나 각 서비스들을 HATEOAS 나 Restful하게 만들어 놓으면 필요에 따라서 UI 뿐만 아니라  
 chatbot이나 IOT등 여러가지 인터페이스 활용을 할 수가 있다.  
