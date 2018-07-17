@@ -1,0 +1,1 @@
+Detail UI implementation
