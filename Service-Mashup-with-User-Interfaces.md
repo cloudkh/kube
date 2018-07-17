@@ -26,7 +26,8 @@ facebook의 수많은 개발자 중의 하나가 된다면, 전체 화면을 구
 자기가 만든 서비스만 잘 구성시키면 되는 체계를 만들 수도 있다.  
 
 #### 2. MVVM
-Model-View-ViewModel패턴의 약자 이다. Excel처럼 모델이 바뀌면 화면도 바뀐다.  
+Model-View-ViewModel 패턴. 
+Excel 처럼 모델이 바뀌면 화면도 바뀐다는 개념  
 
 #### 3. W3C Web Component Standard - Domain HTML Tags
 MVVM 의 Web Component 표준을 이용하여  
