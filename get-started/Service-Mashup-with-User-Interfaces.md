@@ -1,7 +1,7 @@
 Service Mashup with User Interfaces
 -----
 Service Mashup(Service Composition) 은 여러가지 서비스를 하나로 묶어서 가치있는 무언가를 만드는 것이다.   
-여러가지 방법이 있겠지만 가장 많이 사용하는 방법은 User Interfaces(UI) 를 통하여  
+여러가지 방법이 있겠지만 가장 많이 사용하는 방법은 User Interface (UI) 를 통하여  
 마이크로 서비스를 묶는 Human Interaction 한 화면을 만드는 것이다.  
 최근에는 UI말고도 chatbot(대화형) 으로도 많이 Service Composition 을 하고 있다.   
 
@@ -59,3 +59,14 @@ CORS(Cross-Origin Resource Sharing) 문제가 생기게 된다.
 이것을 해결하기 위하여 하나의 동일 도메인 처럼 인식하도록 만드는 것이 필요하다.  
 이전에 설명하였듯이 Netflix Zuul을 사용한 API Gateway로 CORS문제를 해결할수있다.  
 
+User Interface Design
+------
+* Responsive Web
+> 코드를 여러번 만들지 않고, 하나의 코드로 화면의 사이즈에 마추고,  
+> Android 나 IOS 구분 없이 한번에 재사용 할 수 있도록 구성하는 방식  
+
+* Material Design
+> 여러가지 단말의 특성을 타지 않고, 사용성을 좋게 하는 Design 방식
+
+#### VueJS같은 경우는 생태계가 잘 만들어져 있어서 Material Design 을 쓰겠다는 언급과, 
+Tag 들의 유형들만 알고있으면 자동 레이아웃으로 디자인이 되어 편하게 사용 할 수있다.  
