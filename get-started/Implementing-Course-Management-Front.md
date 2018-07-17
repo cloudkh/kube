@@ -21,8 +21,13 @@ Component 의 개념은 남이 만들어 놓은 것을 언급만으로 사용할
 <link rel="stylesheet" href="https://unpkg.com/vue-material@0.7.1/dist/vue-material.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 ```
+
 아래 이미지는 sample code를 바로 html 로 만들어서 구성한 것이다.  
+`<md-avatar>` , `<md-speed-dial>` 같은 custom tag 를 사용하여 언급만 하여 사용하였다.  
+이것이 의미하는 바는 마이크로서비스를 만드는 팀은 사용하려는 tag 만 만들어서 관리를 하고,  
+합쳐서 UI를 만드는 팀은 tag 를 사용하여 일관된 UI 구성을 할 수있는 장점이 있다.  
+
 ![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/IncorporatingComponents.png)
 
-https://vuematerial.io/getting-started
-http://www.metaworks4.io/
+> 참고 vuematerial site : https://vuematerial.io/getting-started  
+> 참고 component 자세한 설명 : http://www.metaworks4.io/  
