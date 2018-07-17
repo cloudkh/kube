@@ -16,7 +16,7 @@ Spring HATEOAS API
 ----
 7. [[Spring MVC 기반 RPC]]
 7. [[Spring HATEOAS API]]
-7. [[Running Micro Services and Integration with Feign Client]]
+7. [[Integration with Feign Client]]
 
 Eureka and Zuul
 ------
