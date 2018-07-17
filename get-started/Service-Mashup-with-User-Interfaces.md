@@ -68,5 +68,4 @@ User Interface Design
 * Material Design
 > 여러가지 단말의 특성을 타지 않고, 사용성을 좋게 하는 Design 방식
 
-#### VueJS같은 경우는 생태계가 잘 만들어져 있어서 Material Design 을 쓰겠다는 언급과, 
-Tag 들의 유형들만 알고있으면 자동 레이아웃으로 디자인이 되어 편하게 사용 할 수있다.  
+#### VueJS같은 경우는 생태계가 잘 만들어져 있어서 Material Design 을 쓰겠다는 언급과, Tag 들의 유형들만 알고있으면 자동 레이아웃으로 디자인이 되어 편하게 사용 할 수있다.  
