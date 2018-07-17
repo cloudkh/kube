@@ -15,7 +15,7 @@ class 는 member field 와 operation 로 구성이 되는데, VueJS 는 여기�
 Component 의 개념은 남이 만들어 놓은 것을 언급만으로 사용할 수 있다는 의미이다.  
 생태계가 잘 구성이 되어 수많은 Vuejs 개발자들이 많은 컴포넌트들을 만들어 놓았다.  
 우리는 이것을 아래처럼 선언만 하여 사용 할 수 있다.  
-```javascript
+```hrml
 <script src="https://unpkg.com/vue-material@0.7.1"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/vue-material@0.7.1/dist/vue-material.css">
