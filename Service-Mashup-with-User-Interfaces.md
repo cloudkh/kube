@@ -19,10 +19,10 @@ Service Mashup 필요기술
 1. Cross-Origin Resource Sharing with API Gateway ( Netflix Zuul )
 
 #### 1. Extended Role of Front-end in MSA : Service Aggregation
-아마존이나 facebook은 겉보기에는 하나의 UI로 보이지만 
-내부적으로는 천개 이상의 microservice들의 집합이다.  
-facebook의 버튼 하나 클릭시 해당 서비스로 이동을 하여 작업이 이루어 진다.  
-facebook의 수많은 개발자 중의 하나가 된다면, 전체 화면을 구성할 필요는 없고,  
+아마존이나 facebook 은 겉보기에는 하나의 UI로 보이지만 
+내부적으로는 천개 이상의 microservice 들의 집합이다.  
+facebook 의 버튼 하나 클릭시 해당 서비스로 이동을 하여 작업이 이루어 진다.  
+facebook 의 수많은 개발자 중의 하나가 된다면, 전체 화면을 구성할 필요는 없고,  
 자기가 만든 서비스만 잘 구성시키면 되는 체계를 만들 수도 있다.  
 
 #### 2. MVVM
@@ -30,13 +30,13 @@ Model-View-ViewModel 패턴.
 Excel 처럼 모델이 바뀌면 화면도 바뀐다는 개념  
 
 #### 3. W3C Web Component Standard - Domain HTML Tags
-MVVM 의 Web Component 표준을 이용하여  
-도메인에서 정의한 Tag들을 하나의 HTML Tag처럼 정의를 할 수 있다.  
-이전 MSA의 예제에서 사용하였던 course 나 instructor 등의 도메인 객체들을  
+
+
+MVVM 은 도메인에서 정의한 Tags 를 하나의 HTML Tags 처럼 정의하여 사용한다.  
+이전 MSA 의 예제에서 사용하였던 course 나 instructor 등의 도메인 객체들을  
 <course> 형식으로 domain specific 하게 정의를 하여 사용 할 수있다.  
-이렇게 정의한 Domain Tag들이 Back-End의 마이크로 서비스의 resource와 맞물려  
-자율적으로 상호 연계를 하여 화면에 표출이 되게 구성 할 수있다.  
-이런것을 표준으로 구성을 할적에 W3C Web Component가 가치가 있어진다.  
+이렇게 정의한 Domain Tags 들이 Back-End 의 마이크로 서비스의 resource 와 맞물려  
+자율적으로 상호 연계를 하여 화면에 표출이 되게 구성 할 수 있다.  
 
 #### 4. Implementation : Polymer and VueJS
 MVVM 의 실제 구현체로는 구글이 만든 Polymer, Angular2 나 
