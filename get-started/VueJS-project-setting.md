@@ -85,3 +85,12 @@ npm 설정을 관리하는 `package.json` 파일을 잠시 살펴보면
  "3.6.0" <=  "^3.6.0"  < "4.0.0"  
 실제 프로젝트에서는 `"webpack": "3.6.0"` 처럼 정확한 버전을 fix해서 사용하는걸 추천한다.  
 > `devDependencies` 의 모듈들중 `babel` 은 ES6 문법을 사용하기 위한 모듈이다.  
+
+#### 프로젝트 실행
+```
+$ npm run dev
+Your application is running here: http://localhost:8080         
+```
+
+프로젝트를 구동시키면 로컬 서버를 생성하며 http://localhost:8080 를 통하여 브라우저에서 접근이 가능하다.  
+port를 변경시키려면 config/index.js 파일에서 변경을 하여 주면 된다.  
