@@ -24,7 +24,7 @@
 </script>
 ```
 
-Implementing Course Management
+마이크로 서비스와 UI 연결
 ------
 처음부터 파일을 생성하여 만들수도 있지만, template 프로젝트를 다운받은 후 조금씩 변환하면서  
 코드를 살펴보도록 하겠다.  
@@ -54,3 +54,14 @@ $ mvn spring-boot:run
 ## eureka 서비스 8761 port
 $ mvn spring-boot:run 
 ```
+
+브라우저의 http://localhost:8761/ 로 접근을 하여 3개의 서비스가 정상적으로 registered 되었는지 확인한다.  
+브라우저의 http://localhost:8082 접근하여 화면상의 add , update , remove 등을 통하여  
+데이터를 넣고 뺼 수 있는 것을 확인 할 수 있다.  
+
+프로젝트 구조 설명
+------
+
+
+Course Management 구조
+------
