@@ -31,4 +31,5 @@ $ git clone https://github.com/uengine-oss/msa-tutorial-class-management-fronten
 $ cd msa-tutorial-class-management-frontend
 $ npm install
 $ npm run dev
+> Listening at http://localhost:8082
 ```
