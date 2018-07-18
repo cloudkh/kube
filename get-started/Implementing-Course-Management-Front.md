@@ -59,9 +59,10 @@ $ mvn spring-boot:run
 브라우저의 http://localhost:8082 접근하여 화면상의 add , update , remove 등을 통하여  
 데이터를 넣고 뺼 수 있는 것을 확인 할 수 있다.  
 
-프로젝트 구조 설명
+프로젝트 구조
 ------
 
 
-Course Management 구조
+parent and child component 통신방법
 ------
+Course and CourseManagement 상호통신 방법
