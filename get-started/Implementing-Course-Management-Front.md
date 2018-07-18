@@ -29,4 +29,6 @@ Implementing Course Management
 ```
 $ git clone https://github.com/uengine-oss/msa-tutorial-class-management-frontend.git
 $ cd msa-tutorial-class-management-frontend
+$ npm install
+$ npm run dev
 ```
