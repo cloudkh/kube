@@ -32,6 +32,7 @@ VueJS
 ------
 14. [[Service Mashup with User Interfaces]]
 14. [[VueJS Basics]]
+14. [[VueJS project setting]]
 14. [[Implementing Course Management Front]]
 14. [[Detail UI implementation]]
 14. [[Hybind for composing User Interfaces]]
@@ -39,7 +40,7 @@ VueJS
 
 Kafka
 ------
-20. [[Inter-microservices invocation and event pub sub with Kafka]]
-20. [[Setting Kafka and Spring Cloud Kafka Client and Orchestration with BPMN]]
+21. [[Inter-microservices invocation and event pub sub with Kafka]]
+21. [[Setting Kafka and Spring Cloud Kafka Client and Orchestration with BPMN]]
 ------
 [[← Back to homepage|Home]]
