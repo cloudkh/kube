@@ -32,6 +32,7 @@ Docker
 VueJS
 ------
 14. [[Service Mashup with User Interfaces]]
+14. [[VueJS Basics]]
 14. [[Implementing Course Management Front]]
 14. [[Detail UI implementation]]
 14. [[Hybind for composing User Interfaces]]
@@ -39,5 +40,5 @@ VueJS
 
 Kafka
 ------
-19. [[Inter-microservices invocation and event pub sub with Kafka]]
-19. [[Setting Kafka and Spring Cloud Kafka Client and Orchestration with BPMN]]
+20. [[Inter-microservices invocation and event pub sub with Kafka]]
+20. [[Setting Kafka and Spring Cloud Kafka Client and Orchestration with BPMN]]
