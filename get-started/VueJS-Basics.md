@@ -1,4 +1,6 @@
 VueJS 사용법을 간단히 학습한다.  
+VueJS 는 우리나라에 생태계가 잘 구성되어 있고, 한글 문서로 된 guide 도 잘 되어있다.  
+여기에서는 간단한 사용법을 익히고, 자세한 학습은 [guide 문서](https://kr.vuejs.org/v2/guide/index.html) 에서 참조 하기바란다.
 
 VueJS Basics
 ------
@@ -69,4 +71,4 @@ gridData 라는 외부 data 를 eval 하여 props 의 data 에 값을 주입(bin
 만약 `:` 이 없이 `data="gridData"` 라고만 사용하였다면, gridData 라고하는  
 string 문자열을 data 에 넣겠다는 의미이다.  
 
-* vuejs에 대한 좀더 자세한 학습은 [guide 문서](https://vuejs.org/v2/guide/index.html) 에서 참조  
+
