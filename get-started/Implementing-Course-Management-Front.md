@@ -69,3 +69,5 @@ angular 에서 `ng` 라는 prefix를 사용하였다면, vuejs에서는 `v-`를 
 gridData 라는 외부 data 를 eval 하여 props 의 data 에 값을 주입(bind) 시킨 것이다.  
 만약 `:` 이 없이 `data="gridData"` 라고만 사용하였다면, gridData 라고하는  
 string 문자열을 data 에 넣겠다는 의미이다.  
+
+* vuejs에 대한 좀더 자세한 학습은 [guide 문서](https://vuejs.org/v2/guide/index.html) 에서 참조  
