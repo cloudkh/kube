@@ -56,7 +56,7 @@ $ npm install
 ![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/vue-webpack.png)
 주요 파일들을 살펴보면  
 `index.html` : 말이 필요없다시피 최초 진입점이다.  
-`package.json` : npm을 설정하는 역할을 한다. `npm install` 시 package.json 파일의 dependencies, devDependencies 에 설정한 모듈명과 버전을 확인하면서 설치를 한다. 
+`package.json` : npm을 설정하는 역할을 한다. `npm install` 시 package.json 파일의 dependencies, devDependencies 에 설정한 모듈명과 버전을 확인하면서 설치를 한다.  
 `node_modules` : `npm install` 후 생성되는 폴더로 nodejs 모듈들을 모아놓는다. 용량이 커서 형상관리에서 제외시킨다.  
 `build` : `npm build` 시 필요한 파일들을 관리한다.  
 `config` : 설정파일들을 관리  
