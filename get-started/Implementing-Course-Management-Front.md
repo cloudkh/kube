@@ -26,10 +26,31 @@
 
 Implementing Course Management
 ------
+처음부터 파일을 생성하여 만들수도 있지만, template 프로젝트를 다운받은 후 조금씩 변환하면서  
+코드를 살펴보도록 하겠다.  
+
+#### msa-tutorial-class-management-frontend 다운로드
 ```
 $ git clone https://github.com/uengine-oss/msa-tutorial-class-management-frontend.git
 $ cd msa-tutorial-class-management-frontend
 $ npm install
 $ npm run dev
 > Listening at http://localhost:8082
+```
+
+브라우저를 열어서 http://localhost:8082 로 접근을 하면 iam 로그인 화면이 나온다.  
+test 계정인 test1234@test.com / test1234 로 로그인을 한다.  
+
+마이크로 서비스들과의 연결확인을 위하여 clazz, coures, zuul, eureka 서비스들을 띄운다.  
+port 충돌이 안나도록 서로 다른 port로 기동한다.  
+```
+## 각 서비스 경로로 이동 
+## clazz 서비스
+$ mvn spring-boot:run -Dserver.port=8088 
+## course 서비스
+$ mvn spring-boot:run -Dserver.port=8081 
+## zuul 서비스 8080 port
+$ mvn spring-boot:run 
+## eureka 서비스 8761 port
+$ mvn spring-boot:run 
 ```
