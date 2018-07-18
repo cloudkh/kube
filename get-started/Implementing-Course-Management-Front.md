@@ -33,6 +33,7 @@ Component 의 개념은 남이 만들어 놓은 것을 언급만으로 사용할
 > 참고 component 자세한 설명 : http://www.metaworks4.io/  
 
 * 세번째 학습 : [VueJS Basics#ajax-and-material](https://github.com/TheOpenCloudEngine/micro-service-architecture-vuejs/wiki/Vue-JS-Basics#ajax-and-material)  
+
 예제 script에 보면  
 `Vue.component('demo-grid',{})` 는 demo-grid 라는 custom component를 만든 것이다.  
 `template` 은 얼굴이다. id가 grid-template 이라는 부분을 가져와서 자기가 어떻게 생겼다고 알려준다.  
@@ -71,3 +72,6 @@ gridData 라는 외부 data 를 eval 하여 props 의 data 에 값을 주입(bin
 string 문자열을 data 에 넣겠다는 의미이다.  
 
 * vuejs에 대한 좀더 자세한 학습은 [guide 문서](https://vuejs.org/v2/guide/index.html) 에서 참조  
+
+Implementing Course Management
+------
