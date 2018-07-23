@@ -59,8 +59,44 @@ $ mvn spring-boot:run
 브라우저의 http://localhost:8082 접근하여 화면상의 add , update , remove 등을 통하여  
 데이터를 넣고 뺼 수 있는 것을 확인 할 수 있다.  
 
-프로젝트 구조
+Vue Framework Process
 ------
+이제 template 프로젝트의 실행 구조를 파악해 보겠다.  
+파일의 구조가 복잡하다고 생각되지만, 실제로 [[VueJS project setting]] 에서 생성한 프로젝트에,  
+src 폴더에 약간의 코드만 넣었을뿐 나머지 구조는 똑같다.  
+
+1. 위에서 프로젝트를 실행할적에 `npm run dev` 라는 CLI명령어를 넣었다.  
+이것을 해석하자면, `package.json` 파일의 dev 라는 script를 실행시키라는 말이다.  
+`package.json` 의 dev script 는 `node build/dev-server.js` 를 실행하는 명령어 이다.     
+
+2. `build/dev-server.js` 파일을 보면 `require('./webpack.prod.conf')` 부분에서 설정파일을 가져오고,  
+`webpack.prod.conf` 파일은 `webpack.base.conf` 파일을 merge 하도록 되어있다.  
+`webpack.base.conf` 에서는 `./src/main.js` 를 entry 시작점으로 바라보고 있다.  
+
+3. `./src/main.js` 파일이 해당 프로젝트의 최초 진입점이고 아래 코드 처럼
+id 가 app인 element를 찾아서 Vue로 매핑을 하고 있다.  
+그리고 App 이라는 components 를 찾아가라 라고 명시하고 있다.  
+`import App from './App'` 처럼 쓰인 것은 App.vue 파일을 상대경로로 찾아서 App 이라는 이름으로  
+사용 하겠다는 의미이다.  
+```
+import App from './App'
+new Vue({
+  el: '#app',
+  template: '<App/>',
+  components: {App},
+```
+
+4. 이제 `src/App.vue` 파일을 살펴보자.  template 으로 시작을 하여 component라고 명시한다.  
+<router-view></router-view> 는 여기에 route에서 나오는 url로 매핑을 시켜  
+page 들을 설정하겠다는 의미이다. route 부분은 `router/index.js` 파일에 있다.  
+```
+<template>
+  <div>
+    <router-view></router-view>
+```
+
+5. Vue를 시작할때 new Vue 형식으로 시작을 하는줄 알았지만, <script> 코드 안쪽에    
+`export default` 라고 설정 부분이 있다.  
 
 
 parent and child component 통신방법
