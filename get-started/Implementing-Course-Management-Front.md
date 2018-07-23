@@ -97,7 +97,19 @@ page 들을 설정하겠다는 의미이다. route 부분은 `router/index.js` �
 
 5. Vue를 시작할때 new Vue 형식으로 시작을 하는줄 알았지만, <script> 코드 안쪽에    
 `export default` 라고 설정 부분이 있다.  
-
+이는 default module을 생성하여 node 에 export 를 하는 것이다.  
+이렇게 하였을때 해당 파일명으로 `import App from './App'` 이 사용이 가능하여 진다.  
+만약 default 가 아니고 named 로 설정을 하게 된다면, 아래와 같이 사용가능하다.  
+```
+//------ lib.js ------
+export function diag(x, y)'
+//------ main.js ------
+import { diag } from 'lib';
+console.log(diag(4, 3));
+// or
+import * as lib from 'lib';
+console.log(lib.diag(4, 3));
+```
 
 parent and child component 통신방법
 ------
