@@ -210,3 +210,5 @@ Course.vue 에서 `props: {value: Object}` 로 데이터를 받을 수가 있다
 v-model 을 사용하지 않고, 직접적으로 props를 지정을 할 수가 있다.  
 이때는 `<course :datas="courses[index]" >` 형식으로 데이터를 넘겨주고  
 Course.vue 에서 `props: {datas: Object}` 로 데이터를 받을 수가 있다.  
+> 그러나 :datas 처럼 사용을 하게 되면 화면단에서 앞으로 이와 같은 사용방법을 삭제 시킬 예정이고,  
+> 원치 않은 결과가 나올수 있다고 하는 warning 이 계속 떨어진다.  
