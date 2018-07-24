@@ -193,9 +193,13 @@ Vue.component('my-component', {
 ```
 
 3. props , data() , created() , watch 등 항목은 매우 중요한 컴포넌트의 옵션들이다.  
-자세한 설명은 [vue kr guide](https://kr.vuejs.org/v2/guide/components.html) 를 꼭 보시길 바란다.  
-예제코드에서는 jquery 방식으로 $.ajax( 와 `url: 'http://localhost:8080/courses'` 를 사용하였는데,  
-이는 매우 안좋은 코드이다. 안좋은 방법을 먼저 보여주고, 다음시간에 이것을 hybind 로 변경하는 법을 보겠다.  
-특히나 url 에 직적접으로 ip 와 port를 매핑시키면 안된다.  
-properties 파일로 url을 관리하는 방법도 좋은 방법이지만, hybind 를 사용하면 객체를 바로 매핑시킬수 있다.  
+자세한 설명은 [vue kr guide](https://kr.vuejs.org/v2/guide/components.html) 를 꼭 보길 바란다.  
+예제코드에서는 jquery 로 $.ajax( 와 `url: 'http://localhost:8080/courses'` 를 사용하였는데,  
+이는 매우 안좋은 코드이다.  
+특히나 코드상에서 url 에 직적접으로 ip 와 port 를 매핑시키면 안된다.  
+properties 파일로 url을 관리하는 방법도 좋은 방법이지만, hybind 를 사용하면 객체를 바로 매핑시킬 수 있다.  
 
+4. <course> 를 호출할때 @change="updateCourse" @remove="removeCourse" 등으로 현재 메서드와  
+child 에서 사용할 메서드를 v-on 시켜 놓았다.  
+이 말의 의미는 child 인 Course.vue 에서 change , remove 이벤트를 발행 ($emit) 하게되면,  
+parent 인 CourseManagement.vue 의 updateCourse, removeCourse 메서드가 실행된다.  
