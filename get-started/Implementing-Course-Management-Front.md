@@ -87,7 +87,7 @@ new Vue({
 ```
 
 4. 이제 `src/App.vue` 파일을 살펴보자.  template 으로 시작을 하여 component라고 명시한다.  
-<router-view></router-view> 는 여기에 route에서 나오는 url로 매핑을 시켜  
+`<router-view></router-view>` 는 여기에 route에서 나오는 url로 매핑을 시켜  
 page 들을 설정하겠다는 의미이다. route 부분은 `router/index.js` 파일에 있다.  
 ```
 <template>
@@ -165,7 +165,7 @@ export default new Router({
 화면에 들어가기 전에 RouterGuard 에서 user 체크를 하라는 의미이다.  
 meta 정보에 breadcrumb 이라는 네비게이션 컴포넌트에 Courses 라는 명칭을 넣어주었다.  
 
-2. CourseManagement.vue 에서는 <course> 커스텀 컴포넌트 태그를 사용하였다.  
+2. CourseManagement.vue 에서는 `<course>` 커스텀 컴포넌트 태그를 사용하였다.  
 커스텀 컴포넌트를 만드는 방법은 아래와 같이 두가지 방법이 있지만,  
 여기 예제에서는 export default 를 사용하여 Course.vue 파일을 바로 컴포넌트로 등록하였다.  
 ```javascript
@@ -199,7 +199,7 @@ Vue.component('my-component', {
 특히나 코드상에서 url 에 직적접으로 ip 와 port 를 매핑시키면 안된다.  
 properties 파일로 url을 관리하는 방법도 좋은 방법이지만, hybind 를 사용하면 객체를 바로 매핑시킬 수 있다.  
 
-4. <course> 를 호출할때 @change="updateCourse" @remove="removeCourse" 등으로 현재 메서드와  
+4. `<course>` 를 호출할때 @change="updateCourse" @remove="removeCourse" 등으로 현재 메서드와  
 child 에서 사용할 메서드를 v-on 시켜 놓았다.  
 이 말의 의미는 child 인 Course.vue 에서 change , remove 이벤트를 발행 ($emit) 하게되면,  
 parent 인 CourseManagement.vue 의 updateCourse, removeCourse 메서드가 실행된다.  
