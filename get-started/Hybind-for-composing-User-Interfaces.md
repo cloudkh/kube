@@ -1,1 +1,10 @@
-Hybind for composing User Interfaces
+이번시간에는 Hybind 를 통하여 마이크로 서비스와 UI를 연결하는 방법을 살펴본다.  
+
+그전에 Course.vue 와 CourseManagement.vue 의 설계 방법을 살펴보자.  
+두개의 파일을 하나로 묶어도 충분히 사용이 가능하지만,  
+Course.vue 파일은 완전히 외부와 단절을 시켜 놓았다.  
+이 말은 Course.vue 는 외부와 통신하는 ajax 코드도 없고, 단지 화면로직만 들어가 있다.  
+그리고 이것의 추가,삭제 등을 Management 에서 하도록 구현을 하여 역할분리를 확실히 하였다.  
+이는 local 개발 후 prod 환경으로 넘어갈적 같은 다른 back-end 를 호출하는 경우,  
+이렇게 분리를 하여 재사용도를 높일 수 있다.  
+
