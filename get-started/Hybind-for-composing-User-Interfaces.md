@@ -28,7 +28,7 @@ updateCourse(course){
   this.$http.put(course._links.self.href).then(response => {
     this.someData = response.body;
     alert('Successfully Updated!')
-  }, response => {
+  }, error => {
     // error callback
   });
   // 3번방법 : hybind
