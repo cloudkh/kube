@@ -199,7 +199,7 @@ Vue.component('my-component', {
 특히나 코드상에서 url 에 직적접으로 ip 와 port 를 매핑시키면 안된다.  
 properties 파일로 url을 관리하는 방법도 좋은 방법이지만, hybind 를 사용하면 객체를 바로 매핑시킬 수 있다.  
 
-4. `<course>` 를 호출할때 @change="updateCourse" @remove="removeCourse" 등으로 현재 메서드와  
+4. `<course>` 를 호출할때 @change="updateCourse" @remove="removeCourse" 등으로 현재 메서드와 
 child 에서 사용할 메서드를 v-on 시켜 놓았다.  
 이 말의 의미는 child 인 Course.vue 에서 change , remove 이벤트를 발행 ($emit) 하게되면,  
 parent 인 CourseManagement.vue 의 updateCourse, removeCourse 메서드가 실행된다.  
