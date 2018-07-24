@@ -203,3 +203,10 @@ properties 파일로 url을 관리하는 방법도 좋은 방법이지만, hybin
 child 에서 사용할 메서드를 v-on 시켜 놓았다.  
 이 말의 의미는 child 인 Course.vue 에서 change , remove 이벤트를 발행 ($emit) 하게되면,  
 parent 인 CourseManagement.vue 의 updateCourse, removeCourse 메서드가 실행된다.  
+
+5. v-model 이라는 문구는 vue의 약속어 이다. course 에 데이터를 주입하고 싶을적에  
+v-model="courses[index]" 로 전달을 하게 되면 Course.vue 에서 
+`props: {value: Object}` 로 데이터를 받을 수가 있다.  
+v-model 을 사용하지 않고, 직접적으로 props를 지정을 할 수가 있다.  
+이때는 `<course :datas="courses[index]" >` 형식으로 데이터를 넘겨주고  
+Course.vue 에서 `props: {datas: Object}` 로 데이터를 받을 수가 있다.  
