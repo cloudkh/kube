@@ -113,4 +113,89 @@ console.log(lib.diag(4, 3));
 
 parent and child component 통신방법
 ------
-Course and CourseManagement 상호통신 방법
+이제 이번시간의 주제인 course 마이크로 서비스와 UI를 연결해 보자.  
+#### src/router/index.js
+```javascript
+export default new Router({
+  //mode: 'history',
+  routes: [
+    {
+         children: [
+             {
+          path: 'courses',
+          name: 'courses',
+          component: CourseManagement,
+          beforeEnter: RouterGuard.requireUser,
+          meta: {
+            breadcrumb: 'Courses'
+          }
+        },
+````
+#### src/components/CourseManagement.vue
+```html
+<course v-model="courses[index]" v-for='(course, index) in courses' @change="updateCourse" @remove="removeCourse" @classes="jumpToClasses"></course>
+
+<script>
+  export default {
+    props: {},
+    data() {},
+    created() {
+      var me = this;
+      $.ajax(
+        {
+          url: 'http://localhost:8080/courses',
+          success: function(result){
+            me.courses = result._embedded.courses;
+          }
+        }
+      )
+    },
+    watch: {},
+    methods: {
+        updateCourse(course){
+            // do something
+        }
+    }
+  }
+</script>
+``` 
+
+1. 우선 index.js 에서 route를 설정하고 있다.  
+/courses 라는 path 로 화면이 호출되었을시 CourseManagement.vue 컴포넌트를 호출하고,  
+화면에 들어가기 전에 RouterGuard 에서 user 체크를 하라는 의미이다.  
+meta 정보에 breadcrumb 이라는 네비게이션 컴포넌트에 Courses 라는 명칭을 넣어주었다.  
+
+2. CourseManagement.vue 에서는 <course> 커스텀 컴포넌트 태그를 사용하였다.  
+커스텀 컴포넌트를 만드는 방법은 아래와 같이 두가지 방법이 있지만,  
+여기 예제에서는 export default 를 사용하여 Course.vue 파일을 바로 컴포넌트로 등록하였다.  
+```javascript
+// 1번 방법
+// Vue 인스턴스 생성
+new Vue({
+  el: '#some-element',
+  // 옵션
+})
+// 컴포넌트 등록
+Vue.component('my-component', {
+  // 옵션
+})
+
+// 2번방법
+// my-component.vue 파일
+<template>
+   <!-- html code -->
+</template>
+<script>
+  export default {
+      // 옵션
+  }
+</script>
+```
+
+3. props , data() , created() , watch 등 항목은 매우 중요한 컴포넌트의 옵션들이다.  
+자세한 설명은 [vue kr guide](https://kr.vuejs.org/v2/guide/components.html) 를 꼭 보시길 바란다.  
+예제코드에서는 jquery 방식으로 $.ajax( 와 `url: 'http://localhost:8080/courses'` 를 사용하였는데,  
+이는 매우 안좋은 코드이다. 안좋은 방법을 먼저 보여주고, 다음시간에 이것을 hybind 로 변경하는 법을 보겠다.  
+특히나 url 에 직적접으로 ip 와 port를 매핑시키면 안된다.  
+properties 파일로 url을 관리하는 방법도 좋은 방법이지만, hybind 를 사용하면 객체를 바로 매핑시킬수 있다.  
+
