@@ -53,7 +53,7 @@ if 문이나 for 문을 사용하실때, ng-model, ng-if(angularjs),
 ngModel, *ngIf(angular2+) 등을 사용해 본 경험이 있으실 것이라 생각한다.  
 angular 에서 `ng` 라는 prefix를 사용하였다면, vuejs에서는 `v-`를 사용한다.  
 `v-bind`,`v-on`,`v-for`,`v-if`,`v-model` 등 다양하게 있는데  
-이중에서 `v-bind`,`v-on` 는 Shothands 를 사용한다.  
+이중에서 `v-bind`,`v-on` 는 Shorthands 를 사용한다.  
 ```html
 <!-- full syntax -->
 <a v-bind:href="url"> ... </a>
