@@ -34,8 +34,8 @@ public class RegistryServiceApplication {
 이렇게 설정을 한 경우 추후 Registry server에 특정한 기능을 추가 하고 싶을때,  
 source code level에서 컨트롤이 가능하다는 장점이 있다.  
 
-기본적으로 spring-boot Application 의 커스터 마이징 레벨은 첫번째로 propertie 파일이다.  
-여기 예제에서는 application.yml 파일을 썼는데, propertie 와 yml 파일 모두 우선으로 읽어들인다.  
+기본적으로 spring-boot Application 의 커스터 마이징 레벨은 첫번째로 properties 파일이다.  
+여기 예제에서는 application.yml 파일을 썼는데, properties 와 yml 파일 모두 우선으로 읽어들인다.  
 최근 cloud computing 쪽은 yml 파일을 많이 사용중이다.  
 yml 파일은 사람이 읽고 쓰기 좋은 형식으로 (json처럼) key and value 방식으로 
 depth를 주어서 property를 관리하기가 편하다.
@@ -56,7 +56,7 @@ eureka:
   server:
     enableSelfPreservation: false
 ```
-위의 server, port 부분을 propertie 파일로 변경한다면  
+위의 server, port 부분을 properties 파일로 변경한다면  
 `server.port=8761` 이런식으로 변경이 가능하다.  
 
 마이크로 서비스는 Registry 가 항상 있어야 한다.  
