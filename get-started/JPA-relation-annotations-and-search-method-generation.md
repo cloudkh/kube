@@ -28,7 +28,7 @@ Clazz 입장에서 보면 Course 는 ManyToOne 이다. Clazz는 여러개 인데
 ```
 
 Course course를 `@ManyToOne`로 설정을 하였지만, 실제 DB테이블로 생각을 하였을때, 해당 테이블과 매칭을 할 수 있는 
-FK를 명시 해줘야 한다.  자동으로 생성을 해 줄수도 있지만, Course rootCourse; 같이 추가로 관계가 생성될수 있으니  
+FK(Foreign Key)를 명시 해줘야 한다.  자동으로 생성을 해 줄수도 있지만, Course rootCourse; 같이 추가로 관계가 생성될수 있으니  
 `@JoinColumn(name="COURSE_ID")` 과 같이 명시적으로 Column이름을 넣어 주어야 한다.  
 또한 java에서는 reserved keyword 규칙때문에 `Clazz` 라는 용어를 썼지만,  
 DB에서는 `class`가 예약어가 아니기 때문에  
