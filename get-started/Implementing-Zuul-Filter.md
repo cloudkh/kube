@@ -38,7 +38,7 @@ public class IAMFilter extends ZuulFilter {
     }
 ```
 구현 내용은 제외 하였지만 ZuulFilter를 extends 하였고,  
-lifeCycle 의 filterType을 "pre", filter의 Order 를 줄수 있고, filter가 동작하는 부분이 run 이다.  
+LifeCycle 의 filterType을 "pre", filter의 Order 를 줄수 있고, filter가 동작하는 부분이 run 이다.  
 
 아래는 filter 를 사용하여 custom scope를 만드는 예제이다.  
 #### application.yml
