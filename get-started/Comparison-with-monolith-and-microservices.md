@@ -24,7 +24,7 @@ shared-model이 필요한 이유는 서로 다른 서비스에서 공통으로 �
 
 프로젝트 Build하기
 ------
-해당 프로젝트를 build하여 정상적으로 돌아가는지 확인 해 본다.
+해당 프로젝트를 Build하여 정상적으로 돌아가는지 확인 해 본다.
 
 ```
 $ mvn clean package
@@ -40,18 +40,18 @@ $ mvn clean package
 [INFO] hello-class MSA-version ............................ SKIPPED
 
 ```
-위와 같이 Customer 프로젝트를 build를 하는 시점에 에러가 발생한다.  
+위와 같이 Customer 프로젝트를 Build를 하는 시점에 에러가 발생한다.  
 이는 Customer 서비스 안에서 Clazz를 사용하는데, 해당 클레스를 찾지 못한다는 에러이다.  
-이 에러를 해결하고자 Customer 서비스의 defendency에 shared-model 을 추가하여 주자.
+이 에러를 해결하고자 Customer 서비스의 dependency에 shared-model 을 추가하여 주자.
 
 
 프로젝트 구동하기 1
 ------
 ### registry service 구동
 예제 프로젝트 들은 spring-boot 위에서 기동을 한다. 그리고 microservice 를 사용하기 위하여 microservice를 잘 구현해 놓은  
-spring-cloud libary를 사용하였다.  
-그 중에 registry service 는 spring-cloud libary의 eureka를 사용하였고, 해당 서비스는 많은 수의 서비스들간의 앤드포인트를 찾고, 서비스의 상태를 어딘가에 등록하는 기능을 한다.
-registry service를 구동하기 위하여 `mvn spring-boot:run`을 실행하고, brower의 `http://localhost:8761/` 로 접근하여 확인한다.
+spring-cloud library를 사용하였다.  
+그 중에 registry service 는 spring-cloud library의 eureka를 사용하였고, 해당 서비스는 많은 수의 서비스들간의 앤드포인트를 찾고, 서비스의 상태를 어딘가에 등록하는 기능을 한다.
+registry service를 구동하기 위하여 `mvn spring-boot:run`을 실행하고, 브라우저에서 `http://localhost:8761/` 로 접근하여 확인한다.
 
 ![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/3_2.png)
 아직 올라온 instance가 없는 것을 확인 할 수 있다.
@@ -59,7 +59,7 @@ registry service를 구동하기 위하여 `mvn spring-boot:run`을 실행하고
 ### clazz, course service 구동
 이제 두개의 microservice 를 구동 시킬 것이다. 역시나 프로젝트 구동은 `mvn spring-boot:run` 을 실행 할 테지만  
 서로 다른 port로 구동을 시켜서 각 서비스간의 URL relation을 확인 할 것이다.  
-현재는 모두 8080 으로 setting 되어있다.
+현재는 모두 8080 으로 설정이 되어있다.
 ![](https://raw.githubusercontent.com/wiki/TheOpenCloudEngine/uEngine-cloud/get-started/images/3_3.png)
 
 각 프로젝트의 application.yml파일을 열어서 server.port 부분을 서로 다른 포트로 설정한다.  
