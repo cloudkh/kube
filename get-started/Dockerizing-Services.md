@@ -16,14 +16,14 @@ workload distribution engine
 이러한 작업들을 자동화 시킨 것이 워크로드 분산 엔진이라고 한다.  
 
 워크로드 분산 엔진은 여러 종류가 있다.  
-최근에 가장 뜨고있는 엔진은 `Kubernates` 이다. Kubernates는 태어난지 얼마 안되었지만 google에서 사용중이다.  
+최근에 가장 뜨고있는 엔진은 `Kubernetes` 이다. Kubernetes는 태어난지 얼마 안되었지만 google에서 사용중이다.  
 그리고 국내에 많은 사용자가 있는 엔진은 twiter에서 사용중인 `DC/OS` 가 있고,  
 가장 할아버지 격이 `cloudfoundry` 다. 지금도 많이 쓰이고 있다.  
 
 위 그림에서 docker가 차지하는 영역은 2번항목의 빨간색 box라고 보면 된다.  
 유리벽처럼 금방금방 만들었다가, 사라지는 존재이다. 물리적인 형태는 CPU안의 하나의 Process이다.  
 이것들을 잘 managing할 수 있는 것이 Docker Engine이고, Docker에서 자체적인 워크로드 분산 엔진을  
-만든것이 docker Swarm 이다. Kubernates 와 경쟁을 하다가 밀린 후 현재는 교육용 목적으로 많이 쓰인다.  
+만든것이 docker Swarm 이다. Kubernetes 와 경쟁을 하다가 밀린 후 현재는 교육용 목적으로 많이 쓰인다.  
 
 #### docker 설치
 여기서는 linux centos7.2 기준으로 설치를 하도록 한다.  
@@ -53,7 +53,7 @@ $ mvn package -B
 > '-B' 옵션은 비-대화형 모드로 mvn 실행 중 대화형 입력 모드가 나오면 기본값으로 처리하라는 의미이다.  
 
 target에 두개의 jar파일이 생성이 되었다.  
--exec.jar 파일이 실행용 jar파일이고, 그냥 jar파일은 libary용 jar파일이다.  
+-exec.jar 파일이 실행용 jar파일이고, 그냥 jar파일은 library용 jar파일이다.  
 실행용 jar 파일은 그냥 생성이 되는것이 아닌데, 여기서는 따로 처리를 해줘서 생성이 된 것이다.  
 clazz/pom.xml 을 보게되면 uengine-five 라는 parent에서 상속을 받았다.  
 #### clazz/pom.xml
