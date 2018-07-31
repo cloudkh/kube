@@ -48,7 +48,7 @@ MVVM 은 도메인에서 정의한 Tags 를 하나의 HTML Tags 처럼 정의하
 
 #### 4. Implementation : Polymer and VueJS
 MVVM 의 실제 구현체로는 구글이 만든 Polymer, Angular2 나 
-facebook이 사용하는 ReactJS, 중국에서 만든 VueJS 등이 있다.  
+facebook이 사용하는 ReactJS, 중국인이 만든 VueJS 등이 있다.  
 여기서는 VueJS를 사용하여 화면을 구성하는 예제를 만들 것이다.  
 
 #### 5. Cross-Origin Resource Sharing
