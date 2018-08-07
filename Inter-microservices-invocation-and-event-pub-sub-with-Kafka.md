@@ -40,4 +40,20 @@ Kafka 에 대한 설명들은 많은 블로그가 있어서 해당 블로그 링
 > [Kafka 이해하기](https://medium.com/@umanking/%EC%B9%B4%ED%94%84%EC%B9%B4%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0-%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90-%EB%A8%BC%EC%A0%80-data%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0%ED%95%B4%EB%B3%B4%EC%9E%90-d2e3ca2f3c2)  
 > [Apache Kafka 소개 및 아키텍쳐](http://junil-hwang.com/blog/apache-kafka/)  
 
-ㄹㄷ
+1. 우선 kafka를 호출하기 위하여 local환경에 kafka를 설치한다.  
+카프카는 분산환경인 Apache ZooKeeper 위에서 돌아가기때문에 카프카를 실행전에 ZooKeeper를 먼저 실행해야한다.  
+카프카 설치 및 실행 방법은 [https://kafka.apache.org/quickstart](https://kafka.apache.org/quickstart) 를 따라하면된다.  
+
+2. 이제 우리의 서비스에 kafka 를 통하여 메세지를 발행하고, 수신하는 로직을 작성하여 보자.  
+2.1. maven dependency
+#### pom.xml
+```
+<dependency>
+    <groupId>org.springframework.kafka</groupId>
+    <artifactId>spring-kafka</artifactId>
+    <version>1.3.2.RELEASE</version>
+</dependency>
+```
+여기서 주의할점은 현재 (2018년8월) spring-kafka 는 2.x 대 release version 이 나와있다.  
+2.x 버전은 spring-boot 2.x 버전에서만 돌아가니, 만약 자기 project가 spring-boot 1.x 를  
+사용중이라면 `<version>1.3.x.RELEASE</version>` 로 설정을 해줘야 한다.  
