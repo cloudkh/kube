@@ -69,7 +69,7 @@ spring:
 ```
 
 ### 이벤트 Producer(publish) 서비스 작성
-#### PublishConfig
+#### PublishConfig.java
 ```java
 @EnableKafka
 public class PublishConfig {
