@@ -35,3 +35,9 @@ Event Publish–subscribe with Kafka
 이벤트를 주고 받을때 사용되는 Event-Broker 에는 Apache ActiveMQ, Apache Kafka, RabbitMQ 등  
 여러가지가 있다. 이중에서 spring 에서 많이 쓰이는 Kafka 로 구현방법을 설명하겠다.  
 
+Kafka 에 대한 설명들은 많은 블로그가 있어서 해당 블로그 링크로 대체하겠다.  
+핵심개념인 topic 과 Producer, Consumer 에 대한 이해가 필요하다.  
+> [Kafka 이해하기](https://medium.com/@umanking/%EC%B9%B4%ED%94%84%EC%B9%B4%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0-%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90-%EB%A8%BC%EC%A0%80-data%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0%ED%95%B4%EB%B3%B4%EC%9E%90-d2e3ca2f3c2)  
+> [Apache Kafka 소개 및 아키텍쳐](http://junil-hwang.com/blog/apache-kafka/)  
+
+ㄹㄷ
