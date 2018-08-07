@@ -36,7 +36,7 @@ Event Publish–subscribe with Kafka
 여러가지가 있다. 이중에서 spring 에서 많이 쓰이는 Kafka 로 구현방법을 설명하겠다.  
 
 Kafka 에 대한 설명들은 많은 블로그가 있어서 해당 블로그 링크로 대체하겠다.  
-핵심개념인 topic 과 Producer, Consumer 에 대한 이해가 필요하다.  
+핵심개념인 topic 과 partition, Producer(publish)와 Consumer(subscribe) 에 대한 이해가 필요하다.  
 > [Kafka 이해하기](https://medium.com/@umanking/%EC%B9%B4%ED%94%84%EC%B9%B4%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0-%ED%95%98%EA%B8%B0%EC%A0%84%EC%97%90-%EB%A8%BC%EC%A0%80-data%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0%ED%95%B4%EB%B3%B4%EC%9E%90-d2e3ca2f3c2)  
 > [Apache Kafka 소개 및 아키텍쳐](http://junil-hwang.com/blog/apache-kafka/)  
 
@@ -45,9 +45,11 @@ Kafka 에 대한 설명들은 많은 블로그가 있어서 해당 블로그 링
 카프카 설치 및 실행 방법은 [https://kafka.apache.org/quickstart](https://kafka.apache.org/quickstart) 를 따라하면된다.  
 
 2. 이제 우리의 서비스에 kafka 를 통하여 메세지를 발행하고, 수신하는 로직을 작성하여 보자.  
-2.1. maven dependency
+
+
+### 이벤트 Producer(publish), Consumer(subscribe) 서비스 공통 작성
 #### pom.xml
-```
+```xml
 <dependency>
     <groupId>org.springframework.kafka</groupId>
     <artifactId>spring-kafka</artifactId>
@@ -57,3 +59,93 @@ Kafka 에 대한 설명들은 많은 블로그가 있어서 해당 블로그 링
 여기서 주의할점은 현재 (2018년8월) spring-kafka 는 2.x 대 release version 이 나와있다.  
 2.x 버전은 spring-boot 2.x 버전에서만 돌아가니, 만약 자기 project가 spring-boot 1.x 를  
 사용중이라면 `<version>1.3.x.RELEASE</version>` 로 설정을 해줘야 한다.  
+
+#### application.yml
+```yml
+spring:
+  profiles: local
+  kafka:
+    bootstrap-servers: localhost:9092
+```
+
+### 이벤트 Producer(publish) 서비스 작성
+#### PublishConfig
+```java
+@EnableKafka
+public class PublishConfig {
+    @Value("${spring.kafka.bootstrap-servers}")
+    private String bootstrapServers;
+    @Bean
+    public Map<String, Object> producerConfigs() {
+        Map<String, Object> props = new HashMap<String, Object>();
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        return props;
+    }
+    @Bean
+    public ProducerFactory<String, String> producerFactory() {
+        return new DefaultKafkaProducerFactory(producerConfigs());
+    }
+    @Bean
+    public KafkaTemplate<String, String> kafkaTemplate() {
+        return new KafkaTemplate<String, String>(producerFactory());
+    }
+}
+```
+간단히 설명을 하자면 `@EnableKafka` 를 선언하여 Kafka사용을 spring에 알리고,  
+KafkaTemplate 을 `@Bean` 으로 선언 하였다.  
+
+#### Clazz.java
+```java
+@Autowired
+KafkaTemplate<String, String> kafkaTemplate;
+public void sendkafka(){
+   String topic = "topicName";
+   String payload = "메세지 내용";
+   kafkaTemplate.send(topic, payload);
+}
+```
+
+### 이벤트  Consumer(subscribe) 서비스 작성
+#### SubscribeConfig.java
+```java
+@EnableKafka
+public class SubscribeConfig {
+    @Value("${spring.kafka.bootstrap-servers}")
+    private String bootstrapServers;
+    @Bean
+    public Map<String, Object> consumerConfigs() {
+        Map<String, Object> props = new HashMap<>();
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "mail");
+
+        return props;
+    }
+    @Bean
+    public ConsumerFactory<String, String> consumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
+    }
+    @Bean
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(consumerFactory());
+        return factory;
+    }
+}
+```
+PublishConfig 와 설정이 비슷해 보이지만 ConsumerConfig 값을 지정하여 주고, GROUP_ID_CONFIG 를  
+지정하여 주었다. Consumer 에서 GROUP_ID 는 반드시 지정을 해줘야 한다.  
+이는 컨슈머 그룹은 하나의 topic에 대한 책임을 가지고 있기때문이다.  
+
+마지막으로 토픽을 받는 부분이다.
+```java
+    @KafkaListener(topics = "topicName")
+    public void receiveTopic(ConsumerRecord<?, ?> consumerRecord) {
+        System.out.println("Receiver on topic: "+consumerRecord.toString());
+        String data = (String)consumerRecord.value();
+    }
+```
+
