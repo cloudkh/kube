@@ -29,3 +29,9 @@ microservices 들 간의 내부 호출(invocation) 방법은 여러가지가 있
 이것을 event pub sub 으로 변경한다면, `주문`서비스에서는 이벤트를 발행만 하고,  
 나머지 서비스에서는 수신만 하여, 이벤트가 발생 후 해야할 일만 각자 서비스에서 준비하면 된다.  
 여기에 microservice 들이 추가된다고 하여도, 기존 시스템에 미치는 영향이 최소화 된다.  
+
+Event Publish–subscribe with Kafka
+-----
+이벤트를 주고 받을때 사용되는 Event-Broker 에는 Apache ActiveMQ, Apache Kafka, RabbitMQ 등  
+여러가지가 있다. 이중에서 spring 에서 많이 쓰이는 Kafka 로 구현방법을 설명하겠다.  
+
