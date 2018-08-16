@@ -2,14 +2,8 @@
 # MSA 개요
 1. https://www.slideshare.net/pongsor/micro-service-architecture-84941530
 
-# Spring Cloud 기본
+# [Tip] Spring Cloud 기초
 1. [[Spring Cloud 기본|Spring-Boot-와--Spring-Cloud-기본]]
-
-# Open Cloud Engine 개발자 레퍼런스
-1. [OCE API GW](API-GW)
-1. [OCE IAM](OCE-IAM)
-1. [미터링 / 빌링](https://github.com/TheOpenCloudEngine/uEngine-bill)
-1. [OCE BPM](https://github.com/TheOpenCloudEngine/uEngine5-base)
 
 # 예제 애플리케이션 소개
 
@@ -23,6 +17,12 @@
 # OCE MSA 플랫폼 사용
 1. [계정 생성과 클라우드 네이티브 애플리케이션 생성](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/OCE-MSA-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%98-%EC%82%AC%EC%9A%A9)
 1. [관련 도구 설치](Httpie-설치)
+
+# [Tip] Open Cloud Engine 개발자 레퍼런스
+1. [OCE API GW](API-GW)
+1. [OCE IAM](OCE-IAM)
+1. [미터링 / 빌링](https://github.com/TheOpenCloudEngine/uEngine-bill)
+1. [OCE BPM](https://github.com/TheOpenCloudEngine/uEngine5-base)
 
 # 도메인 서비스의 구현 (장진영 작업)
 1. [주문/재고서비스](https://github.com/TheOpenCloudEngine/uEngine-cloud/wiki/%EC%A3%BC%EB%AC%B8%EC%84%9C%EB%B9%84%EC%8A%A4%EC%9D%98-%EA%B5%AC%ED%98%84) 
