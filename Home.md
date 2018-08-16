@@ -3,13 +3,15 @@
 1. https://www.slideshare.net/pongsor/micro-service-architecture-84941530
 1. [[Spring Cloud 기본|Spring-Boot-와--Spring-Cloud-기본]]
 
-# 예제 애플리케이션 소개
+# 예제 애플리케이션의 분석과 설계
 
 ![App](https://user-images.githubusercontent.com/16382067/35211738-0f4d4f16-ff9b-11e7-9c0a-dfb2d31ff22b.png)
 
 1. 실 구현 세부 그림
-![image](https://user-images.githubusercontent.com/16382067/35252243-de646b7c-0022-11e8-95e5-8b92f159a44e.png)
+![image](https://user-images.githubusercontent.com/16382067/35252243-de646b7c-0022-11e8-95e5-8b92f159a44e.png
 
+1. [[도메인 분석을 위한 이벤트 스토밍|커머스-애플리케이션-이벤트-스토밍]]
+1. [[DDD/BPMN 기반 모델 정재|DDD-BPMN-기반-모델링]]
 1. [마이크로 서비스 구현 전략](구현-전략)
 
 # OCE MSA 플랫폼 사용
