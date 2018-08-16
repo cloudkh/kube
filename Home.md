@@ -1,8 +1,6 @@
 
 # MSA 개요
 1. https://www.slideshare.net/pongsor/micro-service-architecture-84941530
-
-# [Tip] Spring Cloud 기초
 1. [[Spring Cloud 기본|Spring-Boot-와--Spring-Cloud-기본]]
 
 # 예제 애플리케이션 소개
