@@ -18,7 +18,7 @@ kubectl describe service wordpress   # 생성된 service 의 세부 내용 확�
 kubectl delete services,deployment,pods --all
 ```
 
-# kubectl run
+# 기본 명령 - kubectl run
 ```
 kubectl get pods  # 실행중 pod 들을 리스팅
 kubectl run first-deployment --image=nginx # command line  으로 바로 실행
@@ -33,7 +33,7 @@ curl localhost  # Hello nginx 가 뜬다.
 
 ```
 
-# kubectl create -f
+# 설정 파일을 통한 생성 - kubectl create -f
 ```
 
 kubectl get pods
@@ -55,23 +55,11 @@ echo Hello nginx! We are so Declarative!-- > /usr/share/nginx/html/index.html
 apt-get update
 apt-get install curl
 curl localhost
+```
 
-=======================
 
-1.d- kubectl apply -f
-
-kubectl get pods
-kubectl describe po declarative-pod
-nano declarative-pod.yaml
-(change the image from nginx to busybox)
-(save changes and exit)
-kubectl apply -f declarative-pod.yaml
-kubectl get pods
-kubectl describe (updated pod)
-==========================
-
-1.e- Pod - node matching  # 원하는 노드 타입에 pod 몰기  e.g. GPU 에 알맞은 워크로드 몰기
-
+# 원하는 노드 타입에 pod 몰기  e.g. GPU 에 알맞은 워크로드 몰기
+```
 kubectl get nodes 
 kubectl label nodes <nodename> disktype=ssd
 kubectl get nodes --show-labels
@@ -93,10 +81,10 @@ spec:
 
 kubectl create -f dev-pod.yaml
 kubectl get pods -o wide
-==================================
+```
 
-1.h- Pod initialization
-
+# Pod initialization
+```
 kubectl get pods
 nano init.yaml
 
@@ -137,10 +125,12 @@ kubectl exec -it init-demo -- /bin/bash
 apt-get update
 apt-get install curl
 curl localhost
-=================================
+```
 
-1.i-  Liveness and readiness probes
 
+#  Liveness 와 readiness probe
+
+```
 kubectl get pods
 
 nano exec-liveness.yaml
@@ -229,10 +219,11 @@ spec:
 kubectl create -f tcp-liveness-readiness.yaml
 (wait 20 sec)
 kubectl describe pod goproxy
-======================================
+```
 
-1.j-  Container lifecycle events
+# Container lifecycle 후킹
 
+```
 kubectl get pods
 nano lifecycle.yaml
 
@@ -257,36 +248,19 @@ kubectl create -f lifecycle.yaml
 kubectl get pod lifecycle-demo
 kubectl exec -it lifecycle-demo -- /bin/bash
 cat /usr/share/message
+```
 
-2.a- kubectl delete
-
-kubectl get pods
-kubectl delete pods --all
-kubectl get pods
-(copy podname)
-kubectl delete pod (copied podname)
-kubectl get pods
-
-
-
-2.b-  kubectl scale
-
+# scaling
+```
 kubectl get pods
 kubectl get deployments
 (copy the name of deployment)
 kubectl scale deployments (deployment name) --replicas=3
 kubectl get pods
+```
 
-2.c-  kubectl edit
-
-kubectl get deployments
-(copy the name of deployment)
-KUBE_EDITOR="nano" kubectl edit deployments (deployment name)
-add a label
-save the file
-
-3.a-  kubectl create rs
-
+#  ReplicaSet
+```
 kubectl get pods
 nano frontend.yaml
 
@@ -319,10 +293,10 @@ spec:
 kubectl create -f frontend.yaml
 kubectl get pods
 kubectl describe rs/frontend
-============================
+```
 
-3.b-  delete rs and pods
-
+# delete ReplicaSet
+```
 kubectl get pods
 kubectl get rs
 kubectl delete pods --all
@@ -330,19 +304,19 @@ kubectl delete pods --all
 kubectl get pods
 kubectl delete rs/frontend
 kubectl get pods
-==========================
+```
 
-3.c-  delete rs but keep pods
-
+# ReplicaSet 은 제거하지만 Pod 는 유지 
+```
 kubectl get pods
 kubectl create -f frontend.yaml
 kubectl delete rs/frontend --cascade=false
 kubectl get pods
 kubectl delete pods
-=========================
+```
 
-3.d-  update labels on pod, so that new pod fired by replicaset
-
+# update labels on pod, so that new pod fired by replicaset
+```
 kubectl get pods
 (copy the name of first pod)
 kubectl describe (first pod)
@@ -350,13 +324,10 @@ KUBE_EDITOR="nano" kubectl edit pod (first pod)
 kubectl describe (first pod)
 kubectl get pods
 kubectl describe (new pod)
-==========================
+```
 
-
-
-
-3.e-  scale replicaset
-
+# scale replicaset
+```
 kubectl get pods
 kubectl get rs
 nano frontend.yaml
@@ -364,10 +335,10 @@ nano frontend.yaml
 kubectl apply -f frontend.yaml
 (wait a minute)
 kubectl get pods
+```
 
-
-4.a-  create using kubectl run
-
+# create using kubectl run
+```
 kubectl get pods
 kubectl run example --image=nginx
 kubectl get pods
@@ -379,9 +350,10 @@ echo Hello nginx! > /usr/share/nginx/html/index.html
 apt-get update
 apt-get install curl
 curl localhost
-=====================
+```
 
-4.b-  create -f
+# create -f
+```
 kubectl get pods
 nano nginx-deployment.yaml
 
@@ -417,10 +389,10 @@ echo Hello nginx! > /usr/share/nginx/html/index.html
 apt-get update
 apt-get install curl
 curl localhost
-========================
+```
 
-
-4.c-  apply -f
+# Deployment 의 변경 (apply -f)
+```
 kubectl get pods
 kubectl get deployments
 nano nginx-deployment.yaml
@@ -433,9 +405,9 @@ kubectl apply -f nginx-deployment.yaml
 kubectl get pods
 kubectl delete pods --all
 kubectl get pods
-============================
-4.d- rolling update
-
+```
+# rolling update
+```
 kubectl get pods
 kubectl get deployments
 kubectl set image deployment/nginx-deployment nginx=nginx:1.9.1
@@ -448,28 +420,29 @@ echo Hello nginx! > /usr/share/nginx/html/index.html
 apt-get update
 apt-get install curl
 curl localhost
-===========================
+```
 
-4.e-  rolling back
-
+# 롤백
+```
 kubectl get pods
 kubectl get deployments -o wide
 (optional: kubectl describe deployments nginx-deployment)
 kubectl rollout undo deployment/nginx-deployment
 kubectl get deployments -o wide
 (optional: kubectl describe deployments nginx-deployment)
-===========================
+```
 
-4.f-  scaling
+# scaling
 
+```
 kubectl get pods
 kubectl get deployments
 kubectl scale deployments example --replicas=3
 kubectl get pods
-==========================
+```
 
-4.g- pause/resume
-
+# 배포에 대한 pause/resume
+```
 kubectl get deployments -o wide
 kubectl scale deployments nginx-deployment --replicas=10
 kubectl rollout status deployment/nginx-deployment
