@@ -1,20 +1,31 @@
+# GKE 설정
 ```
-1.a-  kubectl run
+gcloud config set compute/zone us-central1-a
+gcloud config set compute/region us-central1
+gcloud container clusters create my-first-cluster —num-nodes 1
+gcloud compute instances list
+kubectl run wordpress —image=tutum/wordpress —port=80
+kubectl get pods
+kubectl expose pod <…> —name=wordpress —type=LoadBalancer
+```
 
-kubectl get pods
-kubectl run first-deployment --image=nginx
-kubectl get pods
+# kubectl run
+```
+kubectl get pods  # 실행중 pod 들을 리스팅
+kubectl run first-deployment --image=nginx # command line  으로 바로 실행
+kubectl get pods  # 실행된 nginx pod 들이 리스트업
 (maybe one more time to show the state changed from container creation to Running)
 (copy the pod name from get pods)
-kubectl exec -it pod-name -- /bin/bash
-echo Hello nginx! > /usr/share/nginx/html/index.html
+kubectl exec -it pod-name -- /bin/bash 
+echo Hello nginx! > /usr/share/nginx/html/index.html  
 apt-get update
 apt-get install curl
-curl localhost
+curl localhost  # Hello nginx 가 뜬다.
 
-=======================
+```
 
-1.c- kubectl create -f
+# kubectl create -f
+```
 
 kubectl get pods
 nano declarative-pod.yaml
