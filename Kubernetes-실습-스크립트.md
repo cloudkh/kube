@@ -12,6 +12,11 @@ kubectl describe service wordpress
 
 ```
 
+# 실습중 잘못 생성된 리소스 제거
+```
+kubectl delete services,deployment,pods --all
+```
+
 # kubectl run
 ```
 kubectl get pods  # 실행중 pod 들을 리스팅
