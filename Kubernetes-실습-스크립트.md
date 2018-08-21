@@ -1,14 +1,15 @@
 # GKE 설정
 ```
-gcloud config set compute/zone us-central1-a
+gcloud config set compute/zone us-central1-a    # 사용 zone / region 설정
 gcloud config set compute/region us-central1
-gcloud container clusters create my-first-cluster
-gcloud compute instances list
-kubectl get pods
-kubectl run wordpress --image=tutum/wordpress --port=80
-kubectl expose pod wordpress-5bb5dddcff-kwgf8 --name=wordpress --type=LoadBalancer
-kubectl get services
-kubectl describe service wordpress
+gcloud container clusters create my-first-cluster   # kubernetes cluster 의 생성
+gcloud compute instances list    # 인스턴스 리스트
+kubectl get pods    # pod 확인
+kubectl run wordpress --image=tutum/wordpress --port=80    # wordpress 서버 deploy
+kubectl get pods    # wordpress 용 pod 생성을 확인
+kubectl expose pod wordpress-5bb5dddcff-kwgf8 --name=wordpress --type=LoadBalancer # 위에서 생성된 wordpress pod 를 service 로 노출
+kubectl get services    # 생성된 service 를 리스트내에 확인
+kubectl describe service wordpress   # 생성된 service 의 세부 내용 확인, LoadBalancer Ingress:     xxx.xxx.xxx.xxx 부분 확인하여 ip 로 웹브라우저 접속하여 wordpress 가 정상 동작함을 확인
 
 ```
 
