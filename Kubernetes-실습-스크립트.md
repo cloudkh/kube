@@ -5,7 +5,7 @@ gcloud config set compute/region us-central1
 gcloud container clusters create my-first-cluster
 gcloud compute instances list
 kubectl get pods
-kubectl run wordpress —image=tutum/wordpress —port=80
+kubectl run wordpress --image=tutum/wordpress --port=80
 kubectl expose pod wordpress-5bb5dddcff-kwgf8 --name=wordpress --type=LoadBalancer
 kubectl get services
 kubectl describe service wordpress
