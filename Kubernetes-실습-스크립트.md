@@ -2,11 +2,14 @@
 ```
 gcloud config set compute/zone us-central1-a
 gcloud config set compute/region us-central1
-gcloud container clusters create my-first-cluster —num-nodes 1
+gcloud container clusters create my-first-cluster
 gcloud compute instances list
-kubectl run wordpress —image=tutum/wordpress —port=80
 kubectl get pods
-kubectl expose pod <…> —name=wordpress —type=LoadBalancer
+kubectl run wordpress —image=tutum/wordpress —port=80
+kubectl expose pod wordpress-5bb5dddcff-kwgf8 --name=wordpress --type=LoadBalancer
+kubectl get services
+kubectl describe service wordpress
+
 ```
 
 # kubectl run
