@@ -470,3 +470,73 @@ kubectl rollout status deployment/nginx-deployment
   174  TOKEN=$(kubectl describe secret $(kubectl get secrets | grep default | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\t')
   175  curl $APISERVER/api --header "Authorization: Bearer $TOKEN" --insecure
 ```
+
+# Volume Mount for emptyDir
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-emptydir
+spec:
+  containers:
+  - name: redis
+    image: redis
+    volumeMounts:
+    - name: redis-storage2
+      mountPath: /data/redis
+  volumes:
+  - name: redis-storage2
+    emptyDir: {}
+```
+
+# Volume Mount for PersistentVolume
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis2
+spec:
+  containers:
+  - name: redis
+    image: redis
+    volumeMounts:
+    - name: redis-storage2
+      mountPath: /data/redis
+  volumes:
+  - name: redis-storage2
+    persistentVolumeClaim:
+      claimName: pv-claim-demo2
+
+
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-demo2
+spec:
+  storageClassName:
+  capacity:
+    storage: 20G
+  accessModes:
+    - ReadWriteOnce
+  gcePersistentDisk:
+    pdName: disk-2
+    fsType: ext4
+
+
+
+apiVersion: v1
+kind : PersistentVolumeClaim
+metadata:
+  name: pv-claim-demo2
+spec:
+  storageClassName: ""
+  volumeName: pv-demo2
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20G
+
+
+```
