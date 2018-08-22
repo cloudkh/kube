@@ -491,22 +491,8 @@ spec:
 
 # Volume Mount for PersistentVolume
 ```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: redis2
-spec:
-  containers:
-  - name: redis
-    image: redis
-    volumeMounts:
-    - name: redis-storage2
-      mountPath: /data/redis
-  volumes:
-  - name: redis-storage2
-    persistentVolumeClaim:
-      claimName: pv-claim-demo2
 
+nano pv.yml
 
 
 apiVersion: v1
@@ -523,7 +509,9 @@ spec:
     pdName: disk-2
     fsType: ext4
 
+kubectl create -f pv.yaml
 
+nano pvc.yaml
 
 apiVersion: v1
 kind : PersistentVolumeClaim
@@ -537,6 +525,26 @@ spec:
   resources:
     requests:
       storage: 20G
+
+kubectl create -f pvc.yml
+
+nano redis2.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis2
+spec:
+  containers:
+  - name: redis
+    image: redis
+    volumeMounts:
+    - name: redis-storage2
+      mountPath: /data/redis
+  volumes:
+  - name: redis-storage2
+    persistentVolumeClaim:
+      claimName: pv-claim-demo2
 
 
 ```
