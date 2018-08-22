@@ -646,3 +646,98 @@ spec:
     app: rsvp
 
 ```
+
+# Secret 과 ConfigMap
+```
+
+kubectl create configmap my-config --from-literal=key1=value1 --from-literal=key2=value2
+
+kubectl get configmaps my-config -o yaml
+
+nano customer1-configmap.yaml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: customer1
+data:
+  TEXT1: Customer1_Company
+  TEXT2: Welcomes You
+  COMPANY: Customer1 Company Technology Pct. Ltd.
+
+
+kubectl create -f customer1-configmap.yaml
+
+(add following sections to the end of the env)
+
+        - name: TEXT1
+          valueFrom:
+            configMapKeyRef:
+              name: customer1
+              key: TEXT1
+        - name: TEXT2
+          valueFrom:
+            configMapKeyRef:
+              name: customer1
+              key: TEXT2
+        - name: COMPANY
+          valueFrom:
+            configMapKeyRef:
+              name: customer1
+              key: COMPANY
+
+
+kubectl create secret generic my-password --from-literal=password=mysqlpassword
+
+kubectl get secret my-password
+
+kubectl describe secret my-password
+
+echo mysqlpassword | base64
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-password
+type: Opaque
+data:
+  password: bXlzcWxwYXNzd29yZAo=
+
+
+
+(use secret as environment variable)
+
+         spec:
+      containers:
+      - image: wordpress:4.7.3-apache
+        name: wordpress
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: wordpress-mysql
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-password
+              key: password
+
+
+(use secret as a volume)
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: mypod
+    image: redis
+    volumeMounts:
+    - name: foo
+      mountPath: "/etc/foo"
+      readOnly: true
+  volumes:
+  - name: foo
+    secret:
+      secretName: mysecret
+
+```
