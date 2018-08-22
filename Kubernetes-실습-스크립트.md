@@ -548,3 +548,101 @@ spec:
 
 
 ```
+
+# 멀티 티어 애플리케이션의 디플로이
+```
+nano mongodb-dep.yml
+
+piVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rsvp-db
+  labels:
+    appdb: rsvpdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      appdb: rsvpdb
+  template:
+    metadata:
+      labels:
+        appdb: rsvpdb
+    spec:
+      containers:
+      - name: rsvp-db
+        image: mongo:3.3
+        ports:
+        - containerPort: 27017
+
+kubectl create -f mongodb-dep.yml
+
+
+nano mongodb-svc.yml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  labels:
+    app: rsvpdb
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+  selector:
+    appdb: rsvpdb
+
+kubectl create -f mongodb-svc.yml
+
+
+nano rsvp-front-dep.yml
+
+piVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rsvp
+  labels:
+    app: rsvp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rsvp
+  template:
+    metadata:
+      labels:
+        app: rsvp
+    spec:
+      containers:
+      - name: rsvp-app
+        image: teamcloudyuga/rsvpapp
+        env:
+        - name: MONGODB_HOST
+          value: mongodb
+        ports:
+        - containerPort: 5000
+          name: web-port
+
+kubectl create -f rsvp-front-dep.yml
+
+
+
+nano rsvp-front-svc.yml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: rsvp
+  labels:
+    app: rsvp
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: web-port
+    protocol: TCP
+  selector:
+    app: rsvp
+
+```
