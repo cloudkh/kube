@@ -1,3 +1,7 @@
+# 참고문서
+
+ https://hackr.io/tutorial/introduction-to-kubernetes
+
 # GKE 설정
 ```
 gcloud config set compute/zone us-central1-a    # 사용 zone / region 설정
