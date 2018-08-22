@@ -454,3 +454,15 @@ kubectl rollout resume deployment/nginx-deployment
 kubectl rollout status deployment/nginx-deployment
 
 ```
+
+# 시스템을 통한 인증 / 인가
+
+```
+  168  kubectl create sa paas
+  169  kubectl describe sa paas
+  170  kubectl describe secret paas-token-6p245
+  171  APISERVER=$(kubectl config view | grep server | cut -f 2- -d ":" | tr -d " ")
+  173  curl $APISERVER/api
+  174  TOKEN=$(kubectl describe secret $(kubectl get secrets | grep default | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\t')
+  175  curl $APISERVER/api --header "Authorization: Bearer $TOKEN" --insecure
+```
