@@ -41,7 +41,7 @@ $ sudo vi kubelet.yml
       become: true 
       shell:
         cmd: |
-          sudo cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+          cat <<EOF > /etc/yum.repos.d/kubernetes.repo
           [kubernetes]
           name=Kubernetes
           baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
@@ -58,6 +58,21 @@ $ sudo vi kubelet.yml
         - sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
         - sudo systemctl enable kubelet
         - sudo systemctl start kubelet
+
+    - name: setenforce
+      become: true 
+      shell:
+        cmd: |
+          cat <<EOF >  /etc/sysctl.d/k8s.conf
+          net.bridge.bridge-nf-call-ip6tables = 1
+          net.bridge.bridge-nf-call-iptables = 1
+          EOF
+
+    - name: systemctl
+      become: true     
+      command: "{{ item }}"
+      with_items:
+        - sysctl --system
 
 $ ansible-playbook kubelet.yml
 ```
