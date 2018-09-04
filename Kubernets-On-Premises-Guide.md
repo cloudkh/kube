@@ -123,8 +123,16 @@ networking:
     podSubnet: "192.168.0.0/16"
 
 $ kubeadm init --config kubeadm-config.yaml
+
+# Reset
+$ kubeadm reset
+
+
 ```
 
+레퍼런스
+
+[https://github.com/cookeem/kubeadm-ha](https://github.com/cookeem/kubeadm-ha)
 
 
 
