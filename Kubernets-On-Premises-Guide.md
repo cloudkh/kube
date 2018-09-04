@@ -55,6 +55,7 @@ $ sudo vi kubelet.yml
     - name: kubelet install
       command: "{{ item }}"
       with_items:
+        - sudo setenforce 0
         - sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
         - sudo systemctl enable kubelet
         - sudo systemctl start kubelet
