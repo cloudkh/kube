@@ -1,3 +1,7 @@
+## 아주 유용한 블로그
+
+[https://blog.inkubate.io/install-and-configure-a-multi-master-kubernetes-cluster-with-kubeadm/](https://blog.inkubate.io/install-and-configure-a-multi-master-kubernetes-cluster-with-kubeadm/)
+
 ## Install
 
 ```
