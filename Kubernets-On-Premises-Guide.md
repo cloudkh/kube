@@ -82,10 +82,29 @@ $ sudo vi kubelet.yml
 $ ansible-playbook kubelet.yml
 ```
 
-# 클러스터 구성의 2가지 방법.
+## swapoff
 
-1) With stacked masters. This approach requires less infrastructure. etcd members and control plane nodes are co-located.
-2) With an external etcd cluster. This approach requires more infrastructure. The control plane nodes and etcd members are separated.
+```
+$ swapoff -a
+$ sed -i '/ swap / s/^/#/' /etc/fstab
+```
+
+## all master
+
+```
+cat << EOF > /etc/systemd/system/kubelet.service.d/20-etcd-service-manager.conf
+[Service]
+ExecStart=
+ExecStart=/usr/bin/kubelet --cgroup-driver=systemd --address=127.0.0.1 --pod-manifest-path=/etc/kubernetes/manifests --allow-privileged=true
+Restart=always
+EOF
+
+systemctl daemon-reload
+systemctl restart kubelet
+```
+
+
+
 
 1. TCP 로드밸런스 구성할것. 마스터 3개 노드의 6443 포트로.
 
@@ -97,37 +116,21 @@ $ kubectl version
 쿠버네이츠 버젼 v1.11.2
 ```
 
-## First steps for both methods
+## cgroup
 
 ```
-$ vi kubeadm-config.yaml
+# 도커 cgroup 확인
+$ docker info | grep -i cgroup
+$ vi /etc/default/kubelet
+KUBELET_KUBEADM_EXTRA_ARGS=--cgroup-driver=systemd
 
-apiVersion: kubeadm.k8s.io/v1alpha2
-kind: MasterConfiguration
-kubernetesVersion: v1.11.2
-apiServerCertSANs:
-- "k8s-api-lb-75c3b7c2ea056ec2.elb.ap-northeast-2.amazonaws.com"
-api:
-    controlPlaneEndpoint: "k8s-api-lb-75c3b7c2ea056ec2.elb.ap-northeast-2.amazonaws.com:80"
-etcd:
-  local:
-    extraArgs:
-      listen-client-urls: "https://127.0.0.1:2379,https://172.31.21.245:2379"
-      advertise-client-urls: "https://172.31.21.245:2379"
-      listen-peer-urls: "https://172.31.21.245:2380"
-      initial-advertise-peer-urls: "https://172.31.21.245:2380"
-      initial-cluster: "ip-172-31-21-245.ap-northeast-2.compute.internal=https://172.31.21.245:2380"
-    serverCertSANs:
-      - ip-172-31-21-245.ap-northeast-2.compute.internal
-      - 172.31.21.245
-    peerCertSANs:
-      - ip-172-31-21-245.ap-northeast-2.compute.internal
-      - 172.31.21.245
-networking:
-    # This CIDR is a Calico default. Substitute or remove for your CNI provider.
-    podSubnet: "192.168.0.0/16"
+$ vi /etc/sysconfig/kubelet
+KUBELET_EXTRA_ARGS=--cgroup-driver=systemd
 
-$ kubeadm init --config kubeadm-config.yaml
+
+
+$ vi /etc/default/kubelet
+$ 
 
 # Reset
 $ kubeadm reset
