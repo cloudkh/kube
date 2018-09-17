@@ -759,3 +759,10 @@ spec:
       secretName: mysecret
 
 ```
+
+# Autoscale
+```
+kubectl autoscale deploy def2 --min=2 --max=10 --cpu-percent=50
+kubectl get hpa   # hpa = HorizontalPodAutoscaler
+kubectl edit hpa def2
+```
