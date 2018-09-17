@@ -448,7 +448,8 @@ kubectl get deployments -o wide
 (optional: kubectl describe deployments nginx-deployment)
 kubectl rollout undo deployment/nginx-deployment
 kubectl rollout history deployment/nginx-deployment
-(kubectl rollout undo deployment/nginx-deployment --revision=2)
+(kubectl rollout history deployment/nginx-deployment --revision=2)   #see details of the revision
+(kubectl rollout undo deployment/nginx-deployment --to-revision=2)   
 kubectl get deployments -o wide
 (optional: kubectl describe deployments nginx-deployment)
 ```
