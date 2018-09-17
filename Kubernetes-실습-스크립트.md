@@ -1,18 +1,6 @@
 # 참고문서
 
  https://hackr.io/tutorial/introduction-to-kubernetes
- - 도커로 자바 애플리케이션 패키징 및 실행:
- https://github.com/TheOpenCloudEngine/uEngine5-base/issues/116
- - 주의점
-1. 도커 이미지명 생성규칙
-```
-gcr.io/<Project ID>/<이미지 ID>:<버전>
-예) gcr.io/my-project-11/definition-service:v1
-```
-* 프로젝트 ID는 GCP 상단의 프로젝트 선택 후, 프로젝트 목록에서 ID를 발췌복사
-1. Port 넘버
-Port 번호는 애플리케이션이 노출한 port 번호를 써주어야 함. e.g. python 예제는 80, 자바예제는 8080
-
 
 # GKE 설정
 ```
@@ -48,6 +36,21 @@ apt-get install curl
 curl localhost  # Hello nginx 가 뜬다.
 
 ```
+
+# 도커로 자바 애플리케이션 패키징 및 실행
+ https://github.com/TheOpenCloudEngine/uEngine5-base/issues/116
+ - 주의점
+1. 도커 이미지명 생성규칙
+```
+gcr.io/<Project ID>/<이미지 ID>:<버전>
+예) gcr.io/my-project-11/definition-service:v1
+```
+* 프로젝트 ID는 GCP 상단의 프로젝트 선택 후, 프로젝트 목록에서 ID를 발췌복사
+1. Port 넘버
+Port 번호는 애플리케이션이 노출한 port 번호를 써주어야 함. e.g. python 예제는 80, 자바예제는 8080
+
+
+
 
 # 설정 파일을 통한 생성 - kubectl create -f
 ```
