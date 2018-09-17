@@ -1,6 +1,8 @@
 # 참고문서
 
  https://hackr.io/tutorial/introduction-to-kubernetes
+ - 도커로 자바 애플리케이션 패키징 및 실행:
+ https://github.com/TheOpenCloudEngine/uEngine5-base/issues/116 
 
 # GKE 설정
 ```
