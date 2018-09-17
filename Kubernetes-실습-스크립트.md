@@ -3,16 +3,16 @@
  https://hackr.io/tutorial/introduction-to-kubernetes
  - 도커로 자바 애플리케이션 패키징 및 실행:
  https://github.com/TheOpenCloudEngine/uEngine5-base/issues/116
- - 일반 스프링 부트 만들기
-1. https://start.spring.io/ 접속
-1. Generate 클릭
-1. 생성된 demo.zip을 GCP환경에 업로드: 쉘 상단의 :버튼 클릭후 파일업로드 선택
-1. GCP Shell 에서 압축해제 후, 실행
+ - 주의점
+1. 도커 이미지명 생성규칙
 ```
-unzip demo.zip
-cd demo
-mvn spring-boot:run
-``` 
+gcr.io/<Project ID>/<이미지 ID>:<버전>
+예) gcr.io/my-project-11/definition-service:v1
+```
+* 프로젝트 ID는 GCP 상단의 프로젝트 선택 후, 프로젝트 목록에서 ID를 발췌복사
+1. Port 넘버
+Port 번호는 애플리케이션이 노출한 port 번호를 써주어야 함. e.g. python 예제는 80, 자바예제는 8080
+
 
 # GKE 설정
 ```
