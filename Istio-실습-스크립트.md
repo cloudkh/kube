@@ -55,16 +55,16 @@ servicegraph-7875b75b4f-h7hd2               1/1       Running     0          10m
 
 The microservices are:
 
-1. productpage: a python service that calls the details and reviews microservices to populate the page.
-1. details: a ruby service that contains book information.
-1. reviews: a java service that contains book reviews and calls the ratings microservice.
-1. ratings: a node js app that contains book ranking information that accompanies a book review.
+1. productpage: Python으로 개발된 제품 소개 페이지로 이하의 서비스들을 호출하여 페이지를 구성함.
+1. details: 루비로 개발된 제품 detail정보 서비스
+1. reviews: 자바로 개발된 Book 리뷰를 제공하고 아래의 rating서비스를 호출함
+1. ratings: NodeJS로 개발된 점수 평가 기능
 
 There are 3 versions of the reviews microservice:
 
-1. version v1 doesn't call the ratings service.
-1. version v2 calls the ratings service, and displays each rating as 1 to 5 black stars.
-1. version v3 calls the ratings service, and displays each rating as 1 to 5 red stars.
+1. version v1 은 rating 기능을 호출하지 않음.
+1. version v2 은 rating서비스를 호출하고 별표의 색이 검정색임.
+1. version v3 은 rating서비스를 호출하고 별표의 색이 붉은색임.
 ```
 istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml
 kubectl apply -f <(istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml)
