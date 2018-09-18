@@ -189,3 +189,4 @@ kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=gr
 http://접속된주소:3000/dashboard/db/istio-mesh-dashboard
 ```
 
+[Prev: 쿠버네티스 실습](Kubernetes-실습-스크립트)
