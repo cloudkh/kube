@@ -620,7 +620,7 @@ spec:
     appdb: rsvpdb
 
 ```
-서비스 타입을 주지 않았으므로 기ㅂ본적으로 ClusterIp type이다. 이는 외부에서 접속할 수 없어서 보안성이 높다. 주로 내부에서 사용할 db나 내부 서비스에 적용한다.
+서비스 타입을 주지 않았으므로 기본적으로 ClusterIp type이다. 이는 외부에서 접속할 수 없어서 보안성이 높다. 주로 내부에서 사용할 db나 내부 서비스에 적용한다.
 
 ## frontend (python) 서비스의 디플로이
 
@@ -697,6 +697,24 @@ spec:
   selector:
     app: rsvp
 
+```
+
+# DNS 를 통한 서비스 연동
+
+
+
+```
+git clone https://github.com/cloudyuga/rsvpapp.git
+cd rsvpapp/
+nano rsvp.py
+(아래와 같이 편집)
+MONGODB_HOST='mongodb.default.svc.cluster.local'
+(저장후 exit)
+
+docker build -t gcr.io/my-project-1531888882785/rsvp:v2 .
+docker push gcr.io/my-project-1531888882785/rsvp
+
+kubectl set image deploy/rsvp rsvp-app=gcr.io/my-project-1531888882785/rsvp:v2
 ```
 
 # Secret 과 ConfigMap
