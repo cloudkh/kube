@@ -108,7 +108,7 @@ ratings                 ratings       v1,v2,v2-mysql,v2-mysql-vm   default     2
 reviews                 reviews       v1,v2,v3                     default     28m
 ```
 
-Always Route to v1 :
+## v1 끼리만 연결하기 (rating 없음):
 ```
 kubectl create -f samples/bookinfo/networking/virtual-service-all-v1.yaml
 ```
@@ -124,7 +124,7 @@ spec:
         subset: v1
 ```
 
-Route v2 only to user 'jason':
+## v2를 'jason'이라는 유저에게만 제공하기:
 ```
 kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
 ```
@@ -147,7 +147,10 @@ spec:
         host: reviews
         subset: v1
 ```
-Dynamic routing - route weights :
+테스트 방법: Login > jason (패스워드 없음) 로그인
+
+
+## Dynamic routing - route weights :
 ```
 kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
 ```
