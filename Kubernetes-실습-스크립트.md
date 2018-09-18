@@ -574,7 +574,7 @@ spec:
 ```
 
 # 멀티 티어 애플리케이션의 디플로이
-예제 애플리케이션은 Mongo DB와 node frontend로 구성된 2개의 tier로 구성된다. frontend 는 mong db의 접속주소를 환경변수에서 얻어오게 프로그래밍 되어있다.
+예제 애플리케이션은 Mongo DB와 python frontend로 구성된 2개의 tier로 구성된다. frontend 는 mong db의 접속주소를 환경변수에서 얻어오게 프로그래밍 되어있다.
 ## mong db service 의 디플로이
 ```
 nano mongodb-dep.yml
@@ -622,7 +622,7 @@ spec:
 ```
 서비스 타입을 주지 않았으므로 기ㅂ본적으로 ClusterIp type이다. 이는 외부에서 접속할 수 없어서 보안성이 높다. 주로 내부에서 사용할 db나 내부 서비스에 적용한다.
 
-## frontend (nodejs) 서비스의 디플로이
+## frontend (python) 서비스의 디플로이
 
 ```
 kubectl create -f mongodb-svc.yml
@@ -660,8 +660,15 @@ kubectl create -f rsvp-front-dep.yml
 
 ```
 NodeJS서비스에서 mongo DB를 접속하기 위한 소스코드는 아래와 같다:
+- https://github.com/cloudyuga/rsvpapp/blob/master/rsvp.py
 ```
+MONGODB_HOST=os.environ.get('MONGODB_HOST', 'localhost')
+client = MongoClient(MONGODB_HOST, 27017)
+db = client.rsvpdata
+
 ```
+
+
 환경 변수인 XXX_SERVICE_HOST와 _PORT에서 얻어와서 호출함을 알 수 있다. 이 값은 환경변수가 초기에 주입되어야 한다. 이를 확인하는 방법은 아래와 같다:
 
 ```
