@@ -159,3 +159,30 @@ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
 ```
 
 ```
+
+## Distributed Tracing 하기
+jeager 를 사용하도록 하기:
+```
+ kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=jaeger -o jsonpath='{.items[0].metadata.name}') 16686:16686 &
+```
+클라우드 쉘 타이틀바 우상단의 '웹 미리보기' 버튼 클릭 > 포트 설정: 16686 설정 > 미리보기
+
+## Visualizing Metrics with Grafana
+
+```
+kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000 &
+```
+클라우드 쉘 타이틀바 우상단의 '웹 미리보기' 버튼 클릭 > 포트 설정: 3000 설정 > 미리보기 한후, 아래의 패스로 접속:
+```
+http://접속된주소:3000/dashboard/db/istio-mesh-dashboard
+```
+
+## 서비스 그래프 그리기
+```
+kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=servicegraph -o jsonpath='{.items[0].metadata.name}') 8088:8088 &
+```
+클라우드 쉘 타이틀바 우상단의 '웹 미리보기' 버튼 클릭 > 포트 설정: 3000 설정 > 미리보기 한후, 아래의 패스로 접속:
+```
+http://접속된주소:3000/force/forcegraph.html
+```
+
