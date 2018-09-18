@@ -477,6 +477,8 @@ kubectl rollout status deployment/nginx-deployment
 
 ```
 
+[Tip] 다양한 배포전략 [다양한 쿠버네티스의 배포전략](Kubernetes-실습-스크립트)
+
 # 시스템을 통한 인증 / 인가
 
 ```
