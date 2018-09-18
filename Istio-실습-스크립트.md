@@ -85,3 +85,74 @@ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -
 export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
 ```
 
+Open firewall for the service
+```
+export GATEWAY_URL=${INGRESS_HOST}:${INGRESS_PORT}
+gcloud compute firewall-rules create allow-book --allow tcp:${INGRESS_PORT},tcp:443
+```
+Test the service
+```
+curl -o /dev/null -s -w "%{http_code}\n" http://${GATEWAY_URL}/productpage   # must return 200
+```
+# Routing Rule의 변경
+
+```
+istioctl get destinationrules
+```
+will return:
+```
+DESTINATION-RULE NAME   HOST          SUBSETS                      NAMESPACE   AGE
+details                 details       v1,v2                        default     28m
+productpage             productpage   v1                           default     28m
+ratings                 ratings       v1,v2,v2-mysql,v2-mysql-vm   default     28m
+reviews                 reviews       v1,v2,v3                     default     28m
+```
+
+Always Route to v1 :
+```
+kubectl create -f samples/bookinfo/networking/virtual-service-all-v1.yaml
+```
+설정 내역을 보면:
+```
+spec:
+  hosts:
+  - productpage
+  http:
+  - route:
+    - destination:
+        host: productpage
+        subset: v1
+```
+
+Route v2 only to user 'jason':
+```
+kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
+```
+설정내역:
+```
+spec:
+  hosts:
+    - reviews
+  http:
+  - match:
+    - headers:
+        end-user:
+          exact: jason
+    route:
+    - destination:
+        host: reviews
+        subset: v2
+  - route:
+    - destination:
+        host: reviews
+        subset: v1
+```
+Dynamic routing - route weights :
+```
+kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
+```
+
+설정내역:
+```
+
+```
