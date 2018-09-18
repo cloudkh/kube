@@ -94,7 +94,7 @@ Test the service
 ```
 curl -o /dev/null -s -w "%{http_code}\n" http://${GATEWAY_URL}/productpage   # must return 200
 ```
-# Routing Rule의 변경
+# Routing Rule 의 변경과 Canary
 
 ```
 istioctl get destinationrules
