@@ -69,9 +69,19 @@ There are 3 versions of the reviews microservice:
 istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml
 kubectl apply -f <(istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml)
 
-#check
+# check
 kubectl get services
 kubectl get pods
 ```
 
+# Ingress 로 연결하기
+```
+kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+kubectl create -f samples/bookinfo/networking/destination-rule-all-mtls.yaml
+```
+
+```
+export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
+```
 
