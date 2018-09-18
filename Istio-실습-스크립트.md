@@ -3,7 +3,7 @@
 ```
 curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.0.0 sh -
 cd ./istio-*
-export PATH=$PWD/bin:$PATH  # so that istioctl available all around the paths
+export PATH=$PWD/bin:$PATH  # istioctl 명령을 어디서나 쓸 수 있게
 
 # create a role for istio administration
 kubectl create clusterrolebinding cluster-admin-binding \
