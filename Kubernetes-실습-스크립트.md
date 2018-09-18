@@ -738,7 +738,7 @@ data:
 
 kubectl create -f customer1-configmap.yaml
 
-(add following sections to the end of the env)
+(add following fragment to the end of the env section of the deployment file - rsvp-front-dep.yml)
 
         - name: TEXT1
           valueFrom:
