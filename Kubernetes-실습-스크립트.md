@@ -22,6 +22,10 @@ kubectl describe service wordpress   # 생성된 service 의 세부 내용 확�
 kubectl delete services,deployment,pods --all
 ```
 
+# 실습중 노드의 cpu가 꽉 차면
+Pod가 deploy 되지 않고 pending이 걸리면, 주로 노드의 cpu가 꽉 찬 것이므로, GCP의 Kubernetes 클러스터 메뉴 > 클러스터 선택 > 수정 > 노드 개수 수정 (3개에서 5~6개) > 저장.
+이후 조금 기다리면 자동으로 pending이 풀리고 deploy됨.
+
 # 기본 명령 - kubectl run
 ```
 kubectl get pods  # 실행중 pod 들을 리스팅
