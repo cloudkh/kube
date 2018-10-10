@@ -189,4 +189,11 @@ kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=gr
 http://접속된주소:3000/dashboard/db/istio-mesh-dashboard
 ```
 
+# Clean Up
+```
+kubectl delete -f samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl delete -f install/kubernetes/istio-demo-auth.yaml
+```
+
+
 [Prev: 쿠버네티스 실습](Kubernetes-실습-스크립트)
