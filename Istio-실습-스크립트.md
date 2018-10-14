@@ -195,7 +195,7 @@ kubectl delete -f samples/bookinfo/platform/kube/bookinfo.yaml
 kubectl delete -f install/kubernetes/istio-demo-auth.yaml
 ```
 
-[Next: 이스티오 예제 실습](https://github.com/TheOpenCloudEngine/istio-tutorial/)
+[Next: 스프링 부트와 이스티오 예제 실습](https://github.com/TheOpenCloudEngine/istio-tutorial/)
 
 | 
 
