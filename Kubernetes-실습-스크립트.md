@@ -43,6 +43,22 @@ curl localhost  # Hello nginx 가 뜬다.
 
 # 도커로 자바 애플리케이션 패키징 및 실행
  https://github.com/TheOpenCloudEngine/uEngine5-base/issues/116
+
+```
+ 1003  git clone https://github.com/uengine-oss/msa-tutorial-class-management-monolith.git
+ 1004  cd msa-tutorial-class-management-monolith/
+ 1006  docker build -t test .
+ 1007  mvn package -B
+ 1008  docker build -t test .
+ 1009  docker images
+ 1010  docker run test
+ 1011  docker build -t gcr.io/uengine-istio-test2/definition-service:v1 .
+ 1012  docker push gcr.io/uengine-istio-test2/definition-service:v1
+ 1014  kubectl run test-deploy --image=gcr.io/uengine-istio-test2/definition-service:v1
+ 1015  kubectl get pods
+ 1021  kubectl logs (생성된 pod id) -f
+```
+
  - 주의점
 1. 도커 이미지명 생성규칙
 ```
