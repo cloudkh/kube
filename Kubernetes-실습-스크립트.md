@@ -835,4 +835,38 @@ kubectl get hpa   # hpa = HorizontalPodAutoscaler
 kubectl edit hpa def2
 ```
 
+
+
+# 2-Tier MSA Application Deploy
+```
+1005  git clone https://github.com/cloudyuga/rsvpapp.git
+ 1006  cd rsvpapp/
+ 1007  ls
+ 1008  nano Dockerfile
+ 1011  docker build -t gcr.io/uengine-istio-test/rsvp:v1 .
+ 1012  docker push  gcr.io/uengine-istio-test/rsvp:v1
+ 1013  kubectl run rsvp --image=gcr.io/uengine-istio-test/rsvp:v1
+ 1014  kubectl get po -l run=rsvp
+ 1016  kubectl expose deploy/rsvp --port=5000 --type=LoadBalancer
+ 1017  kubectl get svc rsvp -w
+ 1020  kubectl run mongodb --image=mongo:3.3
+ 1025  kubectl expose deploy/mongodb --port=27017 --protocol=TCP
+ 1026  kubectl get svc/mongodb
+ 1027  kubectl exec -it rsvp-749f8795d6-5g527 -- /bin/sh
+      printenv
+      exit
+ 1028  kubectl delete po
+ 1029  kubectl delete po  rsvp-749f8795d6-5g527
+ 1030  kubectl get po -l run=rsvp
+ 1031  kubectl exec -it rsvp-749f8795d6-c962b -- /bin/sh
+      printenv | grep MONGO
+      exit
+ 1032  nano rsvp.py
+      MONGODB_HOST --> MONGODB_SERVICE_HOST 로 변경
+      (write & out)
+ 1033  docker build -t gcr.io/uengine-istio-test/rsvp:v2 .
+ 1034  docker push gcr.io/uengine-istio-test/rsvp:v2
+ 1035  kubectl set image deploy/rsvp rsvp=gcr.io/uengine-istio-test/rsvp:v2
+```
+
 [Next: Istio 실습](Istio-실습-스크립트)
